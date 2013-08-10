@@ -3,6 +3,7 @@ package tddbc;
 import static org.hamcrest.core.Is.*;
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -54,11 +55,21 @@ public class VendingMachineTest {
         assertThat(actual, is(expected));
     }
 
+    public List<E> <E>_(E... elelements){
+        List<E> ls = new ArrayList<E>();
+        for(e in elelements){
+            ls.add(e);
+        }
+        return ls;
+    }
 	@Test
 	public void お金以外を入れたらトータル金額につり銭箱にたまる() {
         sut.receive(5);
         List<Object> actual = sut.getChangeBox();
+        List<Object> expected = ;
         assertThat(actual.size(), is(1));
+        assertThat(actual, is(1));
 	}
+
 
 }
