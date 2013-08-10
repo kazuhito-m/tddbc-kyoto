@@ -15,11 +15,8 @@ public class VendingMachineTest {
 	/** テスト対象 */
 	private VendingMachine sut;
 
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp(){
 		sut = new VendingMachine();
 	}
 
@@ -50,6 +47,7 @@ public class VendingMachineTest {
 	}
 
     public void お金以外を入れたらトータル金額に加算されていない(Object money, int expected){
+        setUp();
         sut.receive(money);
         int actual = sut.displayTotalAmount();
         assertThat(actual, is(expected));
@@ -70,6 +68,7 @@ public class VendingMachineTest {
 	}
 
     public void お金以外を入れたらトータル金額につり銭箱にたまる(List<Object> money, List<Object> expectedObject) {
+        setUp();
         for(Object o : money){
             sut.receive(o);
         }
