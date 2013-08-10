@@ -71,7 +71,7 @@
       <file leaf-file-name="VendingMachineTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/tddbc/VendingMachineTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="0" selection-start="1414" selection-end="1414" vertical-scroll-proportion="0.5744681">
+            <state line="51" column="0" selection-start="937" selection-end="937" vertical-scroll-proportion="0.42553192">
               <folding />
             </state>
           </provider>
@@ -589,7 +589,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/tddbc/VendingMachineTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="0" selection-start="1414" selection-end="1414" vertical-scroll-proportion="0.5744681">
+        <state line="51" column="0" selection-start="937" selection-end="937" vertical-scroll-proportion="0.42553192">
           <folding />
         </state>
       </provider>
