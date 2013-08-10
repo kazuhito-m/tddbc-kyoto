@@ -47,7 +47,6 @@ public class VendingMachineTest {
         assertThat(actual, is(0));
 	}
 
-	@Ignore
 	@Test
 	public void お金以外を入れたらトータル金額につり銭箱にたまる() {
         sut.receive(5);
