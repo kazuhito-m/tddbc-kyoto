@@ -35,7 +35,7 @@ public class VendingMachineTest {
 	public void つり銭箱が確認できる() {
 		// arrange
 		// act
-		List<Integer> actual = sut.getChangeBox();
+		List<Object> actual = sut.getChangeBox();
 		// assert
 		assertThat(actual.size() , is(0));
 	}
@@ -50,7 +50,7 @@ public class VendingMachineTest {
 	@Test
 	public void お金以外を入れたらトータル金額につり銭箱にたまる() {
         sut.receive(5);
-        List<Integer> actual = sut.getChangeBox();
+        List<Object> actual = sut.getChangeBox();
         assertThat(actual.size(), is(1));
 	}
 
