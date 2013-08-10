@@ -8,4 +8,5 @@ package tddbc;
  * To change this template use File | Settings | File Templates.
  */
 public enum Money {
+    _10, _50, _100, _500, _1000
 }

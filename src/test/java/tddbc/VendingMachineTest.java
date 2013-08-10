@@ -40,9 +40,11 @@ public class VendingMachineTest {
 		assertThat(actual.size() , is(0));
 	}
 
-	@Ignore
 	@Test
 	public void お金以外を入れたらトータル金額に加算されていない() {
+        sut.receive(5);
+        int actual = sut.displayTotalAmount();
+        assertThat(actual, is(0));
 	}
 
 	@Ignore
