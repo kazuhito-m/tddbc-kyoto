@@ -76,5 +76,24 @@ public class VendingMachineTest {
         assertThat(actual, is(expectedObject));
     }
 
+    @Test
+    public void 有効硬貨を投入できる(){
+
+    }
+
+    @Test
+    public void 有効硬貨を複数回投入できる(){
+
+    }
+
+    @Test
+    public void 入れたお金が総計に反映されている(){
+
+    }
+
+    @Test
+    public void 払い戻すと釣り銭箱に入っている(){
+
+    }
 
 }
