@@ -14,7 +14,11 @@ public class VendingMachine {
 	 * @return
 	 */
 	public int displayTotalAmount() {
-		return 0;
+        int total = 0;
+        for (Money m : amountBox) {
+
+        }
+       return 0;
 	}
 
 	/**
@@ -27,7 +31,7 @@ public class VendingMachine {
 
     public void receive(Object money){
         if(money instanceof Money){
-           //何か処理
+           this.amountBox.add((Money) money);
         }
         else{
             changeBox.add(money);
