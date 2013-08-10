@@ -96,7 +96,10 @@ public class VendingMachineTest {
 
     @Test
     public void 払い戻すと釣り銭箱に入っている(){
-
+        有効硬貨を複数回投入した金額が総計に反映されている();
+        sut.refund();
+        List<Object> actual = sut.getChangeBox();
+        assertThat(actual.size(), is(5));
     }
 
 }

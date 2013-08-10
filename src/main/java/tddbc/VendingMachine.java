@@ -37,4 +37,7 @@ public class VendingMachine {
             changeBox.add(money);
         }
     }
+
+    public void refund() {
+    }
 }
