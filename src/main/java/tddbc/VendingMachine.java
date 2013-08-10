@@ -21,4 +21,8 @@ public class VendingMachine {
 		List<Integer> b = new ArrayList<Integer>();
 		return b;
 	}
+
+    public void receive(Object money){
+
+    }
 }
