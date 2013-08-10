@@ -78,7 +78,7 @@ public class VendingMachineTest {
 
     @Test
     public void 有効硬貨を投入できる(){
-
+        sut.receive(Money._10);
     }
 
     @Test
