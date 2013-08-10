@@ -25,6 +25,11 @@ public class VendingMachine {
 	}
 
     public void receive(Object money){
-
+        if(money instanceof Money){
+           //何か処理
+        }
+        else{
+            changeBox.add(money);
+        }
     }
 }
