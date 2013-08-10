@@ -71,8 +71,10 @@ public class VendingMachineTest {
         assertThat(actual, is(expected));
 	}
 
-    public void お金以外を入れたらトータル金額につり銭箱にたまる(Object money, int expectedSize, List<Object> expectedObject) {
-        sut.receive();
+    public void お金以外を入れたらトータル金額につり銭箱にたまる(List<Object> money, int expectedSize, List<Object> expectedObject) {
+        for(Object o : money){
+            sut.receive(o);
+        }
         List<Object> actual = sut.getChangeBox();
         List<Object> expected = _((Object)5);
         assertThat(actual.size(), is(1));
