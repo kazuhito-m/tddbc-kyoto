@@ -50,6 +50,9 @@ public class VendingMachineTest {
 	@Ignore
 	@Test
 	public void お金以外を入れたらトータル金額につり銭箱にたまる() {
+        sut.receive(5);
+        List<Integer> actual = sut.getChangeBox();
+        assertThat(actual.size(), is(1));
 	}
 
 }
