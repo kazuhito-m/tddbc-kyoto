@@ -5,7 +5,7 @@ import java.util.List;
 
 public class VendingMachine {
 
-    private List<Integer> changeBox;
+    private List<Object> changeBox;
 
     /**
 	 * 総合計額を返す。
@@ -19,13 +19,12 @@ public class VendingMachine {
 	 * つり銭箱を返す。
 	 * @return
 	 */
-	public List<Integer> getChangeBox() {
-		changeBox = new ArrayList<Integer>();
+	public List<Object> getChangeBox() {
+		changeBox = new ArrayList<Object>();
 		return changeBox;
 	}
 
     public void receive(Object money){
-
 
     }
 }
