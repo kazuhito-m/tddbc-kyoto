@@ -6,7 +6,7 @@
     <ignored path=".idea/workspace.xml" />
     <file path="/build.gradle" changelist="32e66c9b-4fd7-4222-8d88-a7c3fca5ee6f" time="1376111664818" ignored="false" />
     <file path="/Money.java" changelist="32e66c9b-4fd7-4222-8d88-a7c3fca5ee6f" time="1376116877880" ignored="false" />
-    <file path="/VendingMachineTest.java" changelist="32e66c9b-4fd7-4222-8d88-a7c3fca5ee6f" time="1376116473206" ignored="false" />
+    <file path="/VendingMachineTest.java" changelist="32e66c9b-4fd7-4222-8d88-a7c3fca5ee6f" time="1376117121124" ignored="false" />
     <file path="/VendingMachine.java" changelist="32e66c9b-4fd7-4222-8d88-a7c3fca5ee6f" time="1376116919678" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,19 +68,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="VendingMachineTest.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="VendingMachineTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/tddbc/VendingMachineTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="43" selection-start="1822" selection-end="1840" vertical-scroll-proportion="0.0">
+            <state line="91" column="31" selection-start="2061" selection-end="2095" vertical-scroll-proportion="0.78723407">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VendingMachine.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="VendingMachine.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/tddbc/VendingMachine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="19" selection-start="664" selection-end="664" vertical-scroll-proportion="0.73007715">
+            <state line="7" column="19" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#149#157#0" expanded="true" />
                 <element signature="e#211#218#0" expanded="true" />
@@ -127,9 +127,9 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/test/java/tddbc/VendingMachineTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/tddbc/Money.java" />
         <option value="$PROJECT_DIR$/src/main/java/tddbc/VendingMachine.java" />
+        <option value="$PROJECT_DIR$/src/test/java/tddbc/VendingMachineTest.java" />
       </list>
     </option>
   </component>
@@ -580,20 +580,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tddbc/VendingMachineTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="43" selection-start="1822" selection-end="1840" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/tddbc/VendingMachine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="19" selection-start="664" selection-end="664" vertical-scroll-proportion="0.73007715">
+        <state line="7" column="19" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#149#157#0" expanded="true" />
             <element signature="e#211#218#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/tddbc/VendingMachineTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="31" selection-start="2061" selection-end="2095" vertical-scroll-proportion="0.78723407">
+          <folding />
         </state>
       </provider>
     </entry>

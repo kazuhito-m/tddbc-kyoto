@@ -85,6 +85,11 @@ public class VendingMachineTest {
 
     @Test
     public void 有効硬貨を複数回投入できる(){
+        sut.receive(Money._10);
+        sut.receive(Money._50);
+        sut.receive(Money._100);
+        sut.receive(Money._500);
+        sut.receive(Money._1000);
 
     }
 
