@@ -48,10 +48,10 @@ public class VendingMachineTest {
         お金以外を入れたらトータル金額に加算されていない("ドル", 0);
 	}
 
-    public void お金以外を入れたらトータル金額に加算されていない(Object money, int expceted){
+    public void お金以外を入れたらトータル金額に加算されていない(Object money, int expected){
         sut.receive(money);
         int actual = sut.displayTotalAmount();
-        assertThat(actual, is(expceted));
+        assertThat(actual, is(expected));
     }
 
 	@Test
