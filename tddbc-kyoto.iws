@@ -7,7 +7,7 @@
     <file path="/build.gradle" changelist="32e66c9b-4fd7-4222-8d88-a7c3fca5ee6f" time="1376111664818" ignored="false" />
     <file path="/Money.java" changelist="32e66c9b-4fd7-4222-8d88-a7c3fca5ee6f" time="1376112521454" ignored="false" />
     <file path="/VendingMachineTest.java" changelist="32e66c9b-4fd7-4222-8d88-a7c3fca5ee6f" time="1376114672228" ignored="false" />
-    <file path="/VendingMachine.java" changelist="32e66c9b-4fd7-4222-8d88-a7c3fca5ee6f" time="1376114600087" ignored="false" />
+    <file path="/VendingMachine.java" changelist="32e66c9b-4fd7-4222-8d88-a7c3fca5ee6f" time="1376114789382" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,21 +68,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="VendingMachineTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="VendingMachineTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/tddbc/VendingMachineTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="0" selection-start="850" selection-end="850" vertical-scroll-proportion="0.28020567">
-              <folding>
-                <marker date="1376114740000" expanded="true" signature="850:856" placeholder="@{...}" />
-              </folding>
+            <state line="55" column="18" selection-start="1019" selection-end="1019" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VendingMachine.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="VendingMachine.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/tddbc/VendingMachine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="16" selection-start="360" selection-end="360" vertical-scroll-proportion="0.0">
+            <state line="27" column="23" selection-start="403" selection-end="403" vertical-scroll-proportion="0.6143959">
               <folding />
             </state>
           </provider>
@@ -127,8 +125,8 @@
       <list>
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/tddbc/Money.java" />
-        <option value="$PROJECT_DIR$/src/main/java/tddbc/VendingMachine.java" />
         <option value="$PROJECT_DIR$/src/test/java/tddbc/VendingMachineTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tddbc/VendingMachine.java" />
       </list>
     </option>
   </component>
@@ -518,9 +516,7 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/tddbc/VendingMachineTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="13" selection-start="200" selection-end="200" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1376114740000" expanded="true" signature="850:856" placeholder="@{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -580,19 +576,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tddbc/VendingMachine.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/tddbc/VendingMachineTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="16" selection-start="360" selection-end="360" vertical-scroll-proportion="0.0">
+        <state line="55" column="18" selection-start="1019" selection-end="1019" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tddbc/VendingMachineTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/tddbc/VendingMachine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="850" selection-end="850" vertical-scroll-proportion="0.28020567">
-          <folding>
-            <marker date="1376114740000" expanded="true" signature="850:856" placeholder="@{...}" />
-          </folding>
+        <state line="27" column="23" selection-start="403" selection-end="403" vertical-scroll-proportion="0.6143959">
+          <folding />
         </state>
       </provider>
     </entry>
