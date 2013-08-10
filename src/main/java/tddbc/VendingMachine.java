@@ -7,6 +7,8 @@ public class VendingMachine {
 
     private List<Object> changeBox = new ArrayList<Object>();
 
+    private List<Money> amountBox = new ArrayList<Money>();
+
     /**
 	 * 総合計額を返す。
 	 * @return

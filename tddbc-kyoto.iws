@@ -7,7 +7,7 @@
     <file path="/build.gradle" changelist="32e66c9b-4fd7-4222-8d88-a7c3fca5ee6f" time="1376111664818" ignored="false" />
     <file path="/Money.java" changelist="32e66c9b-4fd7-4222-8d88-a7c3fca5ee6f" time="1376112521454" ignored="false" />
     <file path="/VendingMachineTest.java" changelist="32e66c9b-4fd7-4222-8d88-a7c3fca5ee6f" time="1376116473206" ignored="false" />
-    <file path="/VendingMachine.java" changelist="32e66c9b-4fd7-4222-8d88-a7c3fca5ee6f" time="1376114933952" ignored="false" />
+    <file path="/VendingMachine.java" changelist="32e66c9b-4fd7-4222-8d88-a7c3fca5ee6f" time="1376116587672" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,21 +68,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="VendingMachineTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="VendingMachineTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/tddbc/VendingMachineTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="33" selection-start="1877" selection-end="1877" vertical-scroll-proportion="0.5851064">
+            <state line="81" column="43" selection-start="1822" selection-end="1840" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VendingMachine.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="VendingMachine.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/tddbc/VendingMachine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="324" selection-end="324" vertical-scroll-proportion="0.0">
+            <state line="9" column="59" selection-start="221" selection-end="221" vertical-scroll-proportion="0.3084833">
               <folding>
                 <element signature="e#149#157#0" expanded="true" />
+                <element signature="e#211#218#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -127,8 +128,8 @@
       <list>
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/tddbc/Money.java" />
-        <option value="$PROJECT_DIR$/src/main/java/tddbc/VendingMachine.java" />
         <option value="$PROJECT_DIR$/src/test/java/tddbc/VendingMachineTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tddbc/VendingMachine.java" />
       </list>
     </option>
   </component>
@@ -442,7 +443,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24621212" sideWeight="0.670418" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.329582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.329582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -578,19 +579,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tddbc/VendingMachine.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/tddbc/VendingMachineTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="324" selection-end="324" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#149#157#0" expanded="true" />
-          </folding>
+        <state line="81" column="43" selection-start="1822" selection-end="1840" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tddbc/VendingMachineTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/tddbc/VendingMachine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="33" selection-start="1877" selection-end="1877" vertical-scroll-proportion="0.5851064">
-          <folding />
+        <state line="9" column="59" selection-start="221" selection-end="221" vertical-scroll-proportion="0.3084833">
+          <folding>
+            <element signature="e#149#157#0" expanded="true" />
+            <element signature="e#211#218#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
