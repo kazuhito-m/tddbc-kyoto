@@ -90,7 +90,8 @@ public class VendingMachineTest {
         sut.receive(Money._100);
         sut.receive(Money._500);
         sut.receive(Money._1000);
-
+        int actual = sut.displayTotalAmount();
+        assertThat(actual , is(1660));
     }
 
     @Test

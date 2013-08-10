@@ -6,7 +6,7 @@
     <ignored path=".idea/workspace.xml" />
     <file path="/build.gradle" changelist="32e66c9b-4fd7-4222-8d88-a7c3fca5ee6f" time="1376111664818" ignored="false" />
     <file path="/Money.java" changelist="32e66c9b-4fd7-4222-8d88-a7c3fca5ee6f" time="1376116877880" ignored="false" />
-    <file path="/VendingMachineTest.java" changelist="32e66c9b-4fd7-4222-8d88-a7c3fca5ee6f" time="1376117121124" ignored="false" />
+    <file path="/VendingMachineTest.java" changelist="32e66c9b-4fd7-4222-8d88-a7c3fca5ee6f" time="1376117131088" ignored="false" />
     <file path="/VendingMachine.java" changelist="32e66c9b-4fd7-4222-8d88-a7c3fca5ee6f" time="1376116919678" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +71,7 @@
       <file leaf-file-name="VendingMachineTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/tddbc/VendingMachineTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="31" selection-start="2061" selection-end="2095" vertical-scroll-proportion="0.78723407">
+            <state line="93" column="34" selection-start="2176" selection-end="2176" vertical-scroll-proportion="0.78723407">
               <folding />
             </state>
           </provider>
@@ -592,7 +592,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/tddbc/VendingMachineTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="31" selection-start="2061" selection-end="2095" vertical-scroll-proportion="0.78723407">
+        <state line="93" column="34" selection-start="2176" selection-end="2176" vertical-scroll-proportion="0.78723407">
           <folding />
         </state>
       </provider>
