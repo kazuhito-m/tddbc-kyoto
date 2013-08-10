@@ -55,9 +55,9 @@ public class VendingMachineTest {
         assertThat(actual, is(expected));
     }
 
-    public List<E> <E>_(E... elelements){
+    public <E> List<E>_(E... elelements){
         List<E> ls = new ArrayList<E>();
-        for(e in elelements){
+        for(E e : elelements){
             ls.add(e);
         }
         return ls;
