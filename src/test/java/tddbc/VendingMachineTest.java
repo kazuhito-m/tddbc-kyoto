@@ -62,14 +62,22 @@ public class VendingMachineTest {
         }
         return ls;
     }
+
 	@Test
 	public void お金以外を入れたらトータル金額につり銭箱にたまる() {
         sut.receive(5);
         List<Object> actual = sut.getChangeBox();
         List<Object> expected = _((Object)5);
-        assertThat(actual.size(), is(1));
         assertThat(actual, is(expected));
 	}
+
+    public void お金以外を入れたらトータル金額につり銭箱にたまる(Object money, int expectedSize, List<Object> expectedObject) {
+        sut.receive();
+        List<Object> actual = sut.getChangeBox();
+        List<Object> expected = _((Object)5);
+        assertThat(actual.size(), is(1));
+        assertThat(actual, is(expected));
+    }
 
 
 }
