@@ -16,7 +16,7 @@ public class VendingMachine {
 	public int displayTotalAmount() {
         int total = 0;
         for (Money m : amountBox) {
-             total += m.value();
+             total += m.getAmount();
         }
        return total;
 	}
