@@ -1,13 +1,13 @@
 package tddbc;
 
-import static org.hamcrest.core.Is.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+import static tddbc.Money.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class VendingMachineTest {
@@ -22,7 +22,6 @@ public class VendingMachineTest {
 
 	@Test
 	public void トータル金額を確認できる() {
-		// arrange
 		// act
 		int actual = sut.displayTotalAmount();
 		// assert
@@ -31,7 +30,6 @@ public class VendingMachineTest {
 
 	@Test
 	public void つり銭箱が確認できる() {
-		// arrange
 		// act
 		List<Object> actual = sut.getChangeBox();
 		// assert
@@ -78,18 +76,18 @@ public class VendingMachineTest {
 
     @Test
     public void 有効硬貨を投入できる(){
-        sut.receive(Money._10);
+        sut.receive(_10);
         int actual = sut.displayTotalAmount();
         assertThat(actual , is(10));
     }
 
     @Test
     public void 有効硬貨を複数回投入した金額が総計に反映されている(){
-        sut.receive(Money._10);
-        sut.receive(Money._50);
-        sut.receive(Money._100);
-        sut.receive(Money._500);
-        sut.receive(Money._1000);
+        sut.receive(_10);
+        sut.receive(_50);
+        sut.receive(_100);
+        sut.receive(_500);
+        sut.receive(_1000);
         int actual = sut.displayTotalAmount();
         assertThat(actual , is(1660));
     }
