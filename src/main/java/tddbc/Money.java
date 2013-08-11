@@ -6,10 +6,8 @@ package tddbc;
  */
 public enum Money {
 	_10, _50, _100, _500, _1000;
-	// 定数の表す金額を整数値で返す。
+	/** 定数の表す金額を整数値で返す。 */
 	public int getAmount() {
-		return 0;
-//		return Integer.parseInt(this.name().replaceFirst("_", ""));
+		return Integer.parseInt(this.name().replaceFirst("_", ""));
 	}
-
 }
