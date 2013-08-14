@@ -69,12 +69,14 @@ public class DrinkSlotTest {
 	@Test
 	public void スロットから取り出したジュースの名前と価格はスロット設定と同じ() {
 		// arrange
+		sut.setKind(DrinkKind.APPLE_JUICE);
+		sut.setPrice(150); // ペットボトル？
 		this.スロットにジュースを補充できる();
 		// act
 		Drink actual = sut.takeOut();
 		// assert
-		assertThat(actual.getCaption(), is("コーラ"));
-		assertThat(actual.getAmountOfTime(), is(120));
+		assertThat(actual.getCaption(), is("アップルジュース"));
+		assertThat(actual.getAmountOfTime(), is(150));
 	}
 	
 	@Ignore
