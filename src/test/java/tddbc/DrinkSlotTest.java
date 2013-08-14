@@ -4,6 +4,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -29,4 +30,36 @@ public class DrinkSlotTest {
 		assertThat(sut.getKind(), is(DrinkKind.COLA));
 		assertThat(sut.getPrice(), is(120));
 	}
+	
+	@Test
+	public void スロットにジュースを補充できる() {
+		// act
+		sut.add(new Drink(DrinkKind.COLA));
+	}
+	
+	@Ignore
+	@Test
+	public void スロット中のジュースの個数を確認できる() {
+		
+	}
+
+	@Ignore
+	@Test
+	public void スロットにジュースを一個取り出せる() {
+		
+	}
+
+	@Ignore
+	@Test
+	public void スロットからジュースを取り出すと総数が一つ減る() {
+	
+	}
+
+	@Ignore
+	@Test
+	public void スロットから取り出したジュースの名前と価格はスロット設定と同じ() {
+		
+	}
+
+
 }

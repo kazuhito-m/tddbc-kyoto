@@ -16,6 +16,15 @@ public class DrinkSlot {
 		return kind;
 	}
 
+	/** 
+	 * 補充。
+	 * @param drink 飲み物。
+	 */
+	public void add(Drink drink) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
+
 	public void setKind(DrinkKind kind) {
 		this.kind = kind;
 	}
@@ -27,4 +36,5 @@ public class DrinkSlot {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+
 }
