@@ -37,10 +37,12 @@ public class DrinkSlotTest {
 		sut.add(new Drink(DrinkKind.COLA));
 	}
 	
-	@Ignore
 	@Test
 	public void スロット中のジュースの個数を確認できる() {
-		
+		// arrange
+		this.スロットにジュースを補充できる();
+		// assert
+		assertThat(sut.getStockCount() , is(1));
 	}
 
 	@Ignore

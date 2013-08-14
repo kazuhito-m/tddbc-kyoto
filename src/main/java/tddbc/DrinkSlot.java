@@ -25,6 +25,12 @@ public class DrinkSlot {
 		
 	}
 
+	public int getStockCount() {
+		return 0;
+	}
+
+	// プロパティ群
+	
 	public void setKind(DrinkKind kind) {
 		this.kind = kind;
 	}
