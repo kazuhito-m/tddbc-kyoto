@@ -12,17 +12,14 @@ import org.junit.Test;
  */
 public class DrinkSlotTest {
 	
-	@Ignore
 	@Test
 	public void スロットにはジュース種と価格が保持できる() {
-//		// arrange / act
-//		DrinkSlot actual = new DrinkSlot();
-//		actual.setKind(DrinkKind.COLA);
-//		actual.setPrice(120);
-//		// assert
-//		assertThat(actual.getKind() , is(DrinkKind.COLA));
-//		assertThat(actual.getPrice() , is(120));
+		// arrange / act
+		DrinkSlot actual = new DrinkSlot();
+		actual.setKind(DrinkKind.COLA);
+		actual.setPrice(120);
+		// assert
+		assertThat(actual.getKind() , is(DrinkKind.COLA));
+		assertThat(actual.getPrice() , is(120));
 	}
-	
-	
 }
