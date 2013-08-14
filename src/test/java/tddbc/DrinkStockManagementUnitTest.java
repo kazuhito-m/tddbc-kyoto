@@ -30,9 +30,13 @@ public class DrinkStockManagementUnitTest {
 		assertThat(actual.size(), is(1));
 	}
 	
-	@Ignore
 	@Test
 	public void 初期状態でコーラを5本格納している() {
-		
+		// act
+		List<DrinkSlot> slots = sut.getSlots();
+		// assert
+		DrinkSlot actual = slots.get(0);
+		assertThat(actual.getKind(), is(DrinkKind.COLA));
+		assertThat(actual.getStockCount(), is(5));
 	}
 }
