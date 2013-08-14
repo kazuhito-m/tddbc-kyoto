@@ -31,12 +31,13 @@ public class DrinkStockManagementUnitTest {
 	}
 	
 	@Test
-	public void 初期状態でコーラを5本格納している() {
+	public void 初期状態で価格120円のコーラを5本格納している() {
 		// act
 		List<DrinkSlot> slots = sut.getSlots();
 		// assert
 		DrinkSlot actual = slots.get(0);
-		assertThat(actual.getKind(), is(DrinkKind.COLA));
+		assertThat(actual.getKind().getCaption(), is("コーラ"));
+		assertThat(actual.getPrice(), is(120));
 		assertThat(actual.getStockCount(), is(5));
 	}
 }
