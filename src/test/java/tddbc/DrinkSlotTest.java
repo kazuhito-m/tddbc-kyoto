@@ -11,7 +11,11 @@ import org.junit.Test;
  */
 public class DrinkSlotTest {
 	
-	
+	public void スロットにはジュース種と価格が保持できる() {
+		// arrange / act
+		DrinkSlot actual = new DrinkSlot();
+		
+	}
 	
 	
 }

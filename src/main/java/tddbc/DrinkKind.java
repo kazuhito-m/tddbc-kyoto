@@ -5,16 +5,16 @@ package tddbc;
  * @author kazuhito_m
  */
 public enum DrinkKind {
-	COLA("コーラ");
+	COLA("コーラ"), APPLE_JUICE("アップルジュース");
 
 	/** 内部「飲み物の名前」 */
 	private final String caption;
-	
+
 	/** コンストラクタ。 */
 	DrinkKind(String caption) {
 		this.caption = caption;
 	}
-	
+
 	/**
 	 * 「ジュースの名前」を返す。
 	 * @return ジュースの名前文字列。
@@ -22,5 +22,5 @@ public enum DrinkKind {
 	public String getCaption() {
 		return this.caption;
 	}
-	
+
 }
