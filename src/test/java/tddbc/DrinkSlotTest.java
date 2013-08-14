@@ -3,6 +3,7 @@ package tddbc;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -11,10 +12,16 @@ import org.junit.Test;
  */
 public class DrinkSlotTest {
 	
+	@Ignore
+	@Test
 	public void スロットにはジュース種と価格が保持できる() {
-		// arrange / act
-		DrinkSlot actual = new DrinkSlot();
-		
+//		// arrange / act
+//		DrinkSlot actual = new DrinkSlot();
+//		actual.setKind(DrinkKind.COLA);
+//		actual.setPrice(120);
+//		// assert
+//		assertThat(actual.getKind() , is(DrinkKind.COLA));
+//		assertThat(actual.getPrice() , is(120));
 	}
 	
 	
