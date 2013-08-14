@@ -14,9 +14,8 @@ public class Drink {
 	private int amountOfTime;
 
 	/** コンストラクタ */
-	public Drink(DrinkKind kind, int amount) {
+	public Drink(DrinkKind kind) {
 		this.kind = kind;
-		this.amountOfTime = amount;
 	}
 
 	/**
