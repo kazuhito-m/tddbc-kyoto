@@ -8,7 +8,7 @@ package tddbc;
 public class Drink {
 
 	/** ジュースの種類 */
-	private final DrinkKind kind;
+	private DrinkKind kind;
 
 	/** 時価(購入時の価格) */
 	private int amountOfTime;
@@ -34,4 +34,22 @@ public class Drink {
 	public int getAmountOfTime() {
 		return this.amountOfTime;
 	}
+
+	/**
+	 * 時価の変更。
+	 * @param amountOfTime 新しい金額。
+	 */
+	protected void setAmountOfTime(int amountOfTime) {
+		this.amountOfTime = amountOfTime;
+	}
+
+	/** 
+	 * 「ジュースの種類」の変更。
+	 * @param kind 新しい種類。
+	 */
+	protected void setKind(DrinkKind kind) {
+		this.kind = kind;
+	}
+
+
 }
