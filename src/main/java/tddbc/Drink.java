@@ -1,0 +1,37 @@
+package tddbc;
+
+/**
+ * 「飲み物」クラス。<br>
+ * インスタンスは、現実世界においてのいわゆる「缶ジュース一つ」に相当する。
+ * @author kazuhito_m
+ */
+public class Drink {
+
+	/** ジュースの種類 */
+	private final DrinkKind kind;
+
+	/** 時価(購入時の価格) */
+	private int amountOfTime;
+
+	/** コンストラクタ */
+	public Drink(DrinkKind kind, int amount) {
+		this.kind = kind;
+		this.amountOfTime = amount;
+	}
+
+	/**
+	 * 「ジュースの名前」を取得する。
+	 * @return 名前文字列。
+	 */
+	public String getCaption() {
+		return kind.getCaption();
+	}
+
+	/**
+	 * 時価(購入時の価格)。
+	 * @return 価格数値。
+	 */
+	public int getAmountOfTime() {
+		return this.amountOfTime;
+	}
+}

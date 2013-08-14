@@ -15,6 +15,10 @@ public enum DrinkKind {
 		this.caption = caption;
 	}
 	
+	/**
+	 * 「ジュースの名前」を返す。
+	 * @return ジュースの名前文字列。
+	 */
 	public String getCaption() {
 		return this.caption;
 	}
