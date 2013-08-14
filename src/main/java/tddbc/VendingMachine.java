@@ -1,25 +1,27 @@
 package tddbc;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class VendingMachine {
 
-	private List<Object> changeBox = new ArrayList<Object>();
+	// プロパティ群
+	
+	/** お金(硬貨・紙幣)周り管理装置。 */
+	private MoneyManagementUnit moneyManager;
 
-	private List<Money> amountBox = new ArrayList<Money>();
+	// メソッド群
+	
+	/** コンストラクタ。 */
+	public VendingMachine() {
+		moneyManager = new MoneyManagementUnit();
+	}
 
 	/**
 	 * 総合計額を表示する。
-	 * 
 	 * @return
 	 */
 	public int displayTotalAmount() {
-		int total = 0;
-		for (Money m : amountBox) {
-			total += m.getAmount();
-		}
-		return total;
+		return moneyManager.calcTotalAmount();
 	}
 
 	/**
@@ -28,7 +30,7 @@ public class VendingMachine {
 	 * @return
 	 */
 	public List<Object> getChangeBox() {
-		return changeBox;
+		return moneyManager.getChangeBox();
 	}
 
 	/**
@@ -37,18 +39,13 @@ public class VendingMachine {
 	 * @param money
 	 */
 	public void receive(Object money) {
-		if (money instanceof Money) {
-			this.amountBox.add((Money) money);
-		} else {
-			changeBox.add(money);
-		}
+		moneyManager.receive(money);
 	}
 
 	/**
 	 * 返金する。
 	 */
 	public void refund() {
-		changeBox.addAll(amountBox);
-		amountBox.clear();
+		moneyManager.refund();
 	}
 }
