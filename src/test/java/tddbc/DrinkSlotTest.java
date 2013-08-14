@@ -58,10 +58,12 @@ public class DrinkSlotTest {
 		assertThat(actual, is(notNullValue()));
 	}
 
-	@Ignore
 	@Test
 	public void スロットからジュースを取り出すと総数が一つ減る() {
-	
+		// arrange
+		スロットにジュースを一個取り出せる();
+		// assert
+		assertThat(sut.getStockCount(), is(0)); // 一個補充→一個減らす、でゼロ
 	}
 
 	@Ignore
