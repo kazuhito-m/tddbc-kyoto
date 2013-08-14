@@ -1,5 +1,8 @@
 package tddbc;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 「飲み物の内部スロット」クラス。
  * @author kazuhito_m
@@ -12,6 +15,9 @@ public class DrinkSlot {
 	/** 販売価格。 */
 	private int price;
 
+	/** 飲み物のため場所。 */
+	private List<Drink> drinks = new ArrayList<Drink>();
+	
 	public DrinkKind getKind() {
 		return kind;
 	}
@@ -21,12 +27,16 @@ public class DrinkSlot {
 	 * @param drink 飲み物。
 	 */
 	public void add(Drink drink) {
-		// TODO 自動生成されたメソッド・スタブ
-		
+		drink.setKind(kind);
+		drinks.add(drink);
 	}
 
+	/**
+	 * スロットの在庫個数。
+	 * @return 個数。
+	 */
 	public int getStockCount() {
-		return 1;
+		return drinks.size();
 	}
 
 	// プロパティ群
