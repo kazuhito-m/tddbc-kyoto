@@ -17,7 +17,10 @@ public class DrinkStockManagementUnit {
 		// 現仕様では、決め打ちで１スロット、中身も限定。
 		DrinkSlot slot = new DrinkSlot();
 		slot.setKind(DrinkKind.COLA);
-		
+		slot.setPrice(120);
+		for (int i = 0 ; i < 5 ; i++) {
+			slot.add(new Drink(slot.getKind()));
+		}
 		slots.add(slot);
 	}
 	
