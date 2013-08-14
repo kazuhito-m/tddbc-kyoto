@@ -17,12 +17,12 @@ public class DrinkSlot {
 
 	/** 飲み物のため場所。 */
 	private List<Drink> drinks = new ArrayList<Drink>();
-	
+
 	public DrinkKind getKind() {
 		return kind;
 	}
 
-	/** 
+	/**
 	 * 補充。
 	 * @param drink 飲み物。
 	 */
@@ -40,7 +40,7 @@ public class DrinkSlot {
 	}
 
 	// プロパティ群
-	
+
 	public void setKind(DrinkKind kind) {
 		this.kind = kind;
 	}
@@ -60,9 +60,12 @@ public class DrinkSlot {
 	 * @return 飲み物一個。
 	 */
 	public Drink takeOut() {
-		Drink outDrink = drinks.remove(0);
-		outDrink.setAmountOfTime(this.price);	// 販売時に時価は決まる。
-		return outDrink;
+		if (this.drinks.size() == 0) {
+			return null;
+		} else {
+			Drink outDrink = drinks.remove(0);
+			outDrink.setAmountOfTime(this.price); // 販売時に時価は決まる。
+			return outDrink;
+		}
 	}
-
 }
