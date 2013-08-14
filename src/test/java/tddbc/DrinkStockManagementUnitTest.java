@@ -1,5 +1,10 @@
 package tddbc;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -17,14 +22,12 @@ public class DrinkStockManagementUnitTest {
 		sut = new DrinkStockManagementUnit();
 	}
 
-	@Ignore
 	@Test
 	public void ジュースを一種類格納している() {
-		
 		// act
-//		int actual = sut.displayTotalAmount();
+		List<DrinkSlot> actual = sut.getSlots();
 		// assert
-//		assertThat(actual, is(0));
+		assertThat(actual.size(), is(1));
 	}
 	
 	@Ignore
