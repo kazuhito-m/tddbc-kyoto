@@ -60,7 +60,9 @@ public class DrinkSlot {
 	 * @return 飲み物一個。
 	 */
 	public Drink takeOut() {
-		return drinks.remove(0);
+		Drink outDrink = drinks.remove(0);
+		outDrink.setAmountOfTime(this.price);	// 販売時に時価は決まる。
+		return outDrink;
 	}
 
 }
