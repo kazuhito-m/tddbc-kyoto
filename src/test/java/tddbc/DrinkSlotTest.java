@@ -69,6 +69,11 @@ public class DrinkSlotTest {
 	@Ignore
 	@Test
 	public void スロットから取り出したジュースの名前と価格はスロット設定と同じ() {
+	}
+	
+	@Ignore
+	@Test
+	public void 在庫がない場合に取り出すとnullが取り出される() {
 		
 	}
 

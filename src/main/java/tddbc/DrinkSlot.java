@@ -55,11 +55,12 @@ public class DrinkSlot {
 
 	/**
 	 * 飲み物を一個取り出す。<br>
-	 * (外へガシャコン！と落とすイメージ。)
+	 * (外へガシャコン！と落とすイメージ)<br>
+	 * 在庫管理法は「後入れ先出し」とする。
 	 * @return 飲み物一個。
 	 */
 	public Drink takeOut() {
-		return new Drink(null);
+		return drinks.remove(0);
 	}
 
 }
