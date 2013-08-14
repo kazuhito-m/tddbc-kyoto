@@ -59,7 +59,7 @@ public class DrinkSlot {
 	 * @return 飲み物一個。
 	 */
 	public Drink takeOut() {
-		return null;
+		return new Drink(null);
 	}
 
 }

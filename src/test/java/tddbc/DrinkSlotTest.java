@@ -14,6 +14,8 @@ import org.junit.Test;
  */
 public class DrinkSlotTest {
 
+	
+	
 	/** テスト対象 */
 	private DrinkSlot sut = new DrinkSlot();
 
