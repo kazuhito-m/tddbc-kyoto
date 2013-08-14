@@ -1,5 +1,6 @@
 package tddbc;
 
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -45,10 +46,14 @@ public class DrinkSlotTest {
 		assertThat(sut.getStockCount() , is(1));
 	}
 
-	@Ignore
 	@Test
 	public void スロットにジュースを一個取り出せる() {
-		
+		// arrange
+		this.スロットにジュースを補充できる();
+		// act
+		Drink actual = sut.takeOut();
+		// assert
+		assertThat(actual, is(notNullValue()));
 	}
 
 	@Ignore

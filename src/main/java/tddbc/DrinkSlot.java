@@ -53,4 +53,13 @@ public class DrinkSlot {
 		this.price = price;
 	}
 
+	/**
+	 * 飲み物を一個取り出す。<br>
+	 * (外へガシャコン！と落とすイメージ。)
+	 * @return 飲み物一個。
+	 */
+	public Drink takeOut() {
+		return null;
+	}
+
 }
