@@ -66,9 +66,15 @@ public class DrinkSlotTest {
 		assertThat(sut.getStockCount(), is(0)); // 一個補充→一個減らす、でゼロ
 	}
 
-	@Ignore
 	@Test
 	public void スロットから取り出したジュースの名前と価格はスロット設定と同じ() {
+		// arrange
+		this.スロットにジュースを補充できる();
+		// act
+		Drink actual = sut.takeOut();
+		// assert
+		assertThat(actual.getCaption(), is("コーラ"));
+		assertThat(actual.getAmountOfTime(), is(120));
 	}
 	
 	@Ignore
