@@ -9,18 +9,18 @@ import java.util.List;
  */
 public class MoneyManagementUnit {
 
+	/** 預かり金プール。 */
+	private List<Money> depositPool = new ArrayList<Money>();
+
+	/** つり銭ボックス。 */
 	private List<Object> changeBox = new ArrayList<Object>();
 
-	private List<Money> amountBox = new ArrayList<Money>();
-
 	/**
-	 * 総合計額を表示する。
-	 * 
-	 * @return
+	 * 総合計額を計算する。
 	 */
-	public int displayTotalAmount() {
+	public int calcTotalAmount() {
 		int total = 0;
-		for (Money m : amountBox) {
+		for (Money m : depositPool) {
 			total += m.getAmount();
 		}
 		return total;
@@ -28,8 +28,7 @@ public class MoneyManagementUnit {
 
 	/**
 	 * つり銭箱を返す。
-	 * 
-	 * @return
+	 * @return つり銭箱という名の紙幣・硬貨リスト。
 	 */
 	public List<Object> getChangeBox() {
 		return changeBox;
@@ -37,12 +36,11 @@ public class MoneyManagementUnit {
 
 	/**
 	 * (お金などの)投入を受ける。
-	 * 
-	 * @param money
+	 * @param money 投入するモノ。
 	 */
 	public void receive(Object money) {
 		if (money instanceof Money) {
-			this.amountBox.add((Money) money);
+			depositPool.add((Money) money);
 		} else {
 			changeBox.add(money);
 		}
@@ -52,7 +50,7 @@ public class MoneyManagementUnit {
 	 * 返金する。
 	 */
 	public void refund() {
-		changeBox.addAll(amountBox);
-		amountBox.clear();
+		changeBox.addAll(depositPool);
+		depositPool.clear();
 	}
 }
