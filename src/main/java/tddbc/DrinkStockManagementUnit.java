@@ -18,13 +18,20 @@ public class DrinkStockManagementUnit {
 		DrinkSlot slot = new DrinkSlot();
 		slot.setKind(DrinkKind.COLA);
 		slot.setPrice(120);
-		for (int i = 0 ; i < 5 ; i++) {
+		for (int i = 0; i < 5; i++) {
 			slot.add(new Drink(slot.getKind()));
 		}
 		slots.add(slot);
 	}
-	
-	public List<DrinkSlot> getSlots() {
+
+	/**
+	 * スロット群を取得。<br>
+	 * 「内部状態」であるスロットを取得するのは、<br>
+	 * メンテナンスできるオブジェクトだけにしたいので、<br>
+	 * パッケージ同一のクラスのみアクセス可能に。
+	 * @return スロットのリスト。
+	 */
+	protected List<DrinkSlot> getSlots() {
 		return slots;
-	} 
+	}
 }
