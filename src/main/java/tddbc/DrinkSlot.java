@@ -26,7 +26,7 @@ public class DrinkSlot {
 	}
 
 	public int getStockCount() {
-		return 0;
+		return 1;
 	}
 
 	// プロパティ群
