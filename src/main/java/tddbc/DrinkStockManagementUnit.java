@@ -1,5 +1,7 @@
 package tddbc;
 
+import static org.hamcrest.CoreMatchers.is;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,11 +39,10 @@ public class DrinkStockManagementUnit {
 
 	public boolean existStock(DrinkKind cola) {
 		// TODO 仮実装。
-		return false;
+		return true;
 	}
 
-	public Drink takeOut(DrinkKind cola) {
-		// TODO 自動生成されたメソッド・スタブ
+	public Drink takeOut(DrinkKind kind) {
 		return null;
 	}
 }

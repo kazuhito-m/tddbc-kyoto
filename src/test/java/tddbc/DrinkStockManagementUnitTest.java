@@ -50,7 +50,6 @@ public class DrinkStockManagementUnitTest {
 		assertThat(actual, is(true));
 	}
 
-	@Ignore
 	@Test
 	public void 指定した種類の在庫を一つ取り出す() {
 		// act
