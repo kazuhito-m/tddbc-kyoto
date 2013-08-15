@@ -72,4 +72,10 @@ public class MoneyExchangeUnit {
 		return amount;
 	}
 
+	public Boolean isMoveable(List<Money> srcBox, List<Money> dstBox, int i) {
+		// TODO 自動生成されたメソッド・スタブ
+		return false;
+	}
+	
+
 }

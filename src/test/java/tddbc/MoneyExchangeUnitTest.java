@@ -61,10 +61,10 @@ public class MoneyExchangeUnitTest {
 		assertThat(sumAmount(dstBox), is(dstTotal + MOVE_AMOUNT));
 	}
 
-	@Ignore
 	@Test
 	public void 二つの通貨の箱から指定金額を移動不可能な場合検知できる() {
-		// TODO 未実装
+		// act and assert
+		assertThat(sut.isMoveable(srcBox, dstBox, 1660) , is(true));
 	}
 
 	@Ignore
