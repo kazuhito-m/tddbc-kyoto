@@ -134,4 +134,13 @@ public class MoneyExchangeUnitTest {
 		// assert
 		assertThat(actual,is(new int[] {10,50,100,500,1000}));
 	}
+	
+	@Test
+	public void 最小両替金額数列の真ん中あたりの値の場合() {
+		// act
+		int[] actual = sut.createMinExchangeSeries(1150);
+		// assert
+		assertThat(actual,is(new int[] {1150,1150,1200,1500,2000}));
+	}
+	
 }
