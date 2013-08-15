@@ -10,9 +10,9 @@ public class MoneyExchangeUnit {
 
 	public void moveMoney(List<Money> srcBox, List<Money> dstBox, int amount) {
 		// TODO 仮実装
-//		for (int i = 0; i < 3; i++) {
-//			dstBox.add(srcBox.remove(0));
-//		}
+		for (int i = 0; i < 3; i++) {
+			dstBox.add(srcBox.remove(0));
+		}
 	}
 
 }
