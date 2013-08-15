@@ -41,10 +41,12 @@ public class DrinkStockManagementUnitTest {
 		assertThat(actual.getStockCount(), is(5));
 	}
 	
-	@Ignore
 	@Test
 	public void 指定した種類の在庫があるかを確認できる() {
-		// TOOO
+		// act
+		boolean actual = sut.existStock(DrinkKind.COLA);
+		// assert
+		assertThat(actual, is(true));
 	}
 
 	@Ignore

@@ -34,4 +34,9 @@ public class DrinkStockManagementUnit {
 	protected List<DrinkSlot> getSlots() {
 		return slots;
 	}
+
+	public boolean existStock(DrinkKind cola) {
+		// TODO 自動生成されたメソッド・スタブ
+		return false;
+	}
 }
