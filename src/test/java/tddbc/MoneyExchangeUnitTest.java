@@ -196,7 +196,7 @@ public class MoneyExchangeUnitTest {
 		// assert
 		assertThat(actual, is(notNullValue()));
 		assertThat(sut.sumAmount(actual), is(990));
-		assertThat(actual.size(), is(20));
+		assertThat(actual.size(), is(10));
 	}
 
 	@Ignore

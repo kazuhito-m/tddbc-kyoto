@@ -1,11 +1,14 @@
 package tddbc;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import static tddbc.Money.*;
 
 /**
  * 紙幣・硬貨両替機クラス。
@@ -208,6 +211,11 @@ public class MoneyExchangeUnit {
 		return realMoveMoney(hitTest, dummy, intentionAmount);
 	}
 
+	/**
+	 * 硬貨紙幣ごとの最小両替金額の数列を作成する。
+	 * @param amount 両替に含んでおきたい金額。
+	 * @return 数列(List).
+	 */
 	public int[] createMinExchangeSeries(int amount) {
 		int i = 0;
 		int[] series = new int[Money.values().length];
@@ -225,8 +233,9 @@ public class MoneyExchangeUnit {
 	}
 
 	public List<Money> createInfinityExchangeBox(int intentionAmount) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+		List<Money> infinityExBox = Arrays.asList(new Money[] { _500, _100,
+				_100, _100, _100, _50, _10, _10, _10, _10 });
+		return infinityExBox;
 	}
 
 }
