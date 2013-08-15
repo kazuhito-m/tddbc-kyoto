@@ -116,6 +116,23 @@ public class MoneyExchangeUnit {
 	}
 
 	/**
+	 * 通貨箱二つから「指定の小銭を含む両替」を行う。
+	 * @param srcBox 両替元の箱。
+	 * @param dstBox 両替先の箱、。
+	 * @param intentionAmount 「この細かさが出せるように」という目的の金額。
+	 * @return 成功判定。両替成功:true。
+	 */
+	public boolean exchange(List<Money> srcBox, List<Money> dstBox,
+			int intentionAmount) {
+		// まず、シミュレーションを行う。
+		if (!isExchangeable(srcBox, dstBox, intentionAmount)) {
+			return false;
+		}
+		// 出来そうなら、実際に両替する。
+		return realExchange(srcBox, dstBox, intentionAmount);
+	}
+
+	/**
 	 * 通貨箱二つから「指定の小銭を含む両替」を行う。<br>
 	 * ※破壊的メソッド。引数のオブジェクトを破壊しつつ進むため、内部メソッドとする。
 	 * @param srcBox 両替元の箱。
@@ -161,23 +178,6 @@ public class MoneyExchangeUnit {
 
 		// ここに来たということは、両替出来なかったということ。失敗返す。
 		return false;
-	}
-
-	/**
-	 * 通貨箱二つから「指定の小銭を含む両替」を行う。
-	 * @param srcBox 両替元の箱。
-	 * @param dstBox 両替先の箱、。
-	 * @param intentionAmount 「この細かさが出せるように」という目的の金額。
-	 * @return 成功判定。両替成功:true。
-	 */
-	public boolean exchange(List<Money> srcBox, List<Money> dstBox,
-			int intentionAmount) {
-		// まず、シミュレーションを行う。
-		if (!isExchangeable(srcBox, dstBox, intentionAmount)) {
-			return false;
-		}
-		// 出来そうなら、実際に両替する。
-		return realExchange(srcBox, dstBox, intentionAmount);
 	}
 
 	/**
