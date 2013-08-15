@@ -94,7 +94,9 @@ public class MoneyExchangeUnit {
 				exchange(srcBox, infinityExBox, restAmount);
 			}
 			// 両替成功。余ってる金額も移動。
-			dstBox.addAll(fuzzyRemove(srcBox, amount));
+			if (!dstBox.addAll(fuzzyRemove(srcBox, amount))) {
+				return false;	// 紙幣・硬貨の数値以下の移動をしようとする場合、ここで引っかかる。
+			}
 		}
 		// ここまで来たなら処理に落ち度なし。成功。
 		return true;
