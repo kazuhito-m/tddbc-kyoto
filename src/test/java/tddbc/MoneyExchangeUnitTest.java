@@ -210,10 +210,32 @@ public class MoneyExchangeUnitTest {
 		assertThat(actual.size(), is(13));
 	}
 
-	@Ignore
 	@Test
 	public void 通貨箱同士で両替不可能な移動の場合も小銭は無限に沸く() {
 		// FIXME 「売上」と「つり銭切れ」の概念を導入する時に消滅させる。
+		// arrange
+		srcBox.clear();
+		srcBox.addAll(Arrays.asList(new Money[] { _100, _100 }));
+		assertThat(sut.sumAmount(srcBox), is(200));
+
+		dstBox.clear();
+		dstBox.addAll(Arrays.asList(new Money[] { _100, _100 }));	// 両替不能
+		assertThat(sut.sumAmount(dstBox), is(200));
+
+		// act
+		boolean actual = sut.moveMoney(srcBox, dstBox, 80);
+
+		// assert
+		assertThat(actual, is(true));
+
+		List<Money> resultList = Arrays.asList(new Money[] { _10, _10, _100 });
+		assertThat(srcBox, is(resultList));
+		assertThat(sut.sumAmount(srcBox), is(120));
+
+		resultList = Arrays
+				.asList(new Money[] { _100, _100, _50, _10, _10, _10 });
+		assertThat(sut.sumAmount(dstBox), is(280));
+		assertThat(dstBox, is(resultList));
 	}
 
 	@Test
