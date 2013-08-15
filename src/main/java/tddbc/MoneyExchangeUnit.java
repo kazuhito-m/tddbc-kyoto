@@ -40,7 +40,7 @@ public class MoneyExchangeUnit {
 			dstBox.addAll(newDst);
 		} else {
 			// FIXME 貨幣が足りない対策＝両替対策。
-			log.debug("restAmount : " + restAmount);
+			log.debug("Need exchange. restAmount : " + restAmount);
 		}
 
 	}
@@ -179,6 +179,11 @@ public class MoneyExchangeUnit {
 			series[i++] = m.getAmount() * div;
 		}
 		return series; // 数列を返す。
+	}
+
+	public boolean exchange(List<Money> srcBox, List<Money> dstBox, int i) {
+		// TODO 自動生成されたメソッド・スタブ
+		return false;
 	}
 
 }

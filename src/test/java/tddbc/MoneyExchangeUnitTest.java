@@ -70,7 +70,7 @@ public class MoneyExchangeUnitTest {
 	public void 通貨の箱から指定金額分を両替できる() {
 		// arrange
 		srcBox.clear();
-		srcBox.add(Money._1000);
+		srcBox.add(_1000);
 		dstBox.clear();
 		dstBox.addAll(Arrays.asList(new Money[] { _500, _100, _100, _100, _50,
 				_50, _50, _10, _10, _10, _10, _10 }));
@@ -118,6 +118,35 @@ public class MoneyExchangeUnitTest {
 	}
 
 	@Test
+	public void 通貨の箱から指定金額分を実際に両替する() {
+		// arrange
+		srcBox.clear();
+		srcBox.addAll(Arrays.asList(new Money[] { _1000, _1000 }));
+		int srcAmount = sut.sumAmount(srcBox);
+		dstBox.clear();
+		dstBox.addAll(Arrays.asList(new Money[] { _500, _100, _100, _100, _50,
+				_50, _50, _10, _10, _10, _10, _10, _50 }));
+		int dstAmount = sut.sumAmount(dstBox);
+		
+		// act
+		boolean actual = sut.exchange(srcBox, dstBox, 660);
+		
+		// assert
+		assertThat(actual, is(true));
+		
+		// src側
+		List<Money> resultList = Arrays.asList(new Money[] { _1000, _500, _100,
+				_100, _100, _50, _50, _50, _10, _10, _10, _10, _10, });
+		assertThat(srcBox, is(resultList));
+		assertThat(sut.sumAmount(srcBox) , is(srcAmount));
+		
+		// dst側
+		resultList = Arrays.asList(new Money[] { _50,_1000});
+		assertThat(dstBox, is(resultList));
+		assertThat(sut.sumAmount(dstBox) , is(dstAmount));
+	}
+
+	@Test
 	public void 指定された金額が現在の通貨箱から取得可能であることを検知できる() {
 		// act
 		assertThat(sut.isGettable(srcBox, 560), is(true));
@@ -131,8 +160,7 @@ public class MoneyExchangeUnitTest {
 
 	@Ignore
 	@Test
-	public void 通貨箱同士で両替を含むお金の移動ができる() {
-		// TODO 未実装
+	public void 通貨箱同士で両替を含むお金が移動ができる() {
 	}
 
 	@Ignore
