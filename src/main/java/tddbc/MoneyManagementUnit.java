@@ -58,7 +58,7 @@ public class MoneyManagementUnit {
 	}
 
 	public Boolean isCharged(int i) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+		// TODO 仮実装
+		return true;
 	}
 }
