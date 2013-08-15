@@ -33,6 +33,14 @@ public class MoneyManagementUnit {
 	}
 
 	/**
+	 * 売上総合計額を計算する。
+	 * @return 計算結果値(円)。
+	 */
+	public int calcTotalIncome() {
+		return exchanger.sumAmount(incomeBox);	// 両替機の能力で合計。
+	}
+
+	/**
 	 * つり銭箱を返す。
 	 * @return つり銭箱という名の紙幣・硬貨リスト。
 	 */
@@ -73,9 +81,5 @@ public class MoneyManagementUnit {
 	public boolean withdrawToIncome(int amount) {
 		// 両替機を使って、預かり金プールから売上ボックスへお金を移動。
 		return exchanger.moveMoney(depositPool, incomeBox, amount);
-	}
-
-	public int calcTotalIncome() {
-		return exchanger.sumAmount(incomeBox);	// 両替機の能力で合計。
 	}
 }
