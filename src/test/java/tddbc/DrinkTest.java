@@ -29,6 +29,5 @@ public class DrinkTest {
 		// assert
 		assertThat(actual.getCaption(), is("アップルジュース"));
 		assertThat(actual.getAmountOfTime(), is(150));
-		
 	}
 }

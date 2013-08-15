@@ -93,17 +93,17 @@ public class MoneyManagementUnitTest {
 			// assert
 			assertThat(sut.calcTotalAmount(), is(0));
 		}
-		
+
 		@Test
 		public void 指定の金額が預かり金プールにあるかを確認できる() {
 			// act and assert
-			assertThat(sut.isDeposited(1590) , is(true));
+			assertThat(sut.isDeposited(1590), is(true));
 		}
-		
+
 		@Test
 		public void 指定の金額が預かり金プールに無いかを確認できる() {
 			// act and assert
-			assertThat(sut.isDeposited(1670) , is(false));
+			assertThat(sut.isDeposited(1670), is(false));
 		}
 
 		@Test
@@ -115,7 +115,7 @@ public class MoneyManagementUnitTest {
 			assertThat(sut.calcTotalAmount(), is(1000));
 			assertThat(sut.calcTotalIncome(), is(660));
 		}
-		
+
 		@Test
 		public void 預かり金プールから売上ボックスへ計上できないことを検知できる() {
 			// act
@@ -163,7 +163,5 @@ public class MoneyManagementUnitTest {
 			assertThat(actual.size(), is(1));
 			assertThat(actual.get(0), is(values[0]));
 		}
-
 	}
-
 }

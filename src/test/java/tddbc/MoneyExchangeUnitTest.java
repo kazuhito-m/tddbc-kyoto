@@ -189,7 +189,7 @@ public class MoneyExchangeUnitTest {
 
 	@Test
 	public void 金額を指定するとお釣りが無限に沸く両替ボックスを取得する() {
-		// TODO 仕様的にグレー。売上金の概念が入れば削除予定。
+		// FIXME 仕様的にグレー。売上金の概念が入れば削除予定。
 		// act
 		List<Money> actual = sut.createInfinityExchangeBox(0);
 		// assert
@@ -200,7 +200,7 @@ public class MoneyExchangeUnitTest {
 
 	@Test
 	public void 無限沸き両替ボックスの師弟金額が1000を越える場合両替可能な金額が追加される() {
-		// TODO 仕様的にグレー。売上金の概念が入れば削除予定。
+		// FIXME 仕様的にグレー。売上金の概念が入れば削除予定。
 		// act
 		List<Money> actual = sut.createInfinityExchangeBox(2001);
 		// assert
