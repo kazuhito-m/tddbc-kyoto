@@ -96,7 +96,7 @@ public class MoneyExchangeUnitTest {
 		assertThat(sut.sumAmount(dstBox) , is(1000));	
 		assertThat(dstBox.size() , is(9));
 		// act
-		boolean actual = sut.isExchangeable(srcBox, dstBox, 670);
+		boolean actual = sut.isExchangeable(srcBox, dstBox, 660);
 		// assert
 		assertThat(actual, is(false));
 	}
