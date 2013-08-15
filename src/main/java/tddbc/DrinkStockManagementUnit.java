@@ -1,7 +1,5 @@
 package tddbc;
 
-import static org.hamcrest.CoreMatchers.is;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +35,11 @@ public class DrinkStockManagementUnit {
 		return slots;
 	}
 
+	/**
+	 * 指定した飲み物種類で在庫があるかを検査。
+	 * @param kind 飲み物種類。
+	 * @return 判定結果。在庫あり:true
+	 */
 	public boolean existStock(DrinkKind kind) {
 		for (DrinkSlot slot : slots) {
 			if (slot.getKind() == kind) {
@@ -48,6 +51,12 @@ public class DrinkStockManagementUnit {
 		return false;
 	}
 
+	/**
+	 * 指定した飲み物種類の在庫を一つ取り出す。<br>
+	 * 一度実効されるたび、その分の在庫が先入れ先出し法にて取り除かれます。
+	 * @param kind 飲み物種類。
+	 * @return 取り出した飲み物。在庫が無い場合:null。
+	 */
 	public Drink takeOut(DrinkKind kind) {
 		for (DrinkSlot slot : slots) {
 			if (slot.getKind() == kind) {
