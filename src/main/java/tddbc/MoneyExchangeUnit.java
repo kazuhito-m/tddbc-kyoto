@@ -108,13 +108,29 @@ public class MoneyExchangeUnit {
 	 */
 	public boolean isExchangeable(List<Money> srcBox, List<Money> dstBox,
 			int intentionAmount) {
+		// FIXME ここから「非破壊のお試し実装」最後は消すように。
+		
+		// お試し用通貨箱。
+		List<Money> destTest = new ArrayList<Money>(dstBox); // 状態が変わってもよいようにシャローコピー
+		
+		// まずは「両替を持ちかける側に、希望の細かさの小銭がある」か。
+		if (!isGettable(destTest, intentionAmount)) {
+			// 無いならその時点で「両替不可能」
+			log.debug("両替先に " + intentionAmount + " 円の小銭が無いため両替不能。");
+			return false;
+		}
+		
+		// 実際に取り去ってみる
+		List<Money> swapBox = new ArrayList<Money>();
+		realMoveMoney(destTest, swapBox, intentionAmount);
+		
+		
+
 		// TODO 超絶仮実装。
 		return (dstBox.size() > 8);
-		
-		// 
 	}
 
-	/** 
+	/**
 	 * 通貨の箱から「指定された金額」を余り無く取得できるか否かを検査する。
 	 * @param moneyBox 通貨の箱。
 	 * @param intentionAmount 指定金額。
