@@ -60,4 +60,12 @@ public class DrinkStockManagementUnitTest {
 	public void 指定した種類の在庫を取り出した後一つ減っている() {
 		// TODO
 	}
+	
+	@Ignore
+	@Test
+	public void すべての在庫を取り出し切り在庫がないことを確認する() {
+		// TODO
+	}
+	
+	
 }
