@@ -77,5 +77,17 @@ public class MoneyExchangeUnit {
 		return (amount == 1660);
 	}
 	
+	/**
+	 * 通貨の箱を合算。 
+	 * @param moneyBox 対象となる通貨の箱。
+	 * @return 合算金額。
+	 */
+	public int sumAmount(List<Money> moneyBox) {
+		int totalAmount = 0;
+		for (Money m : moneyBox) {
+			totalAmount += m.getAmount();
+		}
+		return totalAmount;
+	}
 
 }

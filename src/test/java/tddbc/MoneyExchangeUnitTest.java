@@ -52,25 +52,25 @@ public class MoneyExchangeUnitTest {
 	public void 二つの通貨の箱から指定金額を移動する() {
 		// arrange
 		final int MOVE_AMOUNT = 160;
-		int srcTotal = sumAmount(srcBox);
-		int dstTotal = sumAmount(dstBox);
+		int srcTotal = sut.sumAmount(srcBox);
+		int dstTotal = sut.sumAmount(dstBox);
 		// act
 		sut.moveMoney(srcBox, dstBox, MOVE_AMOUNT);
 		// assert
-		assertThat(sumAmount(srcBox), is(srcTotal - MOVE_AMOUNT));
-		assertThat(sumAmount(dstBox), is(dstTotal + MOVE_AMOUNT));
+		assertThat(sut.sumAmount(srcBox), is(srcTotal - MOVE_AMOUNT));
+		assertThat(sut.sumAmount(dstBox), is(dstTotal + MOVE_AMOUNT));
 	}
 
 	@Test
 	public void 二つの通貨の箱から指定金額を移動不可能な場合検知できる() {
 		// act and assert
-		assertThat(sut.isMoveable(srcBox, dstBox, 1661) , is(false));
+		assertThat(sut.isMoveable(srcBox, dstBox, 1661), is(false));
 	}
 
 	@Test
 	public void 二つの通貨の箱から指定金額を移動可能な場合検知できる() {
 		// act and assert
-		assertThat(sut.isMoveable(srcBox, dstBox, 1660) , is(true));
+		assertThat(sut.isMoveable(srcBox, dstBox, 1660), is(true));
 	}
 
 	@Ignore
