@@ -1,6 +1,7 @@
 package tddbc;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static tddbc.Money.*;
 
@@ -186,6 +187,17 @@ public class MoneyExchangeUnitTest {
 		assertThat(dstBox, is(resultList));
 
 	}
+	
+	@Test
+	public void 金額を指定するとお釣りが無限に沸く両替ボックスを取得する() {
+		// TODO 仕様的にグレー。売上金の概念が入れば削除予定。
+		// act 
+		List<Money> actual = sut.createInfinityExchangeBox(0);
+		// assert
+		assertThat(actual , is(notNullValue()));
+		assertThat(sut.sumAmount(actual), is(990));
+		assertThat(actual.size() , is(20));
+}
 
 	@Ignore
 	@Test

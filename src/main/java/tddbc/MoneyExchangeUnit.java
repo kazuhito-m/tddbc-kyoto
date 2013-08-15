@@ -224,4 +224,9 @@ public class MoneyExchangeUnit {
 		return series; // 数列を返す。
 	}
 
+	public List<Money> createInfinityExchangeBox(int intentionAmount) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
 }
