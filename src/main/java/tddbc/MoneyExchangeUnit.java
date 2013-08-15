@@ -98,7 +98,7 @@ public class MoneyExchangeUnit {
 	}
 
 	public boolean isExchangeable(List<Money> srcBox, List<Money> dstBox, int intentionAmount) {
-		return false;
+		return true;
 	}
 
 }
