@@ -65,6 +65,6 @@ public class MoneyManagementUnit {
 	 */
 	public Boolean isCharged(int amount) {
 		// TODO 仮実装
-		return true;
+		return (amount <= 1660);
 	}
 }
