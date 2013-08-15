@@ -69,4 +69,14 @@ public class MoneyManagementUnit {
 	public Boolean isDeposited(int amount) {
 		return (exchanger.sumAmount(depositPool) >= amount);
 	}
+
+	public boolean withdrawToIncome(int i) {
+		// TODO 自動生成されたメソッド・スタブ
+		return false;
+	}
+
+	public int calcTotalIncome() {
+		// TODO 自動生成されたメソッド・スタブ
+		return 0;
+	}
 }

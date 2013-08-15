@@ -107,10 +107,14 @@ public class MoneyManagementUnitTest {
 			assertThat(sut.isDeposited(1670) , is(false));
 		}
 
-		@Ignore
 		@Test
 		public void 指定の金額分を預かり金プールから売上ボックスへ計上する() {
-			
+			// act
+			boolean actual = sut.withdrawToIncome(660);
+			// assert
+			assertThat(actual, is(true));
+			assertThat(sut.calcTotalAmount(), is(1000));
+			assertThat(sut.calcTotalIncome(), is(660));
 		}
 		
 		@Ignore
