@@ -1,5 +1,11 @@
 package tddbc;
 
+import static tddbc.Money._10;
+import static tddbc.Money._100;
+import static tddbc.Money._1000;
+import static tddbc.Money._50;
+import static tddbc.Money._500;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -7,8 +13,6 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-import static tddbc.Money.*;
 
 /**
  * 紙幣・硬貨両替機クラス。
@@ -238,8 +242,18 @@ public class MoneyExchangeUnit {
 	 * @return 作成された貨幣ボックス。
 	 */
 	public List<Money> createInfinityExchangeBox(int intentionAmount) {
-		List<Money> infinityExBox = Arrays.asList(new Money[] { _500, _100,
-				_100, _100, _100, _50, _10, _10, _10, _10  , _10});
+		List<Money> infinityExBox = new ArrayList<Money>(
+				Arrays.asList(new Money[] { _500, _100, _100, _100, _100, _50,
+						_10, _10, _10, _10, _10 }));
+		// 不足分の算出
+		int shortage = intentionAmount - sumAmount(infinityExBox);
+		final Money MAX = _1000;
+		// 不足があれば、最大貨幣を足りるまで追加する。
+		if (shortage > 0) {
+			for (int i = 0; i < (shortage / MAX.getAmount() + 1); i++) {
+				infinityExBox.add(MAX);
+			}
+		}
 		return infinityExBox;
 	}
 
