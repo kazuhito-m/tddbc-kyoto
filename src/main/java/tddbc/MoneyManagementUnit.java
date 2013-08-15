@@ -17,7 +17,10 @@ public class MoneyManagementUnit {
 
 	/** つり銭ボックス。 */
 	private List<Object> changeBox = new ArrayList<Object>();
-	
+
+	/** 紙幣・硬貨両替機。 */
+	private MoneyExchangeUnit exchanger = new MoneyExchangeUnit();
+
 	/**
 	 * 総合計額を計算する。
 	 */
@@ -63,8 +66,7 @@ public class MoneyManagementUnit {
 	 * @param amount 指定金額。
 	 * @return 判定結果。プールしている。
 	 */
-	public Boolean isCharged(int amount) {
-		// TODO 仮実装
-		return (amount <= 1660);
+	public Boolean isDeposited(int amount) {
+		return (exchanger.sumAmount(depositPool) >= amount);
 	}
 }
