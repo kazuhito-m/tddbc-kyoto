@@ -164,7 +164,7 @@ public class MoneyExchangeUnitTest {
 		srcBox.clear();
 		srcBox.addAll(Arrays.asList(new Money[] { _100, _100 }));
 		assertThat(sut.sumAmount(srcBox), is(200));
-
+		
 		dstBox.clear();
 		dstBox.addAll(Arrays.asList(new Money[] { _100, _50, _10, _10, _10,
 				_10, _10 }));
@@ -176,11 +176,10 @@ public class MoneyExchangeUnitTest {
 		// assert
 		assertThat(actual, is(true));
 
-		// src側
 		List<Money> resultList = Arrays.asList(new Money[] { _10, _10, _100 });
 		assertThat(srcBox, is(resultList));
 		assertThat(sut.sumAmount(srcBox), is(120));
-		// dst側
+
 		resultList = Arrays
 				.asList(new Money[] { _100, _100, _50, _10, _10, _10 });
 		assertThat(sut.sumAmount(dstBox), is(280));

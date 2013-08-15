@@ -84,11 +84,17 @@ public class MoneyExchangeUnit {
 		}
 
 		// 貨幣の種類が足らず、移動できなかった場合は0以上。
-		// すべて移動できていたら、確定する。
 		if (restAmount != 0) {
-			// FIXME 貨幣が足りない対策＝両替対策。
+			// 移動先からの両替
 			log.debug("両替が必要。貨幣不足金額 : " + restAmount);
-			return false;
+			if (exchange(srcBox, dstBox, restAmount)) {
+				// 両替成功。余ってる金額も移動。
+				realMoveMoney(srcBox, dstBox, restAmount);
+			} else {
+				// 今度こそ両替不能。
+				log.debug("移動先からも両替不能。");
+				return false;
+			}
 		}
 		// ここまで来たなら処理に落ち度なし。成功。
 		return true;
