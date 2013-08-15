@@ -103,8 +103,8 @@ public class MoneyExchangeUnit {
 	}
 
 	public boolean isGettable(List<Money> srcBox, int i) {
-		// TODO 自動生成されたメソッド・スタブ
-		return false;
+		// TODO 仮実装。
+		return true;
 	}
 
 	
