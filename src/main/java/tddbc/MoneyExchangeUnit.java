@@ -99,10 +99,19 @@ public class MoneyExchangeUnit {
 		return totalAmount;
 	}
 
+	/**
+	 * 通貨箱二つから「指定の小銭を含む両替」ができるか田舎を検査する。
+	 * @param srcBox 両替元の箱。
+	 * @param dstBox 両替先の箱、。
+	 * @param intentionAmount 「この細かさが出せるように」という目的の金額。
+	 * @return 判定。両替可能:true。
+	 */
 	public boolean isExchangeable(List<Money> srcBox, List<Money> dstBox,
 			int intentionAmount) {
 		// TODO 超絶仮実装。
 		return (dstBox.size() > 8);
+		
+		// 
 	}
 
 	/** 
