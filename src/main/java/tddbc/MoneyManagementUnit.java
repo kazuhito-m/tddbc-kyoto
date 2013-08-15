@@ -22,14 +22,11 @@ public class MoneyManagementUnit {
 	private MoneyExchangeUnit exchanger = new MoneyExchangeUnit();
 
 	/**
-	 * 総合計額を計算する。
+	 * 投入金総合計額を計算する。
+	 * @return
 	 */
 	public int calcTotalAmount() {
-		int total = 0;
-		for (Money m : depositPool) {
-			total += m.getAmount();
-		}
-		return total;
+		return exchanger.sumAmount(depositPool); // 両替機の能力で合計。
 	}
 
 	/**
@@ -37,7 +34,7 @@ public class MoneyManagementUnit {
 	 * @return 計算結果値(円)。
 	 */
 	public int calcTotalIncome() {
-		return exchanger.sumAmount(incomeBox);	// 両替機の能力で合計。
+		return exchanger.sumAmount(incomeBox); // 両替機の能力で合計。
 	}
 
 	/**
