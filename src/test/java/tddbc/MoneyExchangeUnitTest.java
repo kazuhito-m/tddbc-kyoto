@@ -94,7 +94,7 @@ public class MoneyExchangeUnitTest {
 		dstBox.addAll(Arrays.asList(new Money[] { _500, _100, _100, _100, _50,
 				_50, _50, _50}));
 		assertThat(sut.sumAmount(dstBox) , is(1000));	
-		assertThat(dstBox.size() , is(9));
+		assertThat(dstBox.size() , is(8));
 		// act
 		boolean actual = sut.isExchangeable(srcBox, dstBox, 660);
 		// assert
