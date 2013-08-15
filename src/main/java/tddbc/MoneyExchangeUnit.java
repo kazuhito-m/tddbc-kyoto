@@ -79,7 +79,7 @@ public class MoneyExchangeUnit {
 		dstBox.addAll(movedMonay);
 		// 移動出来なかった金額
 		int restAmount = amount - sumAmount(movedMonay);
-		
+
 		// 貨幣の種類が足らず、移動できなかった場合は0以上。
 		if (restAmount != 0) {
 			// 移動先からの両替
@@ -90,7 +90,13 @@ public class MoneyExchangeUnit {
 			} else {
 				// 今度こそ両替不能。
 				log.debug("移動先からも両替不能。");
-				return false;
+				// FIXME 「売上」と「つり銭切れ」の概念を導入する時に消滅させる。
+				// 無限に沸く両替機から借りてくる(つり銭切れが無い)
+				List<Money> infinityExBox = createInfinityExchangeBox(restAmount);
+				// 絶対に成功する両替
+				exchange(srcBox, infinityExBox, restAmount);
+				// 移動
+				realMoveMoney(srcBox, dstBox, restAmount);
 			}
 		}
 		// ここまで来たなら処理に落ち度なし。成功。
@@ -102,7 +108,7 @@ public class MoneyExchangeUnit {
 	 * @param moneyBox 貨幣箱。
 	 * @return 削除した分をいれた箱。
 	 */
-	protected List<Money> fuzzyRemove(List<Money> moneyBox , int amount) {
+	protected List<Money> fuzzyRemove(List<Money> moneyBox, int amount) {
 		// 移動元の貨幣箱を昇順ソート。
 		Collections.sort(moneyBox);
 		// 後ろから回す(降順に要素を取り出す)
@@ -119,7 +125,7 @@ public class MoneyExchangeUnit {
 		}
 		return removeBox;
 	}
-	
+
 	/**
 	 * 通貨の箱を合算。
 	 * @param moneyBox 対象となる通貨の箱。
@@ -224,7 +230,7 @@ public class MoneyExchangeUnit {
 		// お試し用通貨箱。
 		List<Money> hitTest = new ArrayList<Money>(moneyBox); // 状態が変わってもよいようにシャローコピー
 		// 端数無(余り0円)で削除できるか否かを真偽値で返す。
-		return sumAmount(fuzzyRemove(hitTest , intentionAmount)) == intentionAmount;
+		return sumAmount(fuzzyRemove(hitTest, intentionAmount)) == intentionAmount;
 	}
 
 	/**
