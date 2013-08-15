@@ -109,36 +109,32 @@ public class MoneyExchangeUnit {
 	public boolean isExchangeable(List<Money> srcBox, List<Money> dstBox,
 			int intentionAmount) {
 		// FIXME ここから「非破壊のお試し実装」最後は消すように。
-		
+
 		// お試し用通貨箱。
 		List<Money> destTest = new ArrayList<Money>(dstBox); // 状態が変わってもよいようにシャローコピー
-		
+
 		// まずは「両替を持ちかける側に、希望の細かさの小銭がある」か。
 		if (!isGettable(destTest, intentionAmount)) {
 			// 無いならその時点で「両替不可能」
 			log.debug("両替先に " + intentionAmount + " 円の小銭が無いため両替不能。");
 			return false;
 		}
-		
+
 		// 実際に取り去ってみる
 		List<Money> swapBox = new ArrayList<Money>();
 		realMoveMoney(destTest, swapBox, intentionAmount);
 
-		
 		// 最小両替金額
 		int testAmount;
 
-		// 硬化が小さなもの順に「最小公倍数な両替金額」を検討していく
-		for (Money m : Money.values()) {
-			// その通貨で何枚必要かを割り算
-			int div = intentionAmount / m.getAmount();
-			if (intentionAmount == (m.getAmount() * div)) {
-				continue;	// 同金額なら「そもそも両替が要らない」はず、次へ。
+		// 「最小公倍数な両替金額」数列を回す
+		for (int minExchange : createMinExchangeSeries(intentionAmount)) {
+			if (intentionAmount == minExchange) {
+				continue; // 同金額なら「そもそも両替が要らない」はず、次へ。
 			}
-			// 最小両替金額を算出
-			testAmount = m.getAmount() * (++div);
+			
+			// FIXME 続きから
 		}
-		
 
 		// TODO 超絶仮実装。
 		return (dstBox.size() > 8);
@@ -159,11 +155,19 @@ public class MoneyExchangeUnit {
 	}
 
 	public int[] createMinExchangeSeries(int amount) {
-		// TODO 仮実装。
-		if(amount == 1150) {
-			return new int[] {1150,1150,1200,1500,2000};
+		int i = 0;
+		int[] series = new int[Money.values().length];
+		// 紙幣・硬貨が小さなもの順に「最小公倍数な両替金額」を検討していく
+		for (Money m : Money.values()) {
+			// その通貨で何枚必要かを割り算
+			int div = amount / m.getAmount();
+			if (amount != (m.getAmount() * div)) {
+				div++;
+			}
+			// 最小両替金額を算出
+			series[i++] = m.getAmount() * div;
 		}
-		return new int[] {10,50,100,500,1000};
+		return series; // 数列を返す。
 	}
 
 }
