@@ -7,8 +7,6 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import static java.util.Collections.*;
-
 /**
  * 紙幣・硬貨両替機クラス。
  * @author kazuhito_m
@@ -22,27 +20,18 @@ public class MoneyExchangeUnit {
 	 * @param srcBox 移動元の箱。
 	 * @param dstBox 移動先の箱、。
 	 * @param amount 移動金額。
+	 * @return 成功判定。移動成功:true。
 	 */
-	public void moveMoney(List<Money> srcBox, List<Money> dstBox, int amount) {
-
+	public boolean moveMoney(List<Money> srcBox, List<Money> dstBox, int amount) {
 		// 引数の二つの箱をシャローコピーする。
 		List<Money> newSrc = new ArrayList<Money>(srcBox);
 		List<Money> newDst = new ArrayList<Money>(dstBox);
-
-		// 紙幣を移動
-		int restAmount = realMoveMoney(newSrc, newDst, amount);
-
-		// すべて移動できていたら、確定する。
-		if (restAmount == 0) {
-			srcBox.clear();
-			dstBox.clear();
-			srcBox.addAll(newSrc);
-			dstBox.addAll(newDst);
-		} else {
-			// FIXME 貨幣が足りない対策＝両替対策。
-			log.debug("両替が必要。貨幣不足金額 : " + restAmount);
+		// まず、シミュレーションで可能かを見る。
+		if (!realMoveMoney(newSrc, newDst, amount)) {
+			return false;
 		}
-
+		// 実際に紙幣を移動。
+		return realMoveMoney(srcBox, dstBox, amount);
 	}
 
 	/**
@@ -54,24 +43,40 @@ public class MoneyExchangeUnit {
 	 * @param amount 移動金額。
 	 * @return 貨幣が崩せず移動できなかった残りの金額。
 	 */
-	protected int realMoveMoney(List<Money> srcBox, List<Money> dstBox,
+	protected boolean realMoveMoney(List<Money> srcBox, List<Money> dstBox,
 			int amount) {
+
+		int restAmount = amount;
+
+		// 処理前チェック。移動元に移動する分の金額があるか。
+		if (sumAmount(srcBox) < restAmount) {
+			log.debug("移動不能。移動金額が移動元に足りない。");
+			return false;
+		}
+		
 		// 移動元の貨幣箱を昇順ソート。
 		Collections.sort(srcBox);
 		// 後ろ(つまり紙幣の高いもん順)で回して、「現在の紙幣・硬貨」で移動できるか見ていく
 		for (int i = srcBox.size() - 1; i >= 0; i--) {
 			Money m = srcBox.get(i);
 			// 移動金額を越えないものなら
-			if (amount >= m.getAmount()) {
+			if (restAmount >= m.getAmount()) {
 				// その貨幣は移動
 				dstBox.add(srcBox.remove(i));
 				// 金額から減額。
-				amount -= m.getAmount();
+				restAmount -= m.getAmount();
 			}
 		}
-		// 残りを返す。
+
 		// 貨幣の種類が足らず、移動できなかった場合は0以上。
-		return amount;
+		// すべて移動できていたら、確定する。
+		if (restAmount != 0) {
+			// FIXME 貨幣が足りない対策＝両替対策。
+			log.debug("両替が必要。貨幣不足金額 : " + restAmount);
+			return false;
+		}
+		// ここまで来たなら処理に落ち度なし。成功。
+		return true;
 	}
 
 	/**
@@ -82,8 +87,11 @@ public class MoneyExchangeUnit {
 	 * @return 判定。移動可能:true。
 	 */
 	public Boolean isMoveable(List<Money> srcBox, List<Money> dstBox, int amount) {
-		// 移動元に移動する分の金額があるか。
-		return (sumAmount(srcBox) >= amount);
+		// 実際にシミュレーションする。引数の二つの箱をシャローコピーする。
+		List<Money> newSrc = new ArrayList<Money>(srcBox);
+		List<Money> newDst = new ArrayList<Money>(dstBox);
+		// まず、シミュレーションで可能かを見る。
+		return realMoveMoney(newSrc, newDst, amount);
 	}
 
 	/**
@@ -191,7 +199,7 @@ public class MoneyExchangeUnit {
 		List<Money> hitTest = new ArrayList<Money>(moneyBox); // 状態が変わってもよいようにシャローコピー
 		List<Money> dummy = new ArrayList<Money>();
 		// 端数無(余り0円)で移動できるか否かを真偽値で返す。
-		return (realMoveMoney(hitTest, dummy, intentionAmount) == 0);
+		return realMoveMoney(hitTest, dummy, intentionAmount);
 	}
 
 	public int[] createMinExchangeSeries(int amount) {
