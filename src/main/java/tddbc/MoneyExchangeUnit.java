@@ -72,9 +72,16 @@ public class MoneyExchangeUnit {
 		return amount;
 	}
 
+	/**
+	 * 指定された金額が移動可能かを判定する。
+	 * @param srcBox 移動元の箱。
+	 * @param dstBox 移動先の箱、。
+	 * @param amount 移動金額。
+	 * @return 判定。移動可能:true。
+	 */
 	public Boolean isMoveable(List<Money> srcBox, List<Money> dstBox, int amount) {
-		// TODO 仮実装。
-		return (amount == 1660);
+		// 移動元に移動する分の金額があるか。
+		return (sumAmount(srcBox) >= amount);
 	}
 	
 	/**
