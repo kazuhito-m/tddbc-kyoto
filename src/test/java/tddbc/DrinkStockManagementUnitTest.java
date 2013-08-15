@@ -57,14 +57,15 @@ public class DrinkStockManagementUnitTest {
 		// assert
 		assertThat(actual, is(notNullValue()));
 		assertThat(actual.getCaption(), is(DrinkKind.COLA.getCaption()));
-		DrinkSlot slot = sut.getSlots().get(0);
-		assertThat(slot.getStockCount(), is(4));
 	}
 
-	@Ignore
 	@Test
 	public void 指定した種類の在庫を取り出した後一つ減っている() {
-		// TODO
+		// act
+		sut.takeOut(DrinkKind.COLA);
+		// assert
+		DrinkSlot slot = sut.getSlots().get(0);
+		assertThat(slot.getStockCount(), is(4));
 	}
 
 	@Ignore
