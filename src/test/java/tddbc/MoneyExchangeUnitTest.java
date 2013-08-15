@@ -114,4 +114,16 @@ public class MoneyExchangeUnitTest {
 		assertThat(sut.isGettable(srcBox , 540) , is(false));
 	}
 
+	@Ignore
+	@Test
+	public void 通貨箱同士で両替を含むお金の移動ができる() {
+		// TODO 未実装
+	}
+	
+	@Ignore
+	@Test
+	public void 通貨箱同士で両替不可能な移動の場合も小銭は無限に沸く() {
+		// FIXME 「売上」と「つり銭切れ」の概念を導入する時に消滅させる。
+		// TODO 未実装
+	}
 }
