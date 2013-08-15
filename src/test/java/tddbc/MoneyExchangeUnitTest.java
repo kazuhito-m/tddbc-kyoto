@@ -2,21 +2,18 @@ package tddbc;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static tddbc.Money.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import static tddbc.Money.*;
-
 /**
- * 紙幣・硬貨両替機クラス。
+ * 紙幣・硬貨両替機クラスのテスト。
  * @author kazuhito_m
  */
 public class MoneyExchangeUnitTest {
@@ -77,8 +74,8 @@ public class MoneyExchangeUnitTest {
 		dstBox.clear();
 		dstBox.addAll(Arrays.asList(new Money[] { _500, _100, _100, _100, _50,
 				_50, _50, _10, _10, _10, _10, _10 }));
-		assertThat(sut.sumAmount(dstBox) , is(1000));	
-		assertThat(dstBox.size() , is(12));
+		assertThat(sut.sumAmount(dstBox), is(1000));
+		assertThat(dstBox.size(), is(12));
 		// act
 		boolean actual = sut.isExchangeable(srcBox, dstBox, 660);
 		// assert
@@ -92,26 +89,44 @@ public class MoneyExchangeUnitTest {
 		srcBox.add(Money._1000);
 		dstBox.clear();
 		dstBox.addAll(Arrays.asList(new Money[] { _500, _100, _100, _100, _50,
-				_50, _50, _50}));
-		assertThat(sut.sumAmount(dstBox) , is(1000));	
-		assertThat(dstBox.size() , is(8));
+				_50, _50, _50 }));
+		assertThat(sut.sumAmount(dstBox), is(1000));
+		assertThat(dstBox.size(), is(8));
 		// act
 		boolean actual = sut.isExchangeable(srcBox, dstBox, 660);
 		// assert
 		assertThat(actual, is(false));
 	}
-	
+
+	@Test
+	public void 両替先の箱からは指定金額が取り出せるが両替元にお金が無い場合() {
+		// arrange
+		srcBox.clear();
+		srcBox.addAll(Arrays.asList(new Money[] { _500, _100, _10 }));
+		assertThat(sut.sumAmount(srcBox), is(610));
+
+		dstBox.clear();
+		dstBox.addAll(Arrays.asList(new Money[] { _100, _50, _10, _10, _10 }));
+		assertThat(sut.sumAmount(dstBox), is(180));
+
+		final int THE_AMOUNT = 120; // 120円を取り出せるようにするため両替
+		assertThat(sut.isGettable(dstBox, THE_AMOUNT), is(true));
+
+		// assert
+		assertThat(sut.isExchangeable(srcBox, dstBox, THE_AMOUNT), is(false));
+
+	}
+
 	@Test
 	public void 指定された金額が現在の通貨箱から取得可能であることを検知できる() {
 		// act
-		assertThat(sut.isGettable(srcBox , 560) , is(true));
+		assertThat(sut.isGettable(srcBox, 560), is(true));
 	}
 
-	
 	@Test
 	public void 指定された金額が現在の通貨箱から取得不可能であることを検知できる() {
 		// act
-		assertThat(sut.isGettable(srcBox , 540) , is(false));
+		assertThat(sut.isGettable(srcBox, 540), is(false));
 	}
 
 	@Ignore
@@ -119,28 +134,28 @@ public class MoneyExchangeUnitTest {
 	public void 通貨箱同士で両替を含むお金の移動ができる() {
 		// TODO 未実装
 	}
-	
+
 	@Ignore
 	@Test
 	public void 通貨箱同士で両替不可能な移動の場合も小銭は無限に沸く() {
 		// FIXME 「売上」と「つり銭切れ」の概念を導入する時に消滅させる。
 		// TODO 未実装
 	}
-	
+
 	@Test
 	public void 高価紙幣ごとの最小両替金額の数列を作成出来る() {
 		// act
 		int[] actual = sut.createMinExchangeSeries(1);
 		// assert
-		assertThat(actual,is(new int[] {10,50,100,500,1000}));
+		assertThat(actual, is(new int[] { 10, 50, 100, 500, 1000 }));
 	}
-	
+
 	@Test
 	public void 最小両替金額数列の真ん中あたりの値の場合() {
 		// act
 		int[] actual = sut.createMinExchangeSeries(1150);
 		// assert
-		assertThat(actual,is(new int[] {1150,1150,1200,1500,2000}));
+		assertThat(actual, is(new int[] { 1150, 1150, 1200, 1500, 2000 }));
 	}
-	
+
 }
