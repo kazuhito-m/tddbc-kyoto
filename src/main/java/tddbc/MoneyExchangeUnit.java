@@ -16,6 +16,21 @@ public class MoneyExchangeUnit {
 	private Log log = LogFactory.getLog(this.getClass());
 
 	/**
+	 * 指定された金額が移動可能かを判定する。
+	 * @param srcBox 移動元の箱。
+	 * @param dstBox 移動先の箱、。
+	 * @param amount 移動金額。
+	 * @return 判定。移動可能:true。
+	 */
+	public Boolean isMoveable(List<Money> srcBox, List<Money> dstBox, int amount) {
+		// 実際にシミュレーションする。引数の二つの箱をシャローコピーする。
+		List<Money> newSrc = new ArrayList<Money>(srcBox);
+		List<Money> newDst = new ArrayList<Money>(dstBox);
+		// まず、シミュレーションで可能かを見る。
+		return realMoveMoney(newSrc, newDst, amount);
+	}
+
+	/**
 	 * 貨幣の箱から箱へ指定された金額を移動する。<br>
 	 * @param srcBox 移動元の箱。
 	 * @param dstBox 移動先の箱、。
@@ -53,7 +68,7 @@ public class MoneyExchangeUnit {
 			log.debug("移動不能。移動金額が移動元に足りない。");
 			return false;
 		}
-		
+
 		// 移動元の貨幣箱を昇順ソート。
 		Collections.sort(srcBox);
 		// 後ろ(つまり紙幣の高いもん順)で回して、「現在の紙幣・硬貨」で移動できるか見ていく
@@ -77,21 +92,6 @@ public class MoneyExchangeUnit {
 		}
 		// ここまで来たなら処理に落ち度なし。成功。
 		return true;
-	}
-
-	/**
-	 * 指定された金額が移動可能かを判定する。
-	 * @param srcBox 移動元の箱。
-	 * @param dstBox 移動先の箱、。
-	 * @param amount 移動金額。
-	 * @return 判定。移動可能:true。
-	 */
-	public Boolean isMoveable(List<Money> srcBox, List<Money> dstBox, int amount) {
-		// 実際にシミュレーションする。引数の二つの箱をシャローコピーする。
-		List<Money> newSrc = new ArrayList<Money>(srcBox);
-		List<Money> newDst = new ArrayList<Money>(dstBox);
-		// まず、シミュレーションで可能かを見る。
-		return realMoveMoney(newSrc, newDst, amount);
 	}
 
 	/**
