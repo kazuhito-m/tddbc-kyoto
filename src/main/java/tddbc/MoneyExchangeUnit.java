@@ -99,7 +99,7 @@ public class MoneyExchangeUnit {
 
 	public boolean isExchangeable(List<Money> srcBox, List<Money> dstBox, int intentionAmount) {
 		// TODO 超絶仮実装。
-		return true;
+		return (dstBox.size() > 8);
 	}
 
 }
