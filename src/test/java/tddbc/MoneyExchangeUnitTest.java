@@ -165,7 +165,7 @@ public class MoneyExchangeUnitTest {
 		srcBox.clear();
 		srcBox.addAll(Arrays.asList(new Money[] { _100, _100 }));
 		assertThat(sut.sumAmount(srcBox), is(200));
-		
+
 		dstBox.clear();
 		dstBox.addAll(Arrays.asList(new Money[] { _100, _50, _10, _10, _10,
 				_10, _10 }));
@@ -187,17 +187,17 @@ public class MoneyExchangeUnitTest {
 		assertThat(dstBox, is(resultList));
 
 	}
-	
+
 	@Test
 	public void 金額を指定するとお釣りが無限に沸く両替ボックスを取得する() {
 		// TODO 仕様的にグレー。売上金の概念が入れば削除予定。
-		// act 
+		// act
 		List<Money> actual = sut.createInfinityExchangeBox(0);
 		// assert
-		assertThat(actual , is(notNullValue()));
+		assertThat(actual, is(notNullValue()));
 		assertThat(sut.sumAmount(actual), is(990));
-		assertThat(actual.size() , is(20));
-}
+		assertThat(actual.size(), is(20));
+	}
 
 	@Ignore
 	@Test
