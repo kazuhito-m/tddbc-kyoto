@@ -7,6 +7,7 @@ import static tddbc.Money._10;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.experimental.theories.DataPoints;
@@ -93,6 +94,31 @@ public class MoneyManagementUnitTest {
 			// assert
 			assertThat(sut.calcTotalAmount(), is(0));
 		}
+		
+		@Ignore
+		@Test
+		public void 指定の金額が預かり金プールにあるかを確認できる() {
+			// TODO
+		}
+		
+		@Ignore
+		@Test
+		public void 指定の金額が預かり金プールに無いかを確認できる() {
+			// TODO
+		}
+
+		@Ignore
+		@Test
+		public void 指定の金額分を預かり金プールから売上ボックスへ計上する() {
+			
+		}
+		
+		@Ignore
+		@Test
+		public void 預かり金プールから売上ボックスへ計上できないことを検知できる() {
+			
+		}
+
 	}
 
 	@RunWith(Theories.class)

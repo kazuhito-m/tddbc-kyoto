@@ -1,5 +1,6 @@
 package tddbc;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VendingMachine {
@@ -8,6 +9,12 @@ public class VendingMachine {
 	
 	/** お金(硬貨・紙幣)周り管理装置。 */
 	private MoneyManagementUnit moneyManager;
+
+	/** 「飲み物の在庫」管理装置。 */
+	private DrinkStockManagementUnit drinkStockManager =  new DrinkStockManagementUnit(); 
+
+	/** 購入後飲み物取り出し口 */
+	private List<Drink> outTray = new ArrayList<Drink>();
 
 	// メソッド群
 	

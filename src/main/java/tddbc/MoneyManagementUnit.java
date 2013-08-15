@@ -12,9 +12,12 @@ public class MoneyManagementUnit {
 	/** 預かり金プール。 */
 	private List<Money> depositPool = new ArrayList<Money>();
 
+	/** 売上ボックス。 */
+	private List<Money> incomeBox = new ArrayList<Money>();
+
 	/** つり銭ボックス。 */
 	private List<Object> changeBox = new ArrayList<Object>();
-
+	
 	/**
 	 * 総合計額を計算する。
 	 */

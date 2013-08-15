@@ -40,4 +40,22 @@ public class DrinkStockManagementUnitTest {
 		assertThat(actual.getPrice(), is(120));
 		assertThat(actual.getStockCount(), is(5));
 	}
+	
+	@Ignore
+	@Test
+	public void 指定した種類の在庫があるかを確認できる() {
+		// TOOO
+	}
+
+	@Ignore
+	@Test
+	public void 指定した種類の在庫を一つ取り出す() {
+		// TODO 
+	}
+	
+	@Ignore
+	@Test
+	public void 指定した種類の在庫を取り出した後一つ減っている() {
+		// TODO
+	}
 }

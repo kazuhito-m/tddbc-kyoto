@@ -3,6 +3,7 @@ package tddbc;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class MoneyTest {
@@ -13,4 +14,11 @@ public class MoneyTest {
 			assertThat(Money.valueOf(m.name()) , is(m));
 		}
 	}
+	
+	@Ignore
+	@Test
+	public void 大小比較が金額の考慮によりできる() {
+		// TODO 未実装 
+	}
+	
 }
