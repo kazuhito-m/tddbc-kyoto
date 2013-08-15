@@ -43,6 +43,11 @@ public class DrinkStockManagementUnit {
 	}
 
 	public Drink takeOut(DrinkKind kind) {
+		for (DrinkSlot slot : slots) {
+			if (slot.getKind() == kind) {
+				return slot.takeOut();
+			}
+		}
 		return null;
 	}
 }

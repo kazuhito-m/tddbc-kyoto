@@ -72,6 +72,4 @@ public class DrinkStockManagementUnitTest {
 	public void すべての在庫を取り出し切り在庫がないことを確認する() {
 		// TODO
 	}
-	
-	
 }
