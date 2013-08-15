@@ -74,7 +74,7 @@ public class MoneyExchangeUnit {
 
 	public Boolean isMoveable(List<Money> srcBox, List<Money> dstBox, int amount) {
 		// TODO 仮実装。
-		return (amount != 1660);
+		return (amount == 1660);
 	}
 	
 
