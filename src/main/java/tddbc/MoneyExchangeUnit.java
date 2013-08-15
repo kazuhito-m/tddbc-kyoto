@@ -68,28 +68,18 @@ public class MoneyExchangeUnit {
 	protected boolean realMoveMoney(List<Money> srcBox, List<Money> dstBox,
 			int amount) {
 
-		int restAmount = amount;
-
 		// 処理前チェック。移動元に移動する分の金額があるか。
-		if (sumAmount(srcBox) < restAmount) {
+		if (sumAmount(srcBox) < amount) {
 			log.debug("移動不能。移動金額が移動元に足りない。");
 			return false;
 		}
 
-		// 移動元の貨幣箱を昇順ソート。
-		Collections.sort(srcBox);
-		// 後ろ(つまり紙幣の高いもん順)で回して、「現在の紙幣・硬貨」で移動できるか見ていく
-		for (int i = srcBox.size() - 1; i >= 0; i--) {
-			Money m = srcBox.get(i);
-			// 移動金額を越えないものなら
-			if (restAmount >= m.getAmount()) {
-				// その貨幣は移動
-				dstBox.add(srcBox.remove(i));
-				// 金額から減額。
-				restAmount -= m.getAmount();
-			}
-		}
-
+		// 「現在の紙幣・硬貨」で移動できるだけ移動する(端数はほっといて
+		List<Money> movedMonay = fuzzyRemove(srcBox, amount);
+		dstBox.addAll(movedMonay);
+		// 移動出来なかった金額
+		int restAmount = amount - sumAmount(movedMonay);
+		
 		// 貨幣の種類が足らず、移動できなかった場合は0以上。
 		if (restAmount != 0) {
 			// 移動先からの両替
@@ -107,6 +97,29 @@ public class MoneyExchangeUnit {
 		return true;
 	}
 
+	/**
+	 * 貨幣の箱から「曖昧に」指定金額に寄せるように削除する。
+	 * @param moneyBox 貨幣箱。
+	 * @return 削除した分をいれた箱。
+	 */
+	protected List<Money> fuzzyRemove(List<Money> moneyBox , int amount) {
+		// 移動元の貨幣箱を昇順ソート。
+		Collections.sort(moneyBox);
+		// 後ろから回す(降順に要素を取り出す)
+		List<Money> removeBox = new ArrayList<>();
+		for (int i = moneyBox.size() - 1; i >= 0; i--) {
+			Money m = moneyBox.get(i);
+			// 移動金額を越えないものなら
+			if (amount >= m.getAmount()) {
+				// その貨幣は移動
+				removeBox.add(moneyBox.remove(i));
+				// 金額から減額。
+				amount -= m.getAmount();
+			}
+		}
+		return removeBox;
+	}
+	
 	/**
 	 * 通貨の箱を合算。
 	 * @param moneyBox 対象となる通貨の箱。
@@ -210,9 +223,8 @@ public class MoneyExchangeUnit {
 	public boolean isGettable(List<Money> moneyBox, int intentionAmount) {
 		// お試し用通貨箱。
 		List<Money> hitTest = new ArrayList<Money>(moneyBox); // 状態が変わってもよいようにシャローコピー
-		List<Money> dummy = new ArrayList<Money>();
-		// 端数無(余り0円)で移動できるか否かを真偽値で返す。
-		return realMoveMoney(hitTest, dummy, intentionAmount);
+		// 端数無(余り0円)で削除できるか否かを真偽値で返す。
+		return sumAmount(fuzzyRemove(hitTest , intentionAmount)) == intentionAmount;
 	}
 
 	/**
