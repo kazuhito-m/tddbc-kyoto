@@ -1,10 +1,6 @@
 package tddbc;
 
-import static tddbc.Money._10;
-import static tddbc.Money._100;
-import static tddbc.Money._1000;
-import static tddbc.Money._50;
-import static tddbc.Money._500;
+import static tddbc.Money.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,11 +45,15 @@ public class MoneyExchangeUnit {
 		List<Money> newSrc = new ArrayList<Money>(srcBox);
 		List<Money> newDst = new ArrayList<Money>(dstBox);
 		// まず、シミュレーションで可能かを見る。
-		if (!realMoveMoney(newSrc, newDst, amount)) {
-			return false;
+		boolean result = realMoveMoney(newSrc, newDst, amount);
+		if (result) {
+			// 処理成功。結果を確定する。
+			srcBox.clear();
+			dstBox.clear();
+			srcBox.addAll(newSrc);
+			dstBox.addAll(newDst);
 		}
-		// 実際に紙幣を移動。
-		return realMoveMoney(srcBox, dstBox, amount);
+		return result;
 	}
 
 	/**
