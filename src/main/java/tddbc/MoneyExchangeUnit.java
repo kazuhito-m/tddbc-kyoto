@@ -159,8 +159,8 @@ public class MoneyExchangeUnit {
 	}
 
 	public int[] createMinExchangeSeries(int amount) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+		// TODO 仮実装。
+		return new int[] {10,50,100,500,1000};
 	}
 
 }
