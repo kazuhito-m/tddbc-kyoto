@@ -70,15 +70,12 @@ public class MoneyManagementUnit {
 		return (exchanger.sumAmount(depositPool) >= amount);
 	}
 
-	public boolean withdrawToIncome(int i) {
-		// TODO 仮実装。
-		depositPool.clear();
-		depositPool.add(Money._1000);
-		return true;
+	public boolean withdrawToIncome(int amount) {
+		// 両替機を使って、預かり金プールから売上ボックスへお金を移動。
+		return exchanger.moveMoney(depositPool, incomeBox, amount);
 	}
 
 	public int calcTotalIncome() {
-		// TODO 仮実装。
-		return 660;
+		return exchanger.sumAmount(incomeBox);	// 両替機の能力で合計。
 	}
 }
