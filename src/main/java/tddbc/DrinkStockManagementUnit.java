@@ -36,7 +36,12 @@ public class DrinkStockManagementUnit {
 	}
 
 	public boolean existStock(DrinkKind cola) {
-		// TODO 自動生成されたメソッド・スタブ
+		// TODO 仮実装。
 		return false;
+	}
+
+	public Drink takeOut(DrinkKind cola) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
 	}
 }

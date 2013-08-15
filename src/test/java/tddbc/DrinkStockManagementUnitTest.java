@@ -1,6 +1,7 @@
 package tddbc;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 import java.util.List;
@@ -52,7 +53,13 @@ public class DrinkStockManagementUnitTest {
 	@Ignore
 	@Test
 	public void 指定した種類の在庫を一つ取り出す() {
-		// TODO 
+		// act
+		Drink actual = sut.takeOut(DrinkKind.COLA);
+		// assert
+		assertThat(actual, is(notNullValue()));
+		assertThat(actual.getCaption(), is(DrinkKind.COLA.getCaption()));
+		DrinkSlot slot = sut.getSlots().get(0);
+		assertThat(slot.getStockCount(), is(4));
 	}
 	
 	@Ignore
