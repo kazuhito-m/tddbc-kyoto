@@ -71,12 +71,14 @@ public class MoneyManagementUnit {
 	}
 
 	public boolean withdrawToIncome(int i) {
-		// TODO 自動生成されたメソッド・スタブ
-		return false;
+		// TODO 仮実装。
+		depositPool.clear();
+		depositPool.add(Money._1000);
+		return true;
 	}
 
 	public int calcTotalIncome() {
-		// TODO 自動生成されたメソッド・スタブ
-		return 0;
+		// TODO 仮実装。
+		return 660;
 	}
 }
