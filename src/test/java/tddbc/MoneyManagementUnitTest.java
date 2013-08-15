@@ -95,10 +95,11 @@ public class MoneyManagementUnitTest {
 			assertThat(sut.calcTotalAmount(), is(0));
 		}
 		
-		@Ignore
 		@Test
 		public void 指定の金額が預かり金プールにあるかを確認できる() {
-			// TODO
+			// act and assert
+			assertThat(sut.isCharged(1590) , is(true));
+			
 		}
 		
 		@Ignore

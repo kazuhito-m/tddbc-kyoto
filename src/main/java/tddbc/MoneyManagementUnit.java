@@ -56,4 +56,9 @@ public class MoneyManagementUnit {
 		changeBox.addAll(depositPool);
 		depositPool.clear();
 	}
+
+	public Boolean isCharged(int i) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
 }
