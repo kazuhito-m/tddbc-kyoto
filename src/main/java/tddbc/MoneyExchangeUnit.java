@@ -89,13 +89,12 @@ public class MoneyExchangeUnit {
 				// 今度こそ両替不能。
 				log.debug("移動先からも両替不能。");
 				// FIXME 「売上」と「つり銭切れ」の概念を導入する時に消滅させる。
-				// 無限に沸く両替機から借りてくる(つり銭切れが無い)
+				// 無限に沸く両替機(つり銭切れが無い)から借りて両替
 				List<Money> infinityExBox = createInfinityExchangeBox(restAmount);
-				// 絶対に成功する両替
 				exchange(srcBox, infinityExBox, restAmount);
 			}
 			// 両替成功。余ってる金額も移動。
-			realMoveMoney(srcBox, dstBox, restAmount);
+			dstBox.addAll(fuzzyRemove(srcBox, amount));
 		}
 		// ここまで来たなら処理に落ち度なし。成功。
 		return true;
