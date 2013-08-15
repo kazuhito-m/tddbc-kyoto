@@ -40,7 +40,7 @@ public class MoneyExchangeUnit {
 			dstBox.addAll(newDst);
 		} else {
 			// FIXME 貨幣が足りない対策＝両替対策。
-			log.debug("Need exchange. restAmount : " + restAmount);
+			log.debug("両替が必要。貨幣不足金額 : " + restAmount);
 		}
 
 	}
