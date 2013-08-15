@@ -7,6 +7,8 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import static java.util.Collections.*;
+
 /**
  * 紙幣・硬貨両替機クラス。
  * @author kazuhito_m
@@ -83,9 +85,9 @@ public class MoneyExchangeUnit {
 		// 移動元に移動する分の金額があるか。
 		return (sumAmount(srcBox) >= amount);
 	}
-	
+
 	/**
-	 * 通貨の箱を合算。 
+	 * 通貨の箱を合算。
 	 * @param moneyBox 対象となる通貨の箱。
 	 * @return 合算金額。
 	 */
@@ -97,15 +99,24 @@ public class MoneyExchangeUnit {
 		return totalAmount;
 	}
 
-	public boolean isExchangeable(List<Money> srcBox, List<Money> dstBox, int intentionAmount) {
+	public boolean isExchangeable(List<Money> srcBox, List<Money> dstBox,
+			int intentionAmount) {
 		// TODO 超絶仮実装。
 		return (dstBox.size() > 8);
 	}
 
-	public boolean isGettable(List<Money> srcBox, int i) {
-		// TODO 仮実装。
-		return true;
+	/** 
+	 * 通貨の箱から「指定された金額」を余り無く取得できるか否かを検査する。
+	 * @param moneyBox 通貨の箱。
+	 * @param intentionAmount 指定金額。
+	 * @return 取得できるか否か。取得可能:true
+	 */
+	public boolean isGettable(List<Money> moneyBox, int intentionAmount) {
+		// お試し用通貨箱。
+		List<Money> hitTest = new ArrayList<Money>(moneyBox); // 状態が変わってもよいようにシャローコピー
+		List<Money> dummy = new ArrayList<Money>();
+		// 端数無(余り0円)で移動できるか否かを真偽値で返す。
+		return (realMoveMoney(hitTest, dummy, intentionAmount) == 0);
 	}
 
-	
 }
