@@ -4,11 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 /**
  * 紙幣・硬貨両替機クラス。
  * @author kazuhito_m
  */
 public class MoneyExchangeUnit {
+
+	private Log log = LogFactory.getLog(this.getClass());
 
 	/**
 	 * 貨幣の箱から箱へ指定された金額を移動する。<br>
@@ -17,10 +22,6 @@ public class MoneyExchangeUnit {
 	 * @param amount 移動金額。
 	 */
 	public void moveMoney(List<Money> srcBox, List<Money> dstBox, int amount) {
-		// TODO 仮実装
-		for (int i = 0; i < 3; i++) {
-			dstBox.add(srcBox.remove(0));
-		}
 
 		// 引数の二つの箱をシャローコピーする。
 		List<Money> newSrc = new ArrayList<Money>(srcBox);
@@ -34,9 +35,10 @@ public class MoneyExchangeUnit {
 			srcBox.clear();
 			dstBox.clear();
 			srcBox.addAll(newSrc);
-			srcBox.addAll(newDst);
+			dstBox.addAll(newDst);
 		} else {
 			// FIXME 貨幣が足りない対策＝両替対策。
+			log.debug("restAmount : " + restAmount);
 		}
 
 	}
@@ -58,13 +60,12 @@ public class MoneyExchangeUnit {
 		for (int i = srcBox.size() - 1; i >= 0; i--) {
 			Money m = srcBox.get(i);
 			// 移動金額を越えないものなら
-			if (amount <= m.getAmount()) {
+			if (amount >= m.getAmount()) {
 				// その貨幣は移動
 				dstBox.add(srcBox.remove(i));
 				// 金額から減額。
 				amount -= m.getAmount();
 			}
-
 		}
 		// 残りを返す。
 		// 貨幣の種類が足らず、移動できなかった場合は0以上。
