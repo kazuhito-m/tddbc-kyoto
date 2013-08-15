@@ -20,10 +20,10 @@ public class MoneyTest {
 	@Test
 	public void 大小比較が金額の考慮によりできる() {
 		// act and assert
-		assertThat(_10.compareTo(_100), is(-90));
-		assertThat(_1000.compareTo(_100), is(900));
-		assertThat(_50.compareTo(_500), is(450));
-		assertThat(_10.compareTo(_1000), is(-990));
+		assertThat(_10.compareTo(_100), is(-2));
+		assertThat(_1000.compareTo(_100), is(2));
+		assertThat(_50.compareTo(_500), is(-2));
+		assertThat(_10.compareTo(_1000), is(-4));
 	}
 
 }
