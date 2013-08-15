@@ -10,7 +10,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -238,6 +237,19 @@ public class MoneyExchangeUnitTest {
 		assertThat(dstBox, is(resultList));
 	}
 
+	@Test
+	public void 不可能な移動があっても検知でき対象に影響は無い() {
+		// arrange
+		List<Money> baseSrc = new ArrayList<Money>(srcBox);
+		List<Money> baseDst = new ArrayList<Money>(dstBox);
+		// act
+		boolean actual = sut.moveMoney(srcBox, dstBox, 1670);
+		// assert
+		assertThat(actual, is(false));
+		assertThat(srcBox, is(baseSrc));
+		assertThat(dstBox, is(baseDst));
+	}
+	
 	@Test
 	public void 硬貨紙幣ごとの最小両替金額の数列を作成出来る() {
 		// act
