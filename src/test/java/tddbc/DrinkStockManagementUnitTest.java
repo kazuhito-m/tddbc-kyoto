@@ -99,9 +99,13 @@ public class DrinkStockManagementUnitTest {
 			assertThat(actual, is(false));
 		}
 
-		@Ignore
 		@Test
 		public void 在庫が一つも無い状態で取り出すとないことが検知出来て在庫状態も変わらない() {
+			// act
+			Drink actual = sut.takeOut(DrinkKind.COLA);
+			// assert
+			assertThat(actual, is(nullValue()));
+			assertThat(sut.existStock(DrinkKind.COLA), is(false));
 		}
 	}
 }
