@@ -71,8 +71,8 @@ public class DrinkStockManagementUnitTest {
 	@Test
 	public void すべての在庫を取り出し切り在庫がないことを確認する() {
 		// arrange
+		// 要らんくらい、絶対なくなるくらい取り出す。
 		while(true) {
-			// 要らんくらい、絶対なくなるくらい取り出す。
 			if (sut.takeOut(DrinkKind.COLA) == null) {
 				break;
 			}

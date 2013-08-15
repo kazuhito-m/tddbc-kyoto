@@ -37,9 +37,15 @@ public class DrinkStockManagementUnit {
 		return slots;
 	}
 
-	public boolean existStock(DrinkKind cola) {
-		// TODO 仮実装。
-		return true;
+	public boolean existStock(DrinkKind kind) {
+		for (DrinkSlot slot : slots) {
+			if (slot.getKind() == kind) {
+				if (slot.getStockCount() > 0) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	public Drink takeOut(DrinkKind kind) {
