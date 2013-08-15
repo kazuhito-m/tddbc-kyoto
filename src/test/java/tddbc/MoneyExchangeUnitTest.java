@@ -195,8 +195,19 @@ public class MoneyExchangeUnitTest {
 		List<Money> actual = sut.createInfinityExchangeBox(0);
 		// assert
 		assertThat(actual, is(notNullValue()));
-		assertThat(sut.sumAmount(actual), is(990));
-		assertThat(actual.size(), is(10));
+		assertThat(sut.sumAmount(actual), is(1000));
+		assertThat(actual.size(), is(11));
+	}
+	
+	@Test
+	public void 無限沸き両替ボックスの師弟金額が1000を越える場合両替可能な金額が追加される() {
+		// TODO 仕様的にグレー。売上金の概念が入れば削除予定。
+		// act
+		List<Money> actual = sut.createInfinityExchangeBox(2001);
+		// assert
+		assertThat(actual, is(notNullValue()));
+		assertThat(sut.sumAmount(actual), is(3000));
+		assertThat(actual.size(), is(13));
 	}
 
 	@Ignore

@@ -232,9 +232,14 @@ public class MoneyExchangeUnit {
 		return series; // 数列を返す。
 	}
 
+	/**
+	 * 金額を指定するとお釣りが無限に沸く両替ボックスを作成する。
+	 * @param intentionAmount 両替に含んでおきたい金額。
+	 * @return 作成された貨幣ボックス。
+	 */
 	public List<Money> createInfinityExchangeBox(int intentionAmount) {
 		List<Money> infinityExBox = Arrays.asList(new Money[] { _500, _100,
-				_100, _100, _100, _50, _10, _10, _10, _10 });
+				_100, _100, _100, _50, _10, _10, _10, _10  , _10});
 		return infinityExBox;
 	}
 
