@@ -85,10 +85,20 @@ public class MoneyExchangeUnitTest {
 		assertThat(actual, is(true));
 	}
 
-	@Ignore
 	@Test
 	public void 通貨の箱から指定金額分を両替できない場合検知できる() {
-		// TODO 未実装
+		// arrange
+		srcBox.clear();
+		srcBox.add(Money._1000);
+		dstBox.clear();
+		dstBox.addAll(Arrays.asList(new Money[] { _500, _100, _100, _100, _50,
+				_50, _50, _50}));
+		assertThat(sut.sumAmount(dstBox) , is(1000));	
+		assertThat(dstBox.size() , is(9));
+		// act
+		boolean actual = sut.isExchangeable(srcBox, dstBox, 670);
+		// assert
+		assertThat(actual, is(false));
 	}
 
 }
