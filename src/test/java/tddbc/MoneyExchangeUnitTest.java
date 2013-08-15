@@ -126,4 +126,12 @@ public class MoneyExchangeUnitTest {
 		// FIXME 「売上」と「つり銭切れ」の概念を導入する時に消滅させる。
 		// TODO 未実装
 	}
+	
+	@Test
+	public void 高価紙幣ごとの最小両替金額の数列を作成出来る() {
+		// act
+		int[] actual = sut.createMinExchangeSeries(1);
+		// assert
+		assertThat(actual,is(new int[] {10,50,100,500,1000}));
+	}
 }

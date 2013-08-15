@@ -123,7 +123,21 @@ public class MoneyExchangeUnit {
 		// 実際に取り去ってみる
 		List<Money> swapBox = new ArrayList<Money>();
 		realMoveMoney(destTest, swapBox, intentionAmount);
+
 		
+		// 最小両替金額
+		int testAmount;
+
+		// 硬化が小さなもの順に「最小公倍数な両替金額」を検討していく
+		for (Money m : Money.values()) {
+			// その通貨で何枚必要かを割り算
+			int div = intentionAmount / m.getAmount();
+			if (intentionAmount == (m.getAmount() * div)) {
+				continue;	// 同金額なら「そもそも両替が要らない」はず、次へ。
+			}
+			// 最小両替金額を算出
+			testAmount = m.getAmount() * (++div);
+		}
 		
 
 		// TODO 超絶仮実装。
@@ -142,6 +156,11 @@ public class MoneyExchangeUnit {
 		List<Money> dummy = new ArrayList<Money>();
 		// 端数無(余り0円)で移動できるか否かを真偽値で返す。
 		return (realMoveMoney(hitTest, dummy, intentionAmount) == 0);
+	}
+
+	public int[] createMinExchangeSeries(int amount) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
 	}
 
 }
