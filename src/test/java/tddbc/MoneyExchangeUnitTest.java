@@ -39,15 +39,6 @@ public class MoneyExchangeUnitTest {
 		}
 	}
 
-	/** 通貨の箱を合算。 */
-	private int sumAmount(List<Money> moneyBox) {
-		int totalAmount = 0;
-		for (Money m : moneyBox) {
-			totalAmount += m.getAmount();
-		}
-		return totalAmount;
-	}
-
 	@Test
 	public void 二つの通貨の箱から指定金額を移動する() {
 		// arrange
