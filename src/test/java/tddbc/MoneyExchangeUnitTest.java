@@ -107,4 +107,11 @@ public class MoneyExchangeUnitTest {
 		assertThat(sut.isGettable(srcBox , 560) , is(true));
 	}
 
+	
+	@Test
+	public void 指定された金額が現在の通貨箱から取得不可能であることを検知できる() {
+		// act
+		assertThat(sut.isGettable(srcBox , 540) , is(false));
+	}
+
 }
