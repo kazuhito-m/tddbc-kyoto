@@ -57,7 +57,13 @@ public class MoneyManagementUnit {
 		depositPool.clear();
 	}
 
-	public Boolean isCharged(int i) {
+	/**
+	 * 指定された金額分を預かり金としてプールしているかを検査。<br>
+	 * 「貨幣で取り出せるか」ではなく、あくまで「合計額中に含まれているか」で判定している。
+	 * @param amount 指定金額。
+	 * @return 判定結果。プールしている。
+	 */
+	public Boolean isCharged(int amount) {
 		// TODO 仮実装
 		return true;
 	}
