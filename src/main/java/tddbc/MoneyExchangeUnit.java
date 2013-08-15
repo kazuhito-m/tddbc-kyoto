@@ -102,4 +102,10 @@ public class MoneyExchangeUnit {
 		return (dstBox.size() > 8);
 	}
 
+	public boolean isGettable(List<Money> srcBox, int i) {
+		// TODO 自動生成されたメソッド・スタブ
+		return false;
+	}
+
+	
 }
