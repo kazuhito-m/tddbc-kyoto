@@ -100,7 +100,7 @@ public class MoneyExchangeUnit {
 	}
 
 	/**
-	 * 通貨箱二つから「指定の小銭を含む両替」ができるか田舎を検査する。
+	 * 通貨箱二つから「指定の小銭を含む両替」ができるか否かを検査する。
 	 * @param srcBox 両替元の箱。
 	 * @param dstBox 両替先の箱、。
 	 * @param intentionAmount 「この細かさが出せるように」という目的の金額。
@@ -111,7 +111,7 @@ public class MoneyExchangeUnit {
 		// FIXME ここから「非破壊のお試し実装」最後は消すように。
 
 		// お試し用通貨箱。(状態が変わってもよいようにシャローコピー)
-		List<Money> srcTest = new ArrayList<Money>(srcBox); 
+		List<Money> srcTest = new ArrayList<Money>(srcBox);
 		List<Money> dstTest = new ArrayList<Money>(dstBox);
 
 		// まずは「両替を持ちかける側に、希望の細かさの小銭がある」か。
@@ -131,22 +131,69 @@ public class MoneyExchangeUnit {
 				continue; // 同金額なら「そもそも両替が要らない」はず、次へ。
 			}
 			// まずは、両替元側から取れるか否か
-			if (! isGettable(srcTest, minExchange)) {
-				continue;	// 取れないなら両替不能。
+			if (!isGettable(srcTest, minExchange)) {
+				continue; // 取れないなら両替不能。
 			}
 			// 次に、両替先から「残りの金」がジャストで取れるか
 			int remaining = minExchange - intentionAmount;
 			if (!isGettable(dstTest, remaining)) {
-				continue;	// こちらも取れないなら両替不能。
+				continue; // こちらも取れないなら両替不能。
 			}
 			// ここまでこれたなら、両替可能。実際に両替する。
-			realMoveMoney(dstTest, swapBox, remaining);	// まず、両替先から両替分を移しきって
-			realMoveMoney(srcTest, new ArrayList<Money>() , minExchange);	// 両替元から削除して
-			srcTest.addAll(swapBox);	// 両替元に移動。
+			realMoveMoney(dstTest, swapBox, remaining); // まず、両替先から両替分を移しきって
+			realMoveMoney(srcTest, new ArrayList<Money>(), minExchange); // 両替元から削除して
+			srcTest.addAll(swapBox); // 両替元に移動。
 			// 成功
 			return true;
 		}
-		
+
+		// ここに来たということは、両替出来なかったということ。失敗返す。
+		return false;
+	}
+
+	/**
+	 * 通貨箱二つから「指定の小銭を含む両替」を行う。
+	 * @param srcBox 両替元の箱。
+	 * @param dstBox 両替先の箱、。
+	 * @param intentionAmount 「この細かさが出せるように」という目的の金額。
+	 * @return 成功判定。両替成功:true。
+	 */
+	public boolean exchange(List<Money> srcBox, List<Money> dstBox,
+			int intentionAmount) {
+
+		// まずは「両替を持ちかける側に、希望の細かさの小銭がある」か。
+		if (!isGettable(dstBox, intentionAmount)) {
+			// 無いならその時点で「両替不可能」
+			log.debug("両替先に " + intentionAmount + " 円の小銭が無いため両替不能。");
+			return false;
+		}
+
+		// 実際に取り去ってみる
+		List<Money> swapBox = new ArrayList<Money>();
+		realMoveMoney(dstBox, swapBox, intentionAmount);
+
+		// 「最小公倍数な両替金額」数列を回す
+		for (int minExchange : createMinExchangeSeries(intentionAmount)) {
+			if (intentionAmount == minExchange) {
+				continue; // 同金額なら「そもそも両替が要らない」はず、次へ。
+			}
+			// まずは、両替元側から取れるか否か
+			if (!isGettable(srcBox, minExchange)) {
+				continue; // 取れないなら両替不能。
+			}
+			// 次に、両替先から「残りの金」がジャストで取れるか
+			int remaining = minExchange - intentionAmount;
+			if (!isGettable(dstBox, remaining)) {
+				continue; // こちらも取れないなら両替不能。
+			}
+			// ここまでこれたなら、両替可能。実際に両替する。
+			realMoveMoney(dstBox, swapBox, remaining); // まず、両替先から両替分を移しきって
+			realMoveMoney(srcBox, dstBox, minExchange); // 両替元から削除して
+			srcBox.addAll(swapBox); // 両替元に移動。
+			// 成功
+			return true;
+		}
+
 		// ここに来たということは、両替出来なかったということ。失敗返す。
 		return false;
 	}
@@ -179,11 +226,6 @@ public class MoneyExchangeUnit {
 			series[i++] = m.getAmount() * div;
 		}
 		return series; // 数列を返す。
-	}
-
-	public boolean exchange(List<Money> srcBox, List<Money> dstBox, int i) {
-		// TODO 自動生成されたメソッド・スタブ
-		return false;
 	}
 
 }
