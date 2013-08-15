@@ -75,8 +75,12 @@ public class MoneyManagementUnit {
 		return (exchanger.sumAmount(depositPool) >= amount);
 	}
 
+	/**
+	 * 預かり金プールから売上ボックスへ指定金額を計上(移動)する。
+	 * @param amount 指定金額。
+	 * @return 成功判定。成功:true。
+	 */
 	public boolean withdrawToIncome(int amount) {
-		// 両替機を使って、預かり金プールから売上ボックスへお金を移動。
 		return exchanger.moveMoney(depositPool, incomeBox, amount);
 	}
 }
