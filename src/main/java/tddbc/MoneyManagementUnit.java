@@ -72,7 +72,7 @@ public class MoneyManagementUnit {
      * @return 判定結果。プールしている。
      */
     public Boolean isDeposited(final int amount) {
-        return (exchanger.sumAmount(depositPool) >= amount);
+        return exchanger.sumAmount(depositPool) >= amount;
     }
 
     /**
