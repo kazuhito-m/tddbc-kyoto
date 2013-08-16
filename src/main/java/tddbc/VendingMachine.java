@@ -57,7 +57,7 @@ public class VendingMachine {
 	}
 
 	public boolean isSellable(DrinkKind cola) {
-		// TODO 自動生成されたメソッド・スタブ
-		return false;
+		// FIXME 仮実装
+		return true;
 	}
 }
