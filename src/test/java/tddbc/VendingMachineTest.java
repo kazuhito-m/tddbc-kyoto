@@ -3,6 +3,7 @@ package tddbc;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static tddbc.Money.*;
+import static tddbc.DrinkKind.*;
 
 import java.util.List;
 
@@ -70,7 +71,7 @@ public class VendingMachineTest {
 		sut.receive(_100);
 		sut.receive(_50);
 		// act
-		boolean actual = sut.isSellable(DrinkKind.COLA);
+		boolean actual = sut.isSellable(COLA);
 		// assert
 		assertThat(actual, is(true));
 	}
@@ -81,7 +82,7 @@ public class VendingMachineTest {
 		sut.receive(_100);
 		sut.receive(_10);
 		// act
-		boolean actual = sut.isSellable(DrinkKind.COLA);
+		boolean actual = sut.isSellable(COLA);
 		// assert
 		assertThat(actual, is(false));
 	}
@@ -91,16 +92,16 @@ public class VendingMachineTest {
 		// arrange
 		// 特殊な操作。缶をスロットからしこたま抜く。
 		DrinkStockManagementUnit dsm = sut.getDrinkStockManager();
-		while (dsm.existStock(DrinkKind.COLA)) {
-			dsm.takeOut(DrinkKind.COLA);
+		while (dsm.existStock(COLA)) {
+			dsm.takeOut(COLA);
 		}
 		// 在庫はカラっぽに。
-		assertThat(dsm.existStock(DrinkKind.COLA), is(false));
+		assertThat(dsm.existStock(COLA), is(false));
 		sut.receive(_100);
 		sut.receive(_10);
 		sut.receive(_10);
 		// act
-		boolean actual = sut.isSellable(DrinkKind.COLA);
+		boolean actual = sut.isSellable(COLA);
 		// assert
 		assertThat(actual, is(false));
 	}
@@ -110,7 +111,7 @@ public class VendingMachineTest {
 		// arrange
 		sut.receive(_500);
 		// act
-		boolean actual = sut.sale(DrinkKind.COLA);
+		boolean actual = sut.sale(COLA);
 		// assert
 		assertThat(actual, is(true));
 		assertThat(sut.getOutTray().size(), is(1));
