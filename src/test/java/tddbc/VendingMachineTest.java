@@ -231,6 +231,14 @@ public class VendingMachineTest {
 
 	@Test
 	public void 現在の投入金額と在庫で購入可能なドリンクのリストを取得できる() {
-		// TODO テスト
+		// arrange
+		sut.receive(_100);
+		sut.receive(_50);
+		// act
+		List<DrinkKind> actual = sut.displaySellableDrinksNowForYou();
+		// assert
+		assertThat(actual, is(notNullValue()));
+		assertThat(actual.size(), is(3));
+		assertThat(actual, hasItems(COLA,WATER));
 	}
 }

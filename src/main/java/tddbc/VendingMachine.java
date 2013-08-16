@@ -131,4 +131,9 @@ public class VendingMachine {
 		return drinkStockManager.getValiedDrinks();
 	}
 
+	public List<DrinkKind> displaySellableDrinksNowForYou() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
 }
