@@ -10,6 +10,7 @@ import static tddbc.DrinkKind.COLA;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
@@ -31,7 +32,7 @@ public class DrinkStockManagementUnitTest {
 		}
 
 		@Test
-		public void ジュースを一種類格納している() {
+		public void ジュースを三種類格納している() {
 			// act
 			List<DrinkSlot> actual = sut.getSlots();
 			// assert
@@ -46,6 +47,28 @@ public class DrinkStockManagementUnitTest {
 			DrinkSlot actual = slots.get(0);
 			assertThat(actual.getKind().getCaption(), is("コーラ"));
 			assertThat(actual.getPrice(), is(120));
+			assertThat(actual.getStockCount(), is(5));
+		}
+
+		@Test
+		public void 初期状態で価格200円のレッドブルを格納している() {
+			// act
+			List<DrinkSlot> slots = sut.getSlots();
+			// assert
+			DrinkSlot actual = slots.get(1);
+			assertThat(actual.getKind().getCaption(), is("レッドブル"));
+			assertThat(actual.getPrice(), is(200));
+			assertThat(actual.getStockCount(), is(5));
+		}
+
+		@Test
+		public void 初期状態で価格100円の水を格納している() {
+			// act
+			List<DrinkSlot> slots = sut.getSlots();
+			// assert
+			DrinkSlot actual = slots.get(2);
+			assertThat(actual.getKind().getCaption(), is("水"));
+			assertThat(actual.getPrice(), is(100));
 			assertThat(actual.getStockCount(), is(5));
 		}
 

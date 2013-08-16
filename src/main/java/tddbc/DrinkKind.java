@@ -5,7 +5,7 @@ package tddbc;
  * @author kazuhito_m
  */
 public enum DrinkKind {
-	COLA("コーラ"), APPLE_JUICE("アップルジュース");
+	COLA("コーラ"), APPLE_JUICE("アップルジュース"), REDBULL("レッドブル"), WATER("水");
 
 	/** 内部「飲み物の名前」 */
 	private final String caption;

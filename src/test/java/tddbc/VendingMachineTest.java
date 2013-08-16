@@ -233,4 +233,14 @@ public class VendingMachineTest {
 		}
 		assertThat(actual, is(260));
 	}
+	
+	@Test
+	public void この自動販売機で取り扱っている飲み物３種のリストを取得できる() {
+		// TODO テスト
+	}
+	
+	@Test
+	public void 現在の投入金額と在庫で購入可能なドリンクのリストを取得できる() {
+		// TODO テスト
+	}
 }
