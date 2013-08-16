@@ -4,6 +4,8 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
+import static tddbc.DrinkKind.APPLE_JUICE;
+import static tddbc.DrinkKind.COLA;
 
 import java.util.List;
 
@@ -11,8 +13,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
-
-import static tddbc.DrinkKind.*;
 
 /**
  * 「飲み物の在庫」管理装置クラステスト。
@@ -82,23 +82,23 @@ public class DrinkStockManagementUnitTest {
 			// assert
 			assertThat(actual, is(nullValue()));
 		}
-		
+
 		@Test
 		public void 飲み物の種類から価格を知る事ができる() {
-			// act 
+			// act
 			int actual = sut.getPrice(COLA);
 			// assert
-			assertThat(actual , is(120));
+			assertThat(actual, is(120));
 		}
 
 		@Test
 		public void 取り扱っていない飲み物の種類の価格を知る事は出来無い() {
-			// act 
+			// act
 			int actual = sut.getPrice(APPLE_JUICE);
 			// assert
-			assertThat(actual , is(-1));
+			assertThat(actual, is(-1));
 		}
-}
+	}
 
 	public static class 在庫を空まで減らした状態 {
 		/** テスト対象 */
