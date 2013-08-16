@@ -1,15 +1,14 @@
 package tddbc;
 
 /**
- * Created with IntelliJ IDEA. User: kyon_mm Date: 2013/08/10 Time: 14:28 To
- * change this template use File | Settings | File Templates.
+ * 貨幣(紙幣・硬貨)定数群。
  */
 public enum Money {
-	// 順番が重要。絶えず「昇順」となるよう書く必要あり。
-	_10, _50, _100, _500, _1000;
-	/** 定数の表す金額を整数値で返す。 */
-	public int getAmount() {
-		return Integer.parseInt(this.name().replaceFirst("_", ""));
-	}
+    // 順番が重要。絶えず「昇順」となるよう書く必要あり。
+    _10, _50, _100, _500, _1000;
+    /** 定数の表す金額を整数値で返す。 */
+    public int getAmount() {
+        return Integer.parseInt(this.name().replaceFirst("_", ""));
+    }
 
 }

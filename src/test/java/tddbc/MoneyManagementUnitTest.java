@@ -21,147 +21,147 @@ import org.junit.runner.RunWith;
 @RunWith(Enclosed.class)
 public class MoneyManagementUnitTest {
 
-	public static class 初期状態から {
+    public static class 初期状態から {
 
-		/** テスト対象 */
-		private MoneyManagementUnit sut;
+        /** テスト対象 */
+        private MoneyManagementUnit sut;
 
-		@Before
-		public void setUp() {
-			sut = new MoneyManagementUnit();
-		}
+        @Before
+        public void setUp() {
+            sut = new MoneyManagementUnit();
+        }
 
-		@Test
-		public void トータル金額を確認できる() {
-			// act
-			int actual = sut.calcTotalAmount();
-			// assert
-			assertThat(actual, is(0));
-		}
+        @Test
+        public void トータル金額を確認できる() {
+            // act
+            int actual = sut.calcTotalAmount();
+            // assert
+            assertThat(actual, is(0));
+        }
 
-		@Test
-		public void つり銭箱が確認できる() {
-			// act
-			List<Object> actual = sut.getChangeBox();
-			// assert
-			assertThat(actual.size(), is(0));
-		}
+        @Test
+        public void つり銭箱が確認できる() {
+            // act
+            List<Object> actual = sut.getChangeBox();
+            // assert
+            assertThat(actual.size(), is(0));
+        }
 
-		@Test
-		public void 有効硬貨を投入できる() {
-			sut.receive(_10);
-			int actual = sut.calcTotalAmount();
-			assertThat(actual, is(10));
-		}
+        @Test
+        public void 有効硬貨を投入できる() {
+            sut.receive(_10);
+            int actual = sut.calcTotalAmount();
+            assertThat(actual, is(10));
+        }
 
-	}
+    }
 
-	public static class 有効硬貨が入った状態 {
+    public static class 有効硬貨が入った状態 {
 
-		/** テスト対象 */
-		private MoneyManagementUnit sut;
+        /** テスト対象 */
+        private MoneyManagementUnit sut;
 
-		@Before
-		public void setUp() {
-			sut = new MoneyManagementUnit();
-			// arrange
-			for (Money validMoney : Money.values()) {
-				sut.receive(validMoney);
-			}
-		}
+        @Before
+        public void setUp() {
+            sut = new MoneyManagementUnit();
+            // arrange
+            for (Money validMoney : Money.values()) {
+                sut.receive(validMoney);
+            }
+        }
 
-		@Test
-		public void 有効硬貨を複数回投入した金額が総計に反映されている() {
-			// act
-			int actual = sut.calcTotalAmount();
-			// assert
-			assertThat(actual, is(1660));
-		}
+        @Test
+        public void 有効硬貨を複数回投入した金額が総計に反映されている() {
+            // act
+            int actual = sut.calcTotalAmount();
+            // assert
+            assertThat(actual, is(1660));
+        }
 
-		@Test
-		public void 払い戻すと釣り銭箱に入っている() {
-			// act
-			sut.refund();
-			// assert
-			assertThat(sut.getChangeBox().size(), is(5));
-		}
+        @Test
+        public void 払い戻すと釣り銭箱に入っている() {
+            // act
+            sut.refund();
+            // assert
+            assertThat(sut.getChangeBox().size(), is(5));
+        }
 
-		@Test
-		public void 払い戻した後は投入金額の総計がゼロになっている() {
-			// act
-			sut.refund();
-			// assert
-			assertThat(sut.calcTotalAmount(), is(0));
-		}
+        @Test
+        public void 払い戻した後は投入金額の総計がゼロになっている() {
+            // act
+            sut.refund();
+            // assert
+            assertThat(sut.calcTotalAmount(), is(0));
+        }
 
-		@Test
-		public void 指定の金額が預かり金プールにあるかを確認できる() {
-			// act and assert
-			assertThat(sut.isDeposited(1590), is(true));
-		}
+        @Test
+        public void 指定の金額が預かり金プールにあるかを確認できる() {
+            // act and assert
+            assertThat(sut.isDeposited(1590), is(true));
+        }
 
-		@Test
-		public void 指定の金額が預かり金プールに無いかを確認できる() {
-			// act and assert
-			assertThat(sut.isDeposited(1670), is(false));
-		}
+        @Test
+        public void 指定の金額が預かり金プールに無いかを確認できる() {
+            // act and assert
+            assertThat(sut.isDeposited(1670), is(false));
+        }
 
-		@Test
-		public void 指定の金額分を預かり金プールから売上ボックスへ計上する() {
-			// act
-			boolean actual = sut.withdrawToIncome(660);
-			// assert
-			assertThat(actual, is(true));
-			assertThat(sut.calcTotalAmount(), is(1000));
-			assertThat(sut.calcTotalIncome(), is(660));
-		}
+        @Test
+        public void 指定の金額分を預かり金プールから売上ボックスへ計上する() {
+            // act
+            boolean actual = sut.withdrawToIncome(660);
+            // assert
+            assertThat(actual, is(true));
+            assertThat(sut.calcTotalAmount(), is(1000));
+            assertThat(sut.calcTotalIncome(), is(660));
+        }
 
-		@Test
-		public void 預かり金プールから売上ボックスへ計上できないことを検知できる() {
-			// act
-			boolean actual = sut.withdrawToIncome(661);
-			// assert
-			assertThat(actual, is(false));
-			assertThat(sut.calcTotalAmount(), is(1660));
-			assertThat(sut.calcTotalIncome(), is(0));
-		}
-	}
+        @Test
+        public void 預かり金プールから売上ボックスへ計上できないことを検知できる() {
+            // act
+            boolean actual = sut.withdrawToIncome(661);
+            // assert
+            assertThat(actual, is(false));
+            assertThat(sut.calcTotalAmount(), is(1660));
+            assertThat(sut.calcTotalIncome(), is(0));
+        }
+    }
 
-	@RunWith(Theories.class)
-	public static class 硬貨紙幣以外のパラメタライズテスト {
+    @RunWith(Theories.class)
+    public static class 硬貨紙幣以外のパラメタライズテスト {
 
-		/** テスト対象 */
-		private MoneyManagementUnit sut;
+        /** テスト対象 */
+        private MoneyManagementUnit sut;
 
-		@Before
-		public void setUp() {
-			sut = new MoneyManagementUnit();
-		}
+        @Before
+        public void setUp() {
+            sut = new MoneyManagementUnit();
+        }
 
-		@DataPoints
-		public static Object[][] V = { { 1, 0 }, { 5, 0 }, { 5000, 0 },
-				{ "＄", 0 } };
+        @DataPoints
+        public static Object[][] V = { { 1, 0 }, { 5, 0 }, { 5000, 0 },
+                { "＄", 0 } };
 
-		@Theory
-		public void お金以外を入れたらトータル金額に加算されない(Object[] values) {
-			// arrange
-			sut.receive(values[0]);
-			int expected = (Integer) values[1];
-			// act
-			int actual = sut.calcTotalAmount();
-			// assert
-			assertThat(actual, is(expected));
-		}
+        @Theory
+        public void お金以外を入れたらトータル金額に加算されない(Object[] values) {
+            // arrange
+            sut.receive(values[0]);
+            int expected = (Integer) values[1];
+            // act
+            int actual = sut.calcTotalAmount();
+            // assert
+            assertThat(actual, is(expected));
+        }
 
-		@Theory
-		public void お金以外を投入するとつり銭箱へ吐き出す(Object[] values) {
-			// arrange
-			sut.receive(values[0]);
-			// act
-			List<Object> actual = sut.getChangeBox();
-			// assert
-			assertThat(actual.size(), is(1));
-			assertThat(actual.get(0), is(values[0]));
-		}
-	}
+        @Theory
+        public void お金以外を投入するとつり銭箱へ吐き出す(Object[] values) {
+            // arrange
+            sut.receive(values[0]);
+            // act
+            List<Object> actual = sut.getChangeBox();
+            // assert
+            assertThat(actual.size(), is(1));
+            assertThat(actual.get(0), is(values[0]));
+        }
+    }
 }
