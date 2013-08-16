@@ -73,18 +73,6 @@ public class DrinkStockManagementUnitTest {
 		}
 
 		@Test
-		public void このスロット群で扱っている飲み物種別を取得できる() {
-			// act
-			List<DrinkKind> actual = sut.getValiedDrinks();
-			// assert
-			assertThat(actual, is(notNullValue()));
-			assertThat(actual.size(), is(3));
-			List<DrinkKind> reply = Arrays.asList(new DrinkKind[] { COLA,
-					REDBULL, WATER });
-			assertThat(actual, is(reply));
-		}
-
-		@Test
 		public void 指定した種類の在庫があるかを確認できる() {
 			// act
 			boolean actual = sut.existStock(COLA);
