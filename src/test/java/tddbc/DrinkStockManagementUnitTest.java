@@ -90,7 +90,15 @@ public class DrinkStockManagementUnitTest {
 			// assert
 			assertThat(actual , is(120));
 		}
-	}
+
+		@Test
+		public void 取り扱っていない飲み物の種類の価格を知る事は出来無い() {
+			// act 
+			int actual = sut.getPrice(APPLE_JUICE);
+			// assert
+			assertThat(actual , is(-1));
+		}
+}
 
 	public static class 在庫を空まで減らした状態 {
 		/** テスト対象 */
