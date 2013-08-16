@@ -90,4 +90,9 @@ public class DrinkStockManagementUnit {
 		}
 		return -1; // 見つからなければ、不明(-1)を返す。
 	}
+
+	public List<DrinkKind> getValiedDrinks() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
 }

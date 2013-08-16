@@ -50,19 +50,6 @@ public class VendingMachineTest {
 		assertThat(actual.size(), is(0));
 	}
 
-	// TODO 少し保留。
-	// @Ignore
-	// @Test
-	// public void パスコードを指定しなくては外部から金額系は制御出来ない() {
-	// // TODO
-	// }
-	//
-	// @Ignore
-	// @Test
-	// public void パスコードを指定しなくては外部から在庫系は制御出来ない() {
-	// // TODO
-	// }
-
 	@Test
 	public void 有効硬貨を複数回投入した金額が総計に反映されている() {
 		sut.receive(_10);

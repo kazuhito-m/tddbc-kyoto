@@ -4,9 +4,10 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
-import static tddbc.DrinkKind.APPLE_JUICE;
+import static tddbc.DrinkKind.*;
 import static tddbc.DrinkKind.COLA;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -69,6 +70,18 @@ public class DrinkStockManagementUnitTest {
 			assertThat(actual.getKind().getCaption(), is("水"));
 			assertThat(actual.getPrice(), is(100));
 			assertThat(actual.getStockCount(), is(5));
+		}
+
+		@Test
+		public void このスロット群で扱っている飲み物種別を取得できる() {
+			// act
+			List<DrinkKind> actual = sut.getValiedDrinks();
+			// assert
+			assertThat(actual, is(notNullValue()));
+			assertThat(actual.size(), is(3));
+			List<DrinkKind> reply = Arrays.asList(new DrinkKind[] { COLA,
+					REDBULL, WATER });
+			assertThat(actual, is(reply));
 		}
 
 		@Test
