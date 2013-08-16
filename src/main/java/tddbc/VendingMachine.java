@@ -93,7 +93,8 @@ public class VendingMachine {
 	 * @return 成功判定。成功:true。
 	 */
 	public boolean sale(DrinkKind kind) {
-		outTray.add(new Drink(DrinkKind.COLA));
+		// 在庫から一つ取り出す。
+		outTray.add(drinkStockManager.takeOut(kind));
 		return true;
 	}
 
