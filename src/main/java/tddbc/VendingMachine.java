@@ -1,6 +1,7 @@
 package tddbc;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class VendingMachine {
@@ -107,6 +108,16 @@ public class VendingMachine {
 		return true;
 	}
 
+	public List<DrinkKind> displaySellableDrinks() {
+		return drinkStockManager.getValiedDrinks();
+	}
+
+	public List<DrinkKind> displaySellableDrinksNowForYou() {
+		// FIXME 仮実装。
+		return new ArrayList<DrinkKind>(Arrays.asList(new DrinkKind[] {
+				DrinkKind.COLA, DrinkKind.WATER }));
+	}
+
 	/**
 	 * 外部からの操作用「在庫管理装置」。<br>
 	 * メンテナンス用の取得口。<br>
@@ -125,15 +136,6 @@ public class VendingMachine {
 	 */
 	protected MoneyManagementUnit getMoneyManager() {
 		return this.moneyManager;
-	}
-
-	public List<DrinkKind> displaySellableDrinks() {
-		return drinkStockManager.getValiedDrinks();
-	}
-
-	public List<DrinkKind> displaySellableDrinksNowForYou() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
 	}
 
 }
