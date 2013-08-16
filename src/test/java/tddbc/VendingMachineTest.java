@@ -75,10 +75,15 @@ public class VendingMachineTest {
 		assertThat(actual , is(true));
 	}
 
-	@Ignore
 	@Test
 	public void 金額が足らずコーラが買えないことを検知() {
-		// TODO
+		// arrange
+		sut.receive(_100);
+		sut.receive(_10);
+		// act
+		boolean actual = sut.isSellable(DrinkKind.COLA);
+		// assert
+		assertThat(actual , is(false));
 	}
 
 	@Ignore
