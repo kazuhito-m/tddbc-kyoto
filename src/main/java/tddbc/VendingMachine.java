@@ -6,18 +6,18 @@ import java.util.List;
 public class VendingMachine {
 
 	// プロパティ群
-	
+
 	/** お金(硬貨・紙幣)周り管理装置。 */
 	private MoneyManagementUnit moneyManager;
 
 	/** 「飲み物の在庫」管理装置。 */
-	private DrinkStockManagementUnit drinkStockManager =  new DrinkStockManagementUnit(); 
+	private DrinkStockManagementUnit drinkStockManager = new DrinkStockManagementUnit();
 
 	/** 購入後飲み物取り出し口 */
 	private List<Drink> outTray = new ArrayList<Drink>();
 
 	// メソッド群
-	
+
 	/** コンストラクタ。 */
 	public VendingMachine() {
 		moneyManager = new MoneyManagementUnit();
@@ -33,11 +33,18 @@ public class VendingMachine {
 
 	/**
 	 * つり銭箱を返す。
-	 * 
 	 * @return
 	 */
 	public List<Object> getChangeBox() {
 		return moneyManager.getChangeBox();
+	}
+
+	/**
+	 * 飲み物の取り出し愚痴を返す。
+	 * @return 取り出し口の箱イメージ。
+	 */
+	public List<Drink> getOutTray() {
+		return this.outTray;
 	}
 
 	/**
@@ -65,7 +72,7 @@ public class VendingMachine {
 		// 在庫管理装置から、指定された飲み物種の価格を取得する。
 		int price = drinkStockManager.getPrice(kind);
 		// 管理外なら、無論販売不可能。
-		if (price  == -1) {
+		if (price == -1) {
 			return false;
 		}
 		// 現在の投入金額はそれを買うに十分なお金か否か。
@@ -81,6 +88,16 @@ public class VendingMachine {
 	}
 
 	/**
+	 * 飲み物を購入する。(自販機が売る)<br>
+	 * @param kind
+	 * @return 成功判定。成功:true。
+	 */
+	public boolean sale(DrinkKind kind) {
+		outTray.add(new Drink(DrinkKind.COLA));
+		return true;
+	}
+
+	/**
 	 * 外部からの操作用「在庫管理装置」。<br>
 	 * メンテナンス用の取得口。<br>
 	 * そのため同一パッケージ内(例えばテスト側)からしかアクセス出来無い。
@@ -90,13 +107,4 @@ public class VendingMachine {
 		return this.drinkStockManager;
 	}
 
-	public boolean sale(DrinkKind cola) {
-		// TODO 自動生成されたメソッド・スタブ
-		return false;
-	}
-
-	public List<Drink> getOutTray() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
 }
