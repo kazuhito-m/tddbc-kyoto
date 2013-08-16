@@ -68,6 +68,10 @@ public class DrinkStockManagementUnit {
 
 	public int getPrice(DrinkKind cola) {
 		// TODO 仮実装
-		return 120;
+		if (cola == DrinkKind.COLA) {
+			return 120;
+		} else {
+			return -1;
+		}
 	}
 }
