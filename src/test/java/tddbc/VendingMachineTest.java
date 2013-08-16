@@ -140,10 +140,14 @@ public class VendingMachineTest {
 		assertThat(sut.getMoneyManager().calcTotalIncome(), is(120));
 	}
 
-	@Ignore
 	@Test
 	public void 購入操作成功後は投入金額が減っている() {
-		// TODO
+		// arrange
+		sut.receive(_500);
+		// act
+		sut.sale(COLA);
+		// assert
+		assertThat(sut.displayTotalAmount(), is(380));
 	}
 
 	@Ignore
