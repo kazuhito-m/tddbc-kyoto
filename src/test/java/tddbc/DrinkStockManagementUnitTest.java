@@ -75,6 +75,13 @@ public class DrinkStockManagementUnitTest {
 			assertThat(slot.getStockCount(), is(4));
 		}
 
+		@Test
+		public void 別種類の飲み物を指定しても取得出来ない() {
+			// act
+			Drink actual = sut.takeOut(APPLE_JUICE);
+			// assert
+			assertThat(actual, is(nullValue()));
+		}
 	}
 
 	public static class 在庫を空まで減らした状態 {
