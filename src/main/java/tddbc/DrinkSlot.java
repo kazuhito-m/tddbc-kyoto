@@ -16,7 +16,7 @@ public class DrinkSlot {
     private int price;
 
     /** 飲み物のため場所。 */
-    private List<Drink> drinks = new ArrayList<Drink>();
+    private final List<Drink> drinks = new ArrayList<Drink>();
 
     public DrinkKind getKind() {
         return kind;

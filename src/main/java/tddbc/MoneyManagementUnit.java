@@ -10,16 +10,16 @@ import java.util.List;
 public class MoneyManagementUnit {
 
     /** 預かり金プール。 */
-    private List<Money> depositPool = new ArrayList<Money>();
+    private final List<Money> depositPool = new ArrayList<Money>();
 
     /** 売上ボックス。 */
-    private List<Money> incomeBox = new ArrayList<Money>();
+    private final List<Money> incomeBox = new ArrayList<Money>();
 
     /** つり銭ボックス。 */
-    private List<Object> changeBox = new ArrayList<Object>();
+    private final List<Object> changeBox = new ArrayList<Object>();
 
     /** 紙幣・硬貨両替機。 */
-    private MoneyExchangeUnit exchanger = new MoneyExchangeUnit();
+    private final MoneyExchangeUnit exchanger = new MoneyExchangeUnit();
 
     /**
      * 投入金総合計額を計算する。

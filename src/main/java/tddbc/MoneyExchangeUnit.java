@@ -16,7 +16,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class MoneyExchangeUnit {
 
-    private Log log = LogFactory.getLog(this.getClass());
+    private final Log log = LogFactory.getLog(this.getClass());
 
     /**
      * 指定された金額が移動可能かを判定する。

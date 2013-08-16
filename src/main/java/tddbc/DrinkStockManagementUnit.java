@@ -12,7 +12,7 @@ import java.util.List;
 public class DrinkStockManagementUnit {
 
     /** 飲み物のスロット群。 */
-    private List<DrinkSlot> slots = new ArrayList<DrinkSlot>();
+    private final List<DrinkSlot> slots = new ArrayList<DrinkSlot>();
 
     /** コンストラクタ。 */
     public DrinkStockManagementUnit() {
