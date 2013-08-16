@@ -150,10 +150,18 @@ public class VendingMachineTest {
 		assertThat(sut.displayTotalAmount(), is(380));
 	}
 
-	@Ignore
 	@Test
 	public void 投入金額が足りない場合は購入操作しても後何も起きない() {
-		// TODO
+		// arrange
+		sut.receive(_500);
+		// act
+		boolean actual = sut.sale(COLA);
+		// assert
+		// ※何も起きていない…という証明は難しい
+		assertThat(actual , is(true));
+		assertThat(sut.getOutTray().isEmpty(), is(true));
+		assertThat(sut.displayTotalAmount(), is(500));
+		assertThat(sut.getMoneyManager().calcTotalIncome(), is(0));
 	}
 
 	@Ignore
