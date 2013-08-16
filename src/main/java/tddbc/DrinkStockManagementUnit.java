@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 「飲み物の在庫」管理装置
+ * 「飲み物の在庫」管理装置。
  * @author kazuhito＿m
  */
 public class DrinkStockManagementUnit {
@@ -33,9 +33,9 @@ public class DrinkStockManagementUnit {
     }
 
     /**
-     * スロット群を取得。<br>
-     * 「内部状態」であるスロットを取得するのは、<br>
-     * メンテナンスできるオブジェクトだけにしたいので、<br>
+     * スロット群を取得。<br/>
+     * 「内部状態」であるスロットを取得するのは、<br/>
+     * メンテナンスできるオブジェクトだけにしたいので、<br/>
      * パッケージ同一のクラスのみアクセス可能に。
      * @return スロットのリスト。
      */

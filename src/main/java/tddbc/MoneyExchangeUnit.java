@@ -35,7 +35,7 @@ public class MoneyExchangeUnit {
     }
 
     /**
-     * 貨幣の箱から箱へ指定された金額を移動する。<br>
+     * 貨幣の箱から箱へ指定された金額を移動する。<br/>
      * @param srcBox 移動元の箱。
      * @param dstBox 移動先の箱、。
      * @param amount 移動金額。
@@ -59,8 +59,8 @@ public class MoneyExchangeUnit {
     }
 
     /**
-     * 貨幣の箱から箱へ指定された金額を移動する。<br>
-     * realと銘打ってるのは「引数のListを破壊的に変更する」ため。<br>
+     * 貨幣の箱から箱へ指定された金額を移動する。<br/>
+     * realと銘打ってるのは「引数のListを破壊的に変更する」ため。<br/>
      * 破壊されて困る場合は、クローンするなりして退避したものを寄越すこと推奨。
      * @param srcBox 移動元の箱。
      * @param dstBox 移動先の箱、。
@@ -179,10 +179,10 @@ public class MoneyExchangeUnit {
     }
 
     /**
-     * 通貨箱二つから「指定の小銭を含む両替」を行う。<br>
+     * 通貨箱二つから「指定の小銭を含む両替」を行う。<br/>
      * ※破壊的メソッド。引数のオブジェクトを破壊しつつ進むため、内部メソッドとする。
      * @param srcBox 両替元の箱。
-     * @param dstBox 両替先の箱、。
+     * @param dstBox 両替先の箱。
      * @param intentionAmount 「この細かさが出せるように」という目的の金額。
      * @return 成功判定。両替成功:true。
      */
