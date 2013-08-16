@@ -188,10 +188,16 @@ public class VendingMachineTest {
 		assertThat(sut.getMoneyManager().calcTotalIncome(), is(0));
 	}
 
-	@Ignore
 	@Test
 	public void 幾度かの購入操作後に見合った売上金額が取得できる() {
-		// TODO
+		// arrange
+		sut.receive(_500);
+		// act
+		sut.sale(COLA);
+		sut.sale(COLA);
+		sut.sale(COLA);
+		// assert
+		assertThat(sut.getMoneyManager().calcTotalIncome(), is(360));
 	}
 
 	@Ignore
