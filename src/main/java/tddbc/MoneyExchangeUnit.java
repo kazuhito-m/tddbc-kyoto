@@ -25,7 +25,7 @@ public class MoneyExchangeUnit {
      * @param amount 移動金額。
      * @return 判定。移動可能:true。
      */
-    public Boolean isMoveable(final List<Money> srcBox,
+    public boolean isMoveable(final List<Money> srcBox,
             final List<Money> dstBox, final int amount) {
         // 実際にシミュレーションする。引数の二つの箱をシャローコピーする。
         List<Money> newSrc = new ArrayList<Money>(srcBox);
@@ -250,13 +250,15 @@ public class MoneyExchangeUnit {
         int[] series = new int[Money.values().length];
         // 紙幣・硬貨が小さなもの順に「最小公倍数な両替金額」を検討していく
         for (Money m : Money.values()) {
-            // その通貨で何枚必要かを割り算
-            int div = amount / m.getAmount();
-            if (amount != (m.getAmount() * div)) {
-                div++;
+            // 必要金額を貨幣の額面で割る。余りを保存。
+            final int surplus = amount % m.getAmount(); // 余り
+            // 余りが無ければその硬貨・紙幣の倍数でドンピシャ、余るなら余り分とっぱらって１個分上へ。
+            int minExAble = amount;
+            if (surplus > 0) {
+                minExAble += m.getAmount() - surplus;
             }
             // 最小両替金額を算出
-            series[i++] = m.getAmount() * div;
+            series[i++] = minExAble;
         }
         return series; // 数列を返す。
     }
