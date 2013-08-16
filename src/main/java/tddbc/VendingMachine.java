@@ -55,4 +55,9 @@ public class VendingMachine {
 	public void refund() {
 		moneyManager.refund();
 	}
+
+	public boolean isSellable(DrinkKind cola) {
+		// TODO 自動生成されたメソッド・スタブ
+		return false;
+	}
 }

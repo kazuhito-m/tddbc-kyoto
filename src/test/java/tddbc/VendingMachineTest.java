@@ -2,8 +2,7 @@ package tddbc;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static tddbc.Money._10;
-import static tddbc.Money._50;
+import static tddbc.Money.*;
 
 import java.util.List;
 
@@ -65,10 +64,15 @@ public class VendingMachineTest {
 		assertThat(actual.size(), is(2));
 	}
 
-	@Ignore
 	@Test
 	public void 投入硬貨と在庫でコーラが購入可能かを検知できる() {
-		// TODO
+		// arrange
+		sut.receive(_100);
+		sut.receive(_50);
+		// act
+		boolean actual = sut.isSellable(DrinkKind.COLA);
+		// assert
+		assertThat(actual , is(true));
 	}
 
 	@Ignore
