@@ -58,6 +58,14 @@ public class DrinkStockManagementUnitTest {
 		}
 
 		@Test
+		public void 取り扱っていない種類の在庫の問い合わせは無いと判定() {
+			// act
+			boolean actual = sut.existStock(APPLE_JUICE);
+			// assert
+			assertThat(actual, is(false));
+		}
+
+		@Test
 		public void 指定した種類の在庫を一つ取り出す() {
 			// act
 			Drink actual = sut.takeOut(COLA);
