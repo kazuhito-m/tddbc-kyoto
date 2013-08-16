@@ -58,6 +58,6 @@ public class VendingMachine {
 
 	public boolean isSellable(DrinkKind cola) {
 		// FIXME 仮実装
-		return true;
+		return (moneyManager.calcTotalAmount() > 119);
 	}
 }
