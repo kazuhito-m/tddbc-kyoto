@@ -72,6 +72,10 @@ public class VendingMachine {
 		if (moneyManager.calcTotalAmount() < price) {
 			return false;
 		}
+		// 在庫はあるか。
+		if (!drinkStockManager.existStock(DrinkKind.COLA)) {
+			return false;
+		}
 		// 最後まで来た→販売可能。true返す。
 		return true;
 	}
