@@ -161,7 +161,7 @@ public class VendingMachineTest {
 		// ※何も起きていない…という証明は難しい
 		assertThat(actual , is(false));
 		assertThat(sut.getOutTray().isEmpty(), is(true));
-		assertThat(sut.displayTotalAmount(), is(500));
+		assertThat(sut.displayTotalAmount(), is(110));
 		assertThat(sut.getMoneyManager().calcTotalIncome(), is(0));
 	}
 
