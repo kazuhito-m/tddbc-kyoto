@@ -75,4 +75,14 @@ public class VendingMachine {
 		// 最後まで来た→販売可能。true返す。
 		return true;
 	}
+
+	/**
+	 * 外部からの操作用「在庫管理装置」。<br>
+	 * メンテナンス用の取得口。<br>
+	 * そのため同一パッケージ内(例えばテスト側)からしかアクセス出来無い。
+	 * @return 在庫管理装置オブジェクト。
+	 */
+	protected DrinkStockManagementUnit getDrinkStockManager() {
+		return this.drinkStockManager;
+	}
 }

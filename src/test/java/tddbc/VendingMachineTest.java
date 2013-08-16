@@ -47,7 +47,7 @@ public class VendingMachineTest {
 	public void パスコードを指定しなくては外部から在庫系は制御出来ない() {
 		// TODO
 	}
-	
+
 	@Test
 	public void 有効硬貨を複数回投入した金額が総計に反映されている() {
 		sut.receive(_10);
@@ -72,7 +72,7 @@ public class VendingMachineTest {
 		// act
 		boolean actual = sut.isSellable(DrinkKind.COLA);
 		// assert
-		assertThat(actual , is(true));
+		assertThat(actual, is(true));
 	}
 
 	@Test
@@ -83,13 +83,26 @@ public class VendingMachineTest {
 		// act
 		boolean actual = sut.isSellable(DrinkKind.COLA);
 		// assert
-		assertThat(actual , is(false));
+		assertThat(actual, is(false));
 	}
 
-	@Ignore
 	@Test
 	public void 在庫が無くコーラが買えないことを検知() {
-		// TODO
+		// arrange
+		// 特殊な操作。缶をスロットからしこたま抜く。
+		DrinkStockManagementUnit dsm =sut.getDrinkStockManager(); 
+		while (dsm.existStock(DrinkKind.COLA)) { 
+			dsm.takeOut(DrinkKind.COLA);
+		}
+		// 在庫はカラっぽに。
+		assertThat(dsm.existStock(DrinkKind.COLA) , is(false));
+		sut.receive(_100);
+		sut.receive(_10);
+		sut.receive(_10);
+		// act
+		boolean actual = sut.isSellable(DrinkKind.COLA);
+		// assert
+		assertThat(actual, is(false));
 	}
 
 	@Ignore
@@ -115,13 +128,13 @@ public class VendingMachineTest {
 	public void 購入操作成功後は投入金額が減っている() {
 		// TODO
 	}
-	
+
 	@Ignore
 	@Test
 	public void 投入金額が足りない場合は購入操作しても後何も起きない() {
 		// TODO
 	}
-	
+
 	@Ignore
 	@Test
 	public void 在庫が無い場合は購入操作しても後何も起きない() {
@@ -133,11 +146,11 @@ public class VendingMachineTest {
 	public void 幾度かの購入操作後に見合った売上金額が取得できる() {
 		// TODO
 	}
-	
+
 	@Ignore
 	@Test
 	public void 購入操作後に払い戻し操作で差し引かれたお金がつり銭箱に出る() {
 		// TODO
 	}
-	
+
 }
