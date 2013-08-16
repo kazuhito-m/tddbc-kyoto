@@ -56,7 +56,12 @@ public class VendingMachine {
 		moneyManager.refund();
 	}
 
-	public boolean isSellable(DrinkKind cola) {
+	/**
+	 * 現在の状態で指定された飲み物種を販売可能かを検査する。
+	 * @param kind 購入対象の飲み物種。
+	 * @return 検査結果。可能:true。
+	 */
+	public boolean isSellable(DrinkKind kind) {
 		// FIXME 仮実装
 		return (moneyManager.calcTotalAmount() > 119);
 	}
