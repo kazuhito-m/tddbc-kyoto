@@ -2,7 +2,7 @@ package tddbc;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static tddbc.DrinkKind.COLA;
+import static tddbc.DrinkKind.*;
 import static tddbc.Money._10;
 import static tddbc.Money._100;
 import static tddbc.Money._50;
@@ -111,6 +111,18 @@ public class VendingMachineTest {
 		sut.receive(_10);
 		// act
 		boolean actual = sut.isSellable(COLA);
+		// assert
+		assertThat(actual, is(false));
+	}
+
+	@Test
+	public void 扱えない種類の飲み物も買えないと検知() {
+		// arrange
+		sut.receive(_100);
+		sut.receive(_10);
+		sut.receive(_10);
+		// act
+		boolean actual = sut.isSellable(APPLE_JUICE);
 		// assert
 		assertThat(actual, is(false));
 	}
