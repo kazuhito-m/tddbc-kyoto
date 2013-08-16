@@ -238,7 +238,7 @@ public class VendingMachineTest {
 		List<DrinkKind> actual = sut.displaySellableDrinksNowForYou();
 		// assert
 		assertThat(actual, is(notNullValue()));
-		assertThat(actual.size(), is(3));
+		assertThat(actual.size(), is(2));
 		assertThat(actual, hasItems(COLA,WATER));
 	}
 }

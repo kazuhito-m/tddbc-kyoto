@@ -90,7 +90,7 @@ public class VendingMachine {
 
 	/**
 	 * 飲み物を購入する。(自販機が売る)<br>
-	 * @param kind
+	 * @param kind 対象の飲み物種。
 	 * @return 成功判定。成功:true。
 	 */
 	public boolean sale(DrinkKind kind) {
@@ -108,14 +108,28 @@ public class VendingMachine {
 		return true;
 	}
 
+	/**
+	 * この自販機での「購入可能な飲み物」を一覧表示する。
+	 * @return 買うことのできる飲み物のリスト。
+	 */
 	public List<DrinkKind> displaySellableDrinks() {
 		return drinkStockManager.getValiedDrinks();
 	}
 
+	/**
+	 * この自販機で「現在の状態(投入金額、在庫など)」において「購入可能な飲み物」を一覧表示する。
+	 * @return 買うことのできる飲み物のリスト。
+	 */
 	public List<DrinkKind> displaySellableDrinksNowForYou() {
-		// FIXME 仮実装。
-		return new ArrayList<DrinkKind>(Arrays.asList(new DrinkKind[] {
-				DrinkKind.COLA, DrinkKind.WATER }));
+		List<DrinkKind> validDrinks = new ArrayList<DrinkKind>();
+		// 買うことのできる全飲み物種を回す
+		for (DrinkKind kind : displaySellableDrinks()) {
+			// 個々「購入可能か」メソッドで結果判定
+			if (isSellable(kind)) {
+				validDrinks.add(kind);
+			}
+		}
+		return validDrinks;
 	}
 
 	/**
