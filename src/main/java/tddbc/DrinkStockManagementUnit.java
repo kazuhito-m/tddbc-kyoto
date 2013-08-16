@@ -66,12 +66,14 @@ public class DrinkStockManagementUnit {
 		return null;
 	}
 
-	public int getPrice(DrinkKind cola) {
-		// TODO 仮実装
-		if (cola == DrinkKind.COLA) {
-			return 120;
-		} else {
-			return -1;
+	
+	public int getPrice(DrinkKind kind) {
+		// 価格情報はスロットに保持している。
+		for (DrinkSlot slot : slots) {
+			if (slot.getKind() == kind) {
+				return slot.getPrice(); // 最初のスロットで見つかったものを正する。
+			}
 		}
+		return -1;		// 見つからなければ、不明(-1)を返す。
 	}
 }
