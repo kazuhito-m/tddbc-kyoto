@@ -50,10 +50,8 @@ public class DrinkStockManagementUnit {
      */
     public boolean existStock(DrinkKind kind) {
         for (DrinkSlot slot : slots) {
-            if (slot.getKind() == kind) {
-                if (slot.getStockCount() > 0) {
-                    return true;
-                }
+            if (slot.getKind() == kind && slot.getStockCount() > 0) {
+                return true;
             }
         }
         return false;
