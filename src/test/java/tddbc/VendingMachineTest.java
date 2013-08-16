@@ -2,8 +2,11 @@ package tddbc;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static tddbc.Money.*;
-import static tddbc.DrinkKind.*;
+import static tddbc.DrinkKind.COLA;
+import static tddbc.Money._10;
+import static tddbc.Money._100;
+import static tddbc.Money._50;
+import static tddbc.Money._500;
 
 import java.util.List;
 
@@ -47,17 +50,18 @@ public class VendingMachineTest {
 		assertThat(actual.size(), is(0));
 	}
 
-	@Ignore
-	@Test
-	public void パスコードを指定しなくては外部から金額系は制御出来ない() {
-		// TODO
-	}
-
-	@Ignore
-	@Test
-	public void パスコードを指定しなくては外部から在庫系は制御出来ない() {
-		// TODO
-	}
+	// TODO 少し保留。
+	// @Ignore
+	// @Test
+	// public void パスコードを指定しなくては外部から金額系は制御出来ない() {
+	// // TODO
+	// }
+	//
+	// @Ignore
+	// @Test
+	// public void パスコードを指定しなくては外部から在庫系は制御出来ない() {
+	// // TODO
+	// }
 
 	@Test
 	public void 有効硬貨を複数回投入した金額が総計に反映されている() {
@@ -213,7 +217,7 @@ public class VendingMachineTest {
 		// つり銭箱の合計計算。
 		int actual = 0;
 		for (Object o : sut.getChangeBox()) {
-			actual+= ((Money) o).getAmount();
+			actual += ((Money) o).getAmount();
 		}
 		assertThat(actual, is(260));
 	}
