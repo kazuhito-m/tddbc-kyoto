@@ -90,12 +90,12 @@ public class VendingMachineTest {
 	public void 在庫が無くコーラが買えないことを検知() {
 		// arrange
 		// 特殊な操作。缶をスロットからしこたま抜く。
-		DrinkStockManagementUnit dsm =sut.getDrinkStockManager(); 
-		while (dsm.existStock(DrinkKind.COLA)) { 
+		DrinkStockManagementUnit dsm = sut.getDrinkStockManager();
+		while (dsm.existStock(DrinkKind.COLA)) {
 			dsm.takeOut(DrinkKind.COLA);
 		}
 		// 在庫はカラっぽに。
-		assertThat(dsm.existStock(DrinkKind.COLA) , is(false));
+		assertThat(dsm.existStock(DrinkKind.COLA), is(false));
 		sut.receive(_100);
 		sut.receive(_10);
 		sut.receive(_10);
@@ -105,10 +105,17 @@ public class VendingMachineTest {
 		assertThat(actual, is(false));
 	}
 
-	@Ignore
 	@Test
 	public void 金額と在庫ともに足りた状態で購入操作ができる() {
-		// TODO
+		// arrange
+		sut.receive(_500);
+		// act
+		boolean actual = sut.sale(DrinkKind.COLA);
+		// assert
+		assertThat(actual, is(true));
+		assertThat(sut.getOutTray().size(), is(1));
+		Drink actualDrink = sut.getOutTray().get(0);
+		assertThat(actualDrink.getCaption(), is("コーラ"));
 	}
 
 	@Ignore

@@ -89,4 +89,14 @@ public class VendingMachine {
 	protected DrinkStockManagementUnit getDrinkStockManager() {
 		return this.drinkStockManager;
 	}
+
+	public boolean sale(DrinkKind cola) {
+		// TODO 自動生成されたメソッド・スタブ
+		return false;
+	}
+
+	public List<Drink> getOutTray() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
 }
