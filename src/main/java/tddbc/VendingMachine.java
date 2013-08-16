@@ -80,7 +80,7 @@ public class VendingMachine {
 			return false;
 		}
 		// 在庫はあるか。
-		if (!drinkStockManager.existStock(DrinkKind.COLA)) {
+		if (!drinkStockManager.existStock(kind)) {
 			return false;
 		}
 		// 最後まで来た→販売可能。true返す。
