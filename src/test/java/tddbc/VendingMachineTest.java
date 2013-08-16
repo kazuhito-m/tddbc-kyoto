@@ -1,14 +1,19 @@
 package tddbc;
 
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsCollectionContaining.hasItems;
 import static org.junit.Assert.assertThat;
 import static tddbc.DrinkKind.APPLE_JUICE;
 import static tddbc.DrinkKind.COLA;
+import static tddbc.DrinkKind.REDBULL;
+import static tddbc.DrinkKind.WATER;
 import static tddbc.Money._10;
 import static tddbc.Money._100;
 import static tddbc.Money._50;
 import static tddbc.Money._500;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -220,12 +225,17 @@ public class VendingMachineTest {
 		}
 		assertThat(actual, is(260));
 	}
-	
+
 	@Test
 	public void この自動販売機で取り扱っている飲み物３種のリストを取得できる() {
-		// TODO テスト
+		// act
+		List<DrinkKind> actual = sut.getValiedDrinks();
+		// assert
+		assertThat(actual, is(notNullValue()));
+		assertThat(actual.size(), is(3));
+		assertThat(actual, hasItems(COLA, REDBULL, WATER));
 	}
-	
+
 	@Test
 	public void 現在の投入金額と在庫で購入可能なドリンクのリストを取得できる() {
 		// TODO テスト

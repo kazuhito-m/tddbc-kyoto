@@ -127,4 +127,9 @@ public class VendingMachine {
 		return this.moneyManager;
 	}
 
+	public List<DrinkKind> getValiedDrinks() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
 }
