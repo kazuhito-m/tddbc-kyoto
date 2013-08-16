@@ -4,16 +4,9 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsCollectionContaining.hasItems;
 import static org.junit.Assert.assertThat;
-import static tddbc.DrinkKind.APPLE_JUICE;
-import static tddbc.DrinkKind.COLA;
-import static tddbc.DrinkKind.REDBULL;
-import static tddbc.DrinkKind.WATER;
-import static tddbc.Money._10;
-import static tddbc.Money._100;
-import static tddbc.Money._50;
-import static tddbc.Money._500;
+import static tddbc.DrinkKind.*;
+import static tddbc.Money.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
