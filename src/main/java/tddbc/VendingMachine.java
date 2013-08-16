@@ -94,7 +94,12 @@ public class VendingMachine {
 	 */
 	public boolean sale(DrinkKind kind) {
 		// 在庫から一つ取り出す。
-		outTray.add(drinkStockManager.takeOut(kind));
+		Drink saledDrink = drinkStockManager.takeOut(kind);
+		// 買ったお金を売上処理する。(飲み物は自身の販売価格を知っている)
+		moneyManager.withdrawToIncome(saledDrink.getAmountOfTime());
+		// 商品トレイに購入処理した飲み物を流す。
+		outTray.add(saledDrink);
+		// 成功を返す。
 		return true;
 	}
 
