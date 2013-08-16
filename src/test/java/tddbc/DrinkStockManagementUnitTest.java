@@ -82,6 +82,14 @@ public class DrinkStockManagementUnitTest {
 			// assert
 			assertThat(actual, is(nullValue()));
 		}
+		
+		@Test
+		public void 飲み物の種類から価格を知る事ができる() {
+			// act 
+			int actual = sut.getPrice(COLA);
+			// assert
+			assertThat(actual , is(120));
+		}
 	}
 
 	public static class 在庫を空まで減らした状態 {

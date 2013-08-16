@@ -65,4 +65,9 @@ public class DrinkStockManagementUnit {
 		}
 		return null;
 	}
+
+	public int getPrice(DrinkKind cola) {
+		// TODO 自動生成されたメソッド・スタブ
+		return 0;
+	}
 }
