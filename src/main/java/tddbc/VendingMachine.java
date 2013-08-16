@@ -108,4 +108,14 @@ public class VendingMachine {
 		return this.drinkStockManager;
 	}
 
+	/**
+	 * 外部からの操作用「お金管理装置」。<br>
+	 * メンテナンス用の取得口。<br>
+	 * そのため同一パッケージ内(例えばテスト側)からしかアクセス出来無い。
+	 * @return お金管理装置オブジェクト。
+	 */
+	protected MoneyManagementUnit getMoneyManager() {
+		return this.moneyManager;
+	}
+
 }

@@ -126,14 +126,18 @@ public class VendingMachineTest {
 		// act
 		sut.sale(COLA);
 		// assert
-		DrinkSlot slot  = sut.getDrinkStockManager().getSlots().get(0);
-		assertThat(slot.getStockCount() ,  is(4));
+		DrinkSlot slot = sut.getDrinkStockManager().getSlots().get(0);
+		assertThat(slot.getStockCount(), is(4));
 	}
 
-	@Ignore
 	@Test
 	public void 購入操作成功後は売上金額が増えている() {
-		// TODO
+		// arrange
+		sut.receive(_500);
+		// act
+		sut.sale(COLA);
+		// assert
+		assertThat(sut.getMoneyManager().calcTotalIncome(), is(120));
 	}
 
 	@Ignore
