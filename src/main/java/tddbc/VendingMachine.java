@@ -128,8 +128,7 @@ public class VendingMachine {
 	}
 
 	public List<DrinkKind> getValiedDrinks() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+		return drinkStockManager.getValiedDrinks();
 	}
 
 }
