@@ -10,7 +10,6 @@ import static tddbc.DrinkKind.COLA;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
@@ -36,7 +35,7 @@ public class DrinkStockManagementUnitTest {
 			// act
 			List<DrinkSlot> actual = sut.getSlots();
 			// assert
-			assertThat(actual.size(), is(1));
+			assertThat(actual.size(), is(3));
 		}
 
 		@Test

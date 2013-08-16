@@ -1,10 +1,6 @@
 package tddbc;
 
-import static tddbc.Money._10;
-import static tddbc.Money._100;
-import static tddbc.Money._1000;
-import static tddbc.Money._50;
-import static tddbc.Money._500;
+import static tddbc.Money.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;

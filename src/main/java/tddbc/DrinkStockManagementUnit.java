@@ -3,6 +3,8 @@ package tddbc;
 import java.util.ArrayList;
 import java.util.List;
 
+import static tddbc.DrinkKind.*;
+
 /**
  * 「飲み物の在庫」管理装置
  * @author kazuhito＿m
@@ -14,14 +16,20 @@ public class DrinkStockManagementUnit {
 
 	/** コンストラクタ。 */
 	public DrinkStockManagementUnit() {
-		// 現仕様では、決め打ちで１スロット、中身も限定。
-		DrinkSlot slot = new DrinkSlot();
-		slot.setKind(DrinkKind.COLA);
-		slot.setPrice(120);
-		for (int i = 0; i < 5; i++) {
-			slot.add(new Drink(slot.getKind()));
+		// イニシャライズする候補の飲み物種類と価格
+		DrinkKind dks[] = { COLA, REDBULL, WATER };
+		int prs[] = { 120, 200, 100 };
+		
+		// 現仕様では、決め打ちで3スロット、中身も限定。
+		for (int i = 0; i < dks.length; i++) {
+			DrinkSlot slot = new DrinkSlot();
+			slot.setKind(dks[i]);
+			slot.setPrice(prs[i]);
+			for (int j = 0; j < 5; j++) {
+				slot.add(new Drink(slot.getKind()));
+			}
+			slots.add(slot);
 		}
-		slots.add(slot);
 	}
 
 	/**
@@ -77,7 +85,7 @@ public class DrinkStockManagementUnit {
 		for (DrinkSlot slot : slots) {
 			if (slot.getKind() == kind) {
 				// 最初のスロットで見つかったものを正する。
-				return slot.getPrice(); 
+				return slot.getPrice();
 			}
 		}
 		return -1; // 見つからなければ、不明(-1)を返す。
