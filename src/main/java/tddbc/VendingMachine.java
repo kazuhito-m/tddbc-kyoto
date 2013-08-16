@@ -127,7 +127,7 @@ public class VendingMachine {
 		return this.moneyManager;
 	}
 
-	public List<DrinkKind> getValiedDrinks() {
+	public List<DrinkKind> displaySellableDrinks() {
 		return drinkStockManager.getValiedDrinks();
 	}
 

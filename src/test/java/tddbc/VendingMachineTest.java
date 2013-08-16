@@ -222,7 +222,7 @@ public class VendingMachineTest {
 	@Test
 	public void この自動販売機で取り扱っている飲み物３種のリストを取得できる() {
 		// act
-		List<DrinkKind> actual = sut.getValiedDrinks();
+		List<DrinkKind> actual = sut.displaySellableDrinks();
 		// assert
 		assertThat(actual, is(notNullValue()));
 		assertThat(actual.size(), is(3));
