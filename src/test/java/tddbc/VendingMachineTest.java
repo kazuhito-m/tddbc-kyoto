@@ -2,7 +2,8 @@ package tddbc;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static tddbc.DrinkKind.*;
+import static tddbc.DrinkKind.APPLE_JUICE;
+import static tddbc.DrinkKind.COLA;
 import static tddbc.Money._10;
 import static tddbc.Money._100;
 import static tddbc.Money._50;
@@ -11,7 +12,6 @@ import static tddbc.Money._500;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class VendingMachineTest {
