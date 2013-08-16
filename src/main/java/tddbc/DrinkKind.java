@@ -11,7 +11,7 @@ public enum DrinkKind {
     private final String caption;
 
     /** コンストラクタ。 */
-    DrinkKind(String caption) {
+    DrinkKind(final String caption) {
         this.caption = caption;
     }
 

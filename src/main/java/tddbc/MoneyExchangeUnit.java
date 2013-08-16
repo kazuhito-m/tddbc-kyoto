@@ -25,7 +25,8 @@ public class MoneyExchangeUnit {
      * @param amount 移動金額。
      * @return 判定。移動可能:true。
      */
-    public Boolean isMoveable(List<Money> srcBox, List<Money> dstBox, int amount) {
+    public Boolean isMoveable(final List<Money> srcBox,
+            final List<Money> dstBox, final int amount) {
         // 実際にシミュレーションする。引数の二つの箱をシャローコピーする。
         List<Money> newSrc = new ArrayList<Money>(srcBox);
         List<Money> newDst = new ArrayList<Money>(dstBox);
@@ -40,7 +41,8 @@ public class MoneyExchangeUnit {
      * @param amount 移動金額。
      * @return 成功判定。移動成功:true。
      */
-    public boolean moveMoney(List<Money> srcBox, List<Money> dstBox, int amount) {
+    public boolean moveMoney(final List<Money> srcBox,
+            final List<Money> dstBox, final int amount) {
         // 引数の二つの箱をシャローコピーする。
         List<Money> newSrc = new ArrayList<Money>(srcBox);
         List<Money> newDst = new ArrayList<Money>(dstBox);
@@ -65,8 +67,8 @@ public class MoneyExchangeUnit {
      * @param amount 移動金額。
      * @return 貨幣が崩せず移動できなかった残りの金額。
      */
-    protected boolean realMoveMoney(List<Money> srcBox, List<Money> dstBox,
-            int amount) {
+    protected boolean realMoveMoney(final List<Money> srcBox,
+            final List<Money> dstBox, final int amount) {
 
         // 処理前チェック。移動元に移動する分の金額があるか。
         if (sumAmount(srcBox) < amount) {
@@ -110,7 +112,9 @@ public class MoneyExchangeUnit {
      * @param moneyBox 貨幣箱。
      * @return 削除した分をいれた箱。
      */
-    protected List<Money> fuzzyRemove(List<Money> moneyBox, int amount) {
+    protected List<Money> fuzzyRemove(final List<Money> moneyBox,
+            final int amount) {
+        int restAmount = amount; // 残り金額。
         // 移動元の貨幣箱を昇順ソート。
         Collections.sort(moneyBox);
         // 後ろから回す(降順に要素を取り出す)
@@ -118,11 +122,11 @@ public class MoneyExchangeUnit {
         for (int i = moneyBox.size() - 1; i >= 0; i--) {
             Money m = moneyBox.get(i);
             // 移動金額を越えないものなら
-            if (amount >= m.getAmount()) {
+            if (restAmount >= m.getAmount()) {
                 // その貨幣は移動
                 removeBox.add(moneyBox.remove(i));
                 // 金額から減額。
-                amount -= m.getAmount();
+                restAmount -= m.getAmount();
             }
         }
         return removeBox;
@@ -133,7 +137,7 @@ public class MoneyExchangeUnit {
      * @param moneyBox 対象となる通貨の箱。
      * @return 合算金額。
      */
-    public int sumAmount(List<Money> moneyBox) {
+    public int sumAmount(final List<Money> moneyBox) {
         int totalAmount = 0;
         for (Money m : moneyBox) {
             totalAmount += m.getAmount();
@@ -148,8 +152,8 @@ public class MoneyExchangeUnit {
      * @param intentionAmount 「この細かさが出せるように」という目的の金額。
      * @return 判定。両替可能:true。
      */
-    public boolean isExchangeable(List<Money> srcBox, List<Money> dstBox,
-            int intentionAmount) {
+    public boolean isExchangeable(final List<Money> srcBox,
+            final List<Money> dstBox, final int intentionAmount) {
         // お試し用通貨箱。(状態が変わってもよいようにシャローコピー)
         List<Money> srcTest = new ArrayList<Money>(srcBox);
         List<Money> dstTest = new ArrayList<Money>(dstBox);
@@ -164,8 +168,8 @@ public class MoneyExchangeUnit {
      * @param intentionAmount 「この細かさが出せるように」という目的の金額。
      * @return 成功判定。両替成功:true。
      */
-    public boolean exchange(List<Money> srcBox, List<Money> dstBox,
-            int intentionAmount) {
+    public boolean exchange(final List<Money> srcBox, final List<Money> dstBox,
+            final int intentionAmount) {
         // まず、シミュレーションを行う。
         if (!isExchangeable(srcBox, dstBox, intentionAmount)) {
             return false;
@@ -182,8 +186,8 @@ public class MoneyExchangeUnit {
      * @param intentionAmount 「この細かさが出せるように」という目的の金額。
      * @return 成功判定。両替成功:true。
      */
-    protected boolean realExchange(List<Money> srcBox, List<Money> dstBox,
-            int intentionAmount) {
+    protected boolean realExchange(final List<Money> srcBox,
+            final List<Money> dstBox, final int intentionAmount) {
 
         // まずは「両替を持ちかける側に、希望の細かさの小銭がある」か。
         if (!isGettable(dstBox, intentionAmount)) {
@@ -228,7 +232,8 @@ public class MoneyExchangeUnit {
      * @param intentionAmount 指定金額。
      * @return 取得できるか否か。取得可能:true
      */
-    public boolean isGettable(List<Money> moneyBox, int intentionAmount) {
+    public boolean isGettable(final List<Money> moneyBox,
+            final int intentionAmount) {
         // お試し用通貨箱。
         List<Money> hitTest = new ArrayList<Money>(moneyBox); // 状態が変わってもよいようにシャローコピー
         // 端数無(余り0円)で削除できるか否かを真偽値で返す。
@@ -240,7 +245,7 @@ public class MoneyExchangeUnit {
      * @param amount 両替に含んでおきたい金額。
      * @return 数列(List).
      */
-    public int[] createMinExchangeSeries(int amount) {
+    public int[] createMinExchangeSeries(final int amount) {
         int i = 0;
         int[] series = new int[Money.values().length];
         // 紙幣・硬貨が小さなもの順に「最小公倍数な両替金額」を検討していく
@@ -261,7 +266,7 @@ public class MoneyExchangeUnit {
      * @param intentionAmount 両替に含んでおきたい金額。
      * @return 作成された貨幣ボックス。
      */
-    public List<Money> createInfinityExchangeBox(int intentionAmount) {
+    public List<Money> createInfinityExchangeBox(final int intentionAmount) {
         List<Money> infinityExBox = new ArrayList<Money>(
                 Arrays.asList(new Money[] { _500, _100, _100, _100, _100, _50,
                         _10, _10, _10, _10, _10 }));

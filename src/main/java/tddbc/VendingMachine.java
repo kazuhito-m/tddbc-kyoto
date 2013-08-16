@@ -52,7 +52,7 @@ public class VendingMachine {
      * 
      * @param money
      */
-    public void receive(Object money) {
+    public void receive(final Object money) {
         moneyManager.receive(money);
     }
 
@@ -68,7 +68,7 @@ public class VendingMachine {
      * @param kind 購入対象の飲み物種。
      * @return 検査結果。可能:true。
      */
-    public boolean isSellable(DrinkKind kind) {
+    public boolean isSellable(final DrinkKind kind) {
         // 在庫管理装置から、指定された飲み物種の価格を取得する。
         int price = drinkStockManager.getPrice(kind);
         // 管理外なら、無論販売不可能。
@@ -92,7 +92,7 @@ public class VendingMachine {
      * @param kind 対象の飲み物種。
      * @return 成功判定。成功:true。
      */
-    public boolean sale(DrinkKind kind) {
+    public boolean sale(final DrinkKind kind) {
         // 最初に「購入できるか否か」は自分でもチェック
         if (!isSellable(kind)) {
             return false;

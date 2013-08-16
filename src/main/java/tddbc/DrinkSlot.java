@@ -26,7 +26,7 @@ public class DrinkSlot {
      * 補充。
      * @param drink 飲み物。
      */
-    public void add(Drink drink) {
+    public void add(final Drink drink) {
         drink.setKind(kind);
         drinks.add(drink);
     }
@@ -41,7 +41,7 @@ public class DrinkSlot {
 
     // プロパティ群
 
-    public void setKind(DrinkKind kind) {
+    public void setKind(final DrinkKind kind) {
         this.kind = kind;
     }
 
@@ -49,7 +49,7 @@ public class DrinkSlot {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(final int price) {
         this.price = price;
     }
 

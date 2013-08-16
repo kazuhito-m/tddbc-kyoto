@@ -49,7 +49,7 @@ public class MoneyManagementUnit {
      * (お金などの)投入を受ける。
      * @param money 投入するモノ。
      */
-    public void receive(Object money) {
+    public void receive(final Object money) {
         if (money instanceof Money) {
             depositPool.add((Money) money);
         } else {
@@ -71,7 +71,7 @@ public class MoneyManagementUnit {
      * @param amount 指定金額。
      * @return 判定結果。プールしている。
      */
-    public Boolean isDeposited(int amount) {
+    public Boolean isDeposited(final int amount) {
         return (exchanger.sumAmount(depositPool) >= amount);
     }
 
@@ -80,7 +80,7 @@ public class MoneyManagementUnit {
      * @param amount 指定金額。
      * @return 成功判定。成功:true。
      */
-    public boolean withdrawToIncome(int amount) {
+    public boolean withdrawToIncome(final int amount) {
         return exchanger.moveMoney(depositPool, incomeBox, amount);
     }
 }

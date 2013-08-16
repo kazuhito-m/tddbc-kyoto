@@ -143,7 +143,7 @@ public class MoneyManagementUnitTest {
                 { "＄", 0 } };
 
         @Theory
-        public void お金以外を入れたらトータル金額に加算されない(Object[] values) {
+        public void お金以外を入れたらトータル金額に加算されない(final Object[] values) {
             // arrange
             sut.receive(values[0]);
             int expected = (Integer) values[1];
@@ -154,7 +154,7 @@ public class MoneyManagementUnitTest {
         }
 
         @Theory
-        public void お金以外を投入するとつり銭箱へ吐き出す(Object[] values) {
+        public void お金以外を投入するとつり銭箱へ吐き出す(final Object[] values) {
             // arrange
             sut.receive(values[0]);
             // act

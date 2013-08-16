@@ -48,7 +48,7 @@ public class DrinkStockManagementUnit {
      * @param kind 飲み物種類。
      * @return 判定結果。在庫あり:true
      */
-    public boolean existStock(DrinkKind kind) {
+    public boolean existStock(final DrinkKind kind) {
         for (DrinkSlot slot : slots) {
             if (slot.getKind() == kind && slot.getStockCount() > 0) {
                 return true;
@@ -63,7 +63,7 @@ public class DrinkStockManagementUnit {
      * @param kind 飲み物種類。
      * @return 取り出した飲み物。在庫が無い場合:null。
      */
-    public Drink takeOut(DrinkKind kind) {
+    public Drink takeOut(final DrinkKind kind) {
         for (DrinkSlot slot : slots) {
             if (slot.getKind() == kind) {
                 return slot.takeOut();
@@ -78,7 +78,7 @@ public class DrinkStockManagementUnit {
      * @param kind 飲み物種類。
      * @return 価格。見つからない(管理対象外の飲み物)なら-1を返す。
      */
-    public int getPrice(DrinkKind kind) {
+    public int getPrice(final DrinkKind kind) {
         // 価格情報はスロットに保持している。
         for (DrinkSlot slot : slots) {
             if (slot.getKind() == kind) {

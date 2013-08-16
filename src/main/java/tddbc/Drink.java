@@ -14,7 +14,7 @@ public class Drink {
     private int amountOfTime;
 
     /** コンストラクタ */
-    public Drink(DrinkKind kind) {
+    public Drink(final DrinkKind kind) {
         this.kind = kind;
     }
 
@@ -38,7 +38,7 @@ public class Drink {
      * 時価の変更。
      * @param amountOfTime 新しい金額。
      */
-    protected void setAmountOfTime(int amountOfTime) {
+    protected void setAmountOfTime(final int amountOfTime) {
         this.amountOfTime = amountOfTime;
     }
 
@@ -46,7 +46,7 @@ public class Drink {
      * 「ジュースの種類」の変更。
      * @param kind 新しい種類。
      */
-    protected void setKind(DrinkKind kind) {
+    protected void setKind(final DrinkKind kind) {
         this.kind = kind;
     }
 

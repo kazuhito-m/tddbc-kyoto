@@ -35,7 +35,7 @@ public class MoneyExchangeUnitTest {
     }
 
     /** 通貨の箱セットアップ。 */
-    private void boxSetup(List<Money> moneyBox) {
+    private void boxSetup(final List<Money> moneyBox) {
         for (Money m : Money.values()) {
             moneyBox.add(m);
         }
