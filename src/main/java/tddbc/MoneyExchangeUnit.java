@@ -1,6 +1,10 @@
 package tddbc;
 
-import static tddbc.Money.*;
+import static tddbc.Money._10;
+import static tddbc.Money._100;
+import static tddbc.Money._1000;
+import static tddbc.Money._50;
+import static tddbc.Money._500;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -94,9 +98,8 @@ public class MoneyExchangeUnit {
 				exchange(srcBox, infinityExBox, restAmount);
 			}
 			// 両替成功。余ってる金額も移動。
-			if (!dstBox.addAll(fuzzyRemove(srcBox, amount))) {
-				return false;	// 紙幣・硬貨の数値以下の移動をしようとする場合、ここで引っかかる。
-			}
+			List<Money> moveMoney = fuzzyRemove(srcBox, restAmount);
+			dstBox.addAll(moveMoney);
 		}
 		// ここまで来たなら処理に落ち度なし。成功。
 		return true;
