@@ -66,14 +66,20 @@ public class DrinkStockManagementUnit {
 		return null;
 	}
 
-	
+	/**
+	 * 指定された飲み物種の「在庫管理中の価格」を返す。<br>
+	 * 見つからない場合、不明とし-1を返す。
+	 * @param kind 飲み物種類。
+	 * @return 価格。見つからない(管理対象外の飲み物)なら-1を返す。
+	 */
 	public int getPrice(DrinkKind kind) {
 		// 価格情報はスロットに保持している。
 		for (DrinkSlot slot : slots) {
 			if (slot.getKind() == kind) {
-				return slot.getPrice(); // 最初のスロットで見つかったものを正する。
+				// 最初のスロットで見つかったものを正する。
+				return slot.getPrice(); 
 			}
 		}
-		return -1;		// 見つからなければ、不明(-1)を返す。
+		return -1; // 見つからなければ、不明(-1)を返す。
 	}
 }
