@@ -20,6 +20,16 @@ public class VendingMachineTest {
 	public void setUp() {
 		sut = new VendingMachine();
 	}
+	
+	/** ヘルパーメソッド「在庫を吐き出させる」。 */
+	private void clearStock() {
+		DrinkStockManagementUnit dsm = sut.getDrinkStockManager();
+		while (dsm.existStock(COLA)) {
+			dsm.takeOut(COLA);
+		}
+		// 在庫はカラっぽに。
+		assertThat(dsm.existStock(COLA), is(false));
+	}
 
 	@Test
 	public void トータル金額を確認できる() {
@@ -91,12 +101,7 @@ public class VendingMachineTest {
 	public void 在庫が無くコーラが買えないことを検知() {
 		// arrange
 		// 特殊な操作。缶をスロットからしこたま抜く。
-		DrinkStockManagementUnit dsm = sut.getDrinkStockManager();
-		while (dsm.existStock(COLA)) {
-			dsm.takeOut(COLA);
-		}
-		// 在庫はカラっぽに。
-		assertThat(dsm.existStock(COLA), is(false));
+		clearStock();
 		sut.receive(_100);
 		sut.receive(_10);
 		sut.receive(_10);
@@ -165,10 +170,22 @@ public class VendingMachineTest {
 		assertThat(sut.getMoneyManager().calcTotalIncome(), is(0));
 	}
 
-	@Ignore
 	@Test
 	public void 在庫が無い場合は購入操作しても後何も起きない() {
-		// TODO
+		// arrange
+		// 特殊な操作。缶をスロットからしこたま抜く。
+		clearStock();
+		sut.receive(_100);
+		sut.receive(_10);
+		sut.receive(_10);		// 金額は足りている。
+		// act
+		boolean actual = sut.sale(COLA);
+		// assert
+		// ※何も起きていない…という証明は難しい
+		assertThat(actual , is(false));
+		assertThat(sut.getOutTray().isEmpty(), is(true));
+		assertThat(sut.displayTotalAmount(), is(120));
+		assertThat(sut.getMoneyManager().calcTotalIncome(), is(0));
 	}
 
 	@Ignore

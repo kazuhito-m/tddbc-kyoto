@@ -93,6 +93,10 @@ public class VendingMachine {
 	 * @return 成功判定。成功:true。
 	 */
 	public boolean sale(DrinkKind kind) {
+		// 最初に「購入できるか否か」は自分でもチェック
+		if (!isSellable(kind)) {
+			return false;
+		}
 		// 在庫から一つ取り出す。
 		Drink saledDrink = drinkStockManager.takeOut(kind);
 		// 買ったお金を売上処理する。(飲み物は自身の販売価格を知っている)
