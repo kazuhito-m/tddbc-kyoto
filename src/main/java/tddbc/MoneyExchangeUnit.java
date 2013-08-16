@@ -99,6 +99,10 @@ public class MoneyExchangeUnit {
 			}
 			// 両替成功。余ってる金額も移動。
 			List<Money> moveMoney = fuzzyRemove(srcBox, restAmount);
+			// １円とか「もう貨幣の無い移動」を強いてきているようであれば…
+			if (sumAmount(moveMoney) != restAmount) {
+				return false;	// エラーとする。
+			}
 			dstBox.addAll(moveMoney);
 		}
 		// ここまで来たなら処理に落ち度なし。成功。

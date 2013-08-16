@@ -20,7 +20,7 @@ public class VendingMachineTest {
 	public void setUp() {
 		sut = new VendingMachine();
 	}
-	
+
 	/** ヘルパーメソッド「在庫を吐き出させる」。 */
 	private void clearStock() {
 		DrinkStockManagementUnit dsm = sut.getDrinkStockManager();
@@ -164,7 +164,7 @@ public class VendingMachineTest {
 		boolean actual = sut.sale(COLA);
 		// assert
 		// ※何も起きていない…という証明は難しい
-		assertThat(actual , is(false));
+		assertThat(actual, is(false));
 		assertThat(sut.getOutTray().isEmpty(), is(true));
 		assertThat(sut.displayTotalAmount(), is(110));
 		assertThat(sut.getMoneyManager().calcTotalIncome(), is(0));
@@ -177,12 +177,12 @@ public class VendingMachineTest {
 		clearStock();
 		sut.receive(_100);
 		sut.receive(_10);
-		sut.receive(_10);		// 金額は足りている。
+		sut.receive(_10); // 金額は足りている。
 		// act
 		boolean actual = sut.sale(COLA);
 		// assert
 		// ※何も起きていない…という証明は難しい
-		assertThat(actual , is(false));
+		assertThat(actual, is(false));
 		assertThat(sut.getOutTray().isEmpty(), is(true));
 		assertThat(sut.displayTotalAmount(), is(120));
 		assertThat(sut.getMoneyManager().calcTotalIncome(), is(0));
@@ -200,10 +200,21 @@ public class VendingMachineTest {
 		assertThat(sut.getMoneyManager().calcTotalIncome(), is(360));
 	}
 
-	@Ignore
 	@Test
 	public void 購入操作後に払い戻し操作で差し引かれたお金がつり銭箱に出る() {
-		// TODO
+		// arrange
+		sut.receive(_500);
+		sut.sale(COLA);
+		sut.sale(COLA);
+		// act
+		sut.refund();
+		// assert
+		assertThat(sut.getChangeBox().isEmpty(), is(false));
+		// つり銭箱の合計計算。
+		int actual = 0;
+		for (Object o : sut.getChangeBox()) {
+			actual+= ((Money) o).getAmount();
+		}
+		assertThat(actual, is(260));
 	}
-
 }
