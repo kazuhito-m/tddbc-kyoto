@@ -91,8 +91,15 @@ public class DrinkStockManagementUnit {
 		return -1; // 見つからなければ、不明(-1)を返す。
 	}
 
+	/**
+	 * この自販機(スロット群)で取り扱っている飲み物種のリストを返す。
+	 * @return　有効飲み物種のリスト。
+	 */
 	public List<DrinkKind> getValiedDrinks() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+		List<DrinkKind> kinds = new ArrayList<DrinkKind>();
+		for (DrinkSlot slot : slots) {
+			kinds.add(slot.getKind());
+		}
+		return kinds;
 	}
 }
