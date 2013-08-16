@@ -119,10 +119,15 @@ public class VendingMachineTest {
 		assertThat(actualDrink.getCaption(), is("コーラ"));
 	}
 
-	@Ignore
 	@Test
 	public void 購入操作成功後は在庫が減っている() {
-		// TODO
+		// arrange
+		sut.receive(_500);
+		// act
+		sut.sale(COLA);
+		// assert
+		DrinkSlot slot  = sut.getDrinkStockManager().getSlots().get(0);
+		assertThat(slot.getStockCount() ,  is(4));
 	}
 
 	@Ignore
