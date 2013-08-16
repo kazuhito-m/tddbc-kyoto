@@ -62,7 +62,17 @@ public class VendingMachine {
 	 * @return 検査結果。可能:true。
 	 */
 	public boolean isSellable(DrinkKind kind) {
-		// FIXME 仮実装
-		return (moneyManager.calcTotalAmount() > 119);
+		// 在庫管理装置から、指定された飲み物種の価格を取得する。
+		int price = drinkStockManager.getPrice(kind);
+		// 管理外なら、無論販売不可能。
+		if (price  == -1) {
+			return false;
+		}
+		// 現在の投入金額はそれを買うに十分なお金か否か。
+		if (moneyManager.calcTotalAmount() < price) {
+			return false;
+		}
+		// 最後まで来た→販売可能。true返す。
+		return true;
 	}
 }
