@@ -25,7 +25,7 @@ public class MoneyExchangeUnit {
     /**
      * 指定された金額が移動可能かを判定する。
      * @param srcBox 移動元の箱。
-     * @param dstBox 移動先の箱、。
+     * @param dstBox 移動先の箱。
      * @param amount 移動金額。
      * @return 判定。移動可能:true。
      */
@@ -276,7 +276,7 @@ public class MoneyExchangeUnit {
     /**
      * 硬貨紙幣ごとの最小両替金額の数列を作成する。
      * @param amount 両替に含んでおきたい金額。
-     * @return 数列(List).
+     * @return 数列(List)。
      */
     public final int[] createMinExchangeSeries(final int amount) {
         int i = 0;

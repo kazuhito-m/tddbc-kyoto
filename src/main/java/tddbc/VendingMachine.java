@@ -25,7 +25,7 @@ public class VendingMachine {
 
     /**
      * 総合計額を表示する。
-     * @return
+     * @return 合計金額数値。
      */
     public final int displayTotalAmount() {
         return moneyManager.calcTotalAmount();
@@ -33,7 +33,7 @@ public class VendingMachine {
 
     /**
      * つり銭箱を返す。
-     * @return
+     * @return つり銭箱オブジェクト。
      */
     public final List<Object> getChangeBox() {
         return moneyManager.getChangeBox();
@@ -49,8 +49,7 @@ public class VendingMachine {
 
     /**
      * (お金などの)投入を受ける。
-     * 
-     * @param money
+     * @param money 投入するお金。
      */
     public final void receive(final Object money) {
         moneyManager.receive(money);

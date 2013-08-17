@@ -48,7 +48,7 @@ public class DrinkStockManagementUnit {
     /**
      * 指定した飲み物種類で在庫があるかを検査。
      * @param kind 飲み物種類。
-     * @return 判定結果。在庫あり:true
+     * @return 判定結果。在庫あり:true。
      */
     public final boolean existStock(final DrinkKind kind) {
         for (DrinkSlot slot : slots) {

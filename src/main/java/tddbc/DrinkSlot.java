@@ -41,14 +41,26 @@ public class DrinkSlot {
 
     // プロパティ群
 
+    /**
+     * スロットで扱う飲み物の種類。
+     * @param kind 飲み物の種類。
+     */
     public void setKind(final DrinkKind kind) {
         this.kind = kind;
     }
 
+    /**
+     * スロットで扱う飲み物の価格を返す。
+     * @return 飲み物の価格整数。
+     */
     public int getPrice() {
         return price;
     }
 
+    /**
+     * スロットで扱う飲み物の価格を設定する。
+     * @param price 設定を行いたい飲み物の価格。
+     */
     public void setPrice(final int price) {
         this.price = price;
     }
