@@ -303,11 +303,11 @@ public class MoneyExchangeUnit {
                         _10, _10, _10, _10, _10 }));
         // 不足分の算出
         int shortage = intentionAmount - sumAmount(infinityExBox);
-        final Money MAX = _1000;
+        final Money biggest = _1000;
         // 不足があれば、最大貨幣を足りるまで追加する。
         if (shortage > 0) {
-            for (int i = 0; i < (shortage / MAX.getAmount() + 1); i++) {
-                infinityExBox.add(MAX);
+            for (int i = 0; i < (shortage / biggest.getAmount() + 1); i++) {
+                infinityExBox.add(biggest);
             }
         }
         return infinityExBox;
