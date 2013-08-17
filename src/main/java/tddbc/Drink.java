@@ -22,7 +22,7 @@ public class Drink {
      * 「ジュースの名前」を取得する。
      * @return 名前文字列。
      */
-    public String getCaption() {
+    public final String getCaption() {
         return kind.getCaption();
     }
 
@@ -30,7 +30,7 @@ public class Drink {
      * 時価(購入時の価格)。
      * @return 価格数値。
      */
-    public int getAmountOfTime() {
+    public final int getAmountOfTime() {
         return this.amountOfTime;
     }
 

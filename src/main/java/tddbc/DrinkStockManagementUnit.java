@@ -17,8 +17,8 @@ public class DrinkStockManagementUnit {
     /** コンストラクタ。 */
     public DrinkStockManagementUnit() {
         // イニシャライズする候補の飲み物種類と価格
-        DrinkKind dks[] = { COLA, REDBULL, WATER };
-        int prs[] = { 120, 200, 100 };
+        DrinkKind dks[] = {COLA, REDBULL, WATER};
+        int prs[] = {120, 200, 100};
 
         // 現仕様では、決め打ちで3スロット、中身も限定。
         for (int i = 0; i < dks.length; i++) {
@@ -48,7 +48,7 @@ public class DrinkStockManagementUnit {
      * @param kind 飲み物種類。
      * @return 判定結果。在庫あり:true
      */
-    public boolean existStock(final DrinkKind kind) {
+    public final boolean existStock(final DrinkKind kind) {
         for (DrinkSlot slot : slots) {
             if (slot.getKind() == kind && slot.getStockCount() > 0) {
                 return true;
@@ -63,7 +63,7 @@ public class DrinkStockManagementUnit {
      * @param kind 飲み物種類。
      * @return 取り出した飲み物。在庫が無い場合:null。
      */
-    public Drink takeOut(final DrinkKind kind) {
+    public final Drink takeOut(final DrinkKind kind) {
         for (DrinkSlot slot : slots) {
             if (slot.getKind() == kind) {
                 return slot.takeOut();
@@ -78,7 +78,7 @@ public class DrinkStockManagementUnit {
      * @param kind 飲み物種類。
      * @return 価格。見つからない(管理対象外の飲み物)なら-1を返す。
      */
-    public int getPrice(final DrinkKind kind) {
+    public final int getPrice(final DrinkKind kind) {
         // 価格情報はスロットに保持している。
         for (DrinkSlot slot : slots) {
             if (slot.getKind() == kind) {
@@ -93,7 +93,7 @@ public class DrinkStockManagementUnit {
      * この自販機(スロット群)で取り扱っている飲み物種のリストを返す。
      * @return　有効飲み物種のリスト。
      */
-    public List<DrinkKind> getValiedDrinks() {
+    public final List<DrinkKind> getValiedDrinks() {
         List<DrinkKind> kinds = new ArrayList<DrinkKind>();
         for (DrinkSlot slot : slots) {
             kinds.add(slot.getKind());

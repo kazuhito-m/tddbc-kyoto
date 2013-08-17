@@ -25,7 +25,7 @@ public class MoneyManagementUnit {
      * 投入金総合計額を計算する。
      * @return
      */
-    public int calcTotalAmount() {
+    public final int calcTotalAmount() {
         return exchanger.sumAmount(depositPool); // 両替機の能力で合計。
     }
 
@@ -33,7 +33,7 @@ public class MoneyManagementUnit {
      * 売上総合計額を計算する。
      * @return 計算結果値(円)。
      */
-    public int calcTotalIncome() {
+    public final int calcTotalIncome() {
         return exchanger.sumAmount(incomeBox); // 両替機の能力で合計。
     }
 
@@ -41,7 +41,7 @@ public class MoneyManagementUnit {
      * つり銭箱を返す。
      * @return つり銭箱という名の紙幣・硬貨リスト。
      */
-    public List<Object> getChangeBox() {
+    public final List<Object> getChangeBox() {
         return changeBox;
     }
 
@@ -49,7 +49,7 @@ public class MoneyManagementUnit {
      * (お金などの)投入を受ける。
      * @param money 投入するモノ。
      */
-    public void receive(final Object money) {
+    public final void receive(final Object money) {
         if (money instanceof Money) {
             depositPool.add((Money) money);
         } else {
@@ -60,7 +60,7 @@ public class MoneyManagementUnit {
     /**
      * 返金する。
      */
-    public void refund() {
+    public final void refund() {
         changeBox.addAll(depositPool);
         depositPool.clear();
     }
@@ -71,7 +71,7 @@ public class MoneyManagementUnit {
      * @param amount 指定金額。
      * @return 判定結果。プールしている。
      */
-    public Boolean isDeposited(final int amount) {
+    public final Boolean isDeposited(final int amount) {
         return exchanger.sumAmount(depositPool) >= amount;
     }
 
@@ -80,7 +80,7 @@ public class MoneyManagementUnit {
      * @param amount 指定金額。
      * @return 成功判定。成功:true。
      */
-    public boolean withdrawToIncome(final int amount) {
+    public final boolean withdrawToIncome(final int amount) {
         return exchanger.moveMoney(depositPool, incomeBox, amount);
     }
 }

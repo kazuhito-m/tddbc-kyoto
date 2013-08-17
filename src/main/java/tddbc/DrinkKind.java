@@ -19,7 +19,7 @@ public enum DrinkKind {
      * 「ジュースの名前」を返す。
      * @return ジュースの名前文字列。
      */
-    public String getCaption() {
+    public final String getCaption() {
         return this.caption;
     }
 }

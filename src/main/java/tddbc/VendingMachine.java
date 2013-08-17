@@ -27,7 +27,7 @@ public class VendingMachine {
      * 総合計額を表示する。
      * @return
      */
-    public int displayTotalAmount() {
+    public final int displayTotalAmount() {
         return moneyManager.calcTotalAmount();
     }
 
@@ -35,7 +35,7 @@ public class VendingMachine {
      * つり銭箱を返す。
      * @return
      */
-    public List<Object> getChangeBox() {
+    public final List<Object> getChangeBox() {
         return moneyManager.getChangeBox();
     }
 
@@ -43,7 +43,7 @@ public class VendingMachine {
      * 飲み物の取り出し愚痴を返す。
      * @return 取り出し口の箱イメージ。
      */
-    public List<Drink> getOutTray() {
+    public final List<Drink> getOutTray() {
         return this.outTray;
     }
 
@@ -52,14 +52,14 @@ public class VendingMachine {
      * 
      * @param money
      */
-    public void receive(final Object money) {
+    public final void receive(final Object money) {
         moneyManager.receive(money);
     }
 
     /**
      * 返金する。
      */
-    public void refund() {
+    public final void refund() {
         moneyManager.refund();
     }
 
@@ -68,7 +68,7 @@ public class VendingMachine {
      * @param kind 購入対象の飲み物種。
      * @return 検査結果。可能:true。
      */
-    public boolean isSellable(final DrinkKind kind) {
+    public final boolean isSellable(final DrinkKind kind) {
         // 在庫管理装置から、指定された飲み物種の価格を取得する。
         int price = drinkStockManager.getPrice(kind);
         // 管理外なら、無論販売不可能。
@@ -92,7 +92,7 @@ public class VendingMachine {
      * @param kind 対象の飲み物種。
      * @return 成功判定。成功:true。
      */
-    public boolean sale(final DrinkKind kind) {
+    public final boolean sale(final DrinkKind kind) {
         // 最初に「購入できるか否か」は自分でもチェック
         if (!isSellable(kind)) {
             return false;
@@ -111,7 +111,7 @@ public class VendingMachine {
      * この自販機での「購入可能な飲み物」を一覧表示する。
      * @return 買うことのできる飲み物のリスト。
      */
-    public List<DrinkKind> displaySellableDrinks() {
+    public final List<DrinkKind> displaySellableDrinks() {
         return drinkStockManager.getValiedDrinks();
     }
 
@@ -119,7 +119,7 @@ public class VendingMachine {
      * この自販機で「現在の状態(投入金額、在庫など)」において「購入可能な飲み物」を一覧表示する。
      * @return 買うことのできる飲み物のリスト。
      */
-    public List<DrinkKind> displaySellableDrinksNowForYou() {
+    public final List<DrinkKind> displaySellableDrinksNowForYou() {
         List<DrinkKind> validDrinks = new ArrayList<DrinkKind>();
         // 買うことのできる全飲み物種を回す
         for (DrinkKind kind : displaySellableDrinks()) {
