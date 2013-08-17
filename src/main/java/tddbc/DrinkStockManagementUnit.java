@@ -1,6 +1,8 @@
 package tddbc;
 
-import static tddbc.DrinkKind.*;
+import static tddbc.DrinkKind.COLA;
+import static tddbc.DrinkKind.REDBULL;
+import static tddbc.DrinkKind.WATER;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +41,7 @@ public class DrinkStockManagementUnit {
      * パッケージ同一のクラスのみアクセス可能に。
      * @return スロットのリスト。
      */
-    protected List<DrinkSlot> getSlots() {
+    protected final List<DrinkSlot> getSlots() {
         return slots;
     }
 

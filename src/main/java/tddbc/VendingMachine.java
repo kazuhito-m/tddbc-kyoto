@@ -137,7 +137,7 @@ public class VendingMachine {
      * そのため同一パッケージ内(例えばテスト側)からしかアクセス出来無い。
      * @return 在庫管理装置オブジェクト。
      */
-    protected DrinkStockManagementUnit getDrinkStockManager() {
+    protected final DrinkStockManagementUnit getDrinkStockManager() {
         return this.drinkStockManager;
     }
 
@@ -147,7 +147,7 @@ public class VendingMachine {
      * そのため同一パッケージ内(例えばテスト側)からしかアクセス出来無い。
      * @return お金管理装置オブジェクト。
      */
-    protected MoneyManagementUnit getMoneyManager() {
+    protected final MoneyManagementUnit getMoneyManager() {
         return this.moneyManager;
     }
 

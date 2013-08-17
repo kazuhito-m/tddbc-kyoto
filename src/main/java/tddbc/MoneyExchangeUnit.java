@@ -1,6 +1,10 @@
 package tddbc;
 
-import static tddbc.Money.*;
+import static tddbc.Money._10;
+import static tddbc.Money._100;
+import static tddbc.Money._1000;
+import static tddbc.Money._50;
+import static tddbc.Money._500;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -67,7 +71,7 @@ public class MoneyExchangeUnit {
      * @param amount 移動金額。
      * @return 貨幣が崩せず移動できなかった残りの金額。
      */
-    protected boolean realMoveMoney(final List<Money> srcBox,
+    protected final boolean realMoveMoney(final List<Money> srcBox,
             final List<Money> dstBox, final int amount) {
 
         // 処理前チェック。移動元に移動する分の金額があるか。
@@ -112,7 +116,7 @@ public class MoneyExchangeUnit {
      * @param moneyBox 貨幣箱。
      * @return 削除した分をいれた箱。
      */
-    protected List<Money> fuzzyRemove(final List<Money> moneyBox,
+    protected final List<Money> fuzzyRemove(final List<Money> moneyBox,
             final int amount) {
         int restAmount = amount; // 残り金額。
         // 移動元の貨幣箱を昇順ソート。
@@ -186,7 +190,7 @@ public class MoneyExchangeUnit {
      * @param intentionAmount 「この細かさが出せるように」という目的の金額。
      * @return 成功判定。両替成功:true。
      */
-    protected boolean realExchange(final List<Money> srcBox,
+    protected final boolean realExchange(final List<Money> srcBox,
             final List<Money> dstBox, final int intentionAmount) {
 
         // まずは「両替を持ちかける側に、希望の細かさの小銭がある」か。
@@ -235,7 +239,7 @@ public class MoneyExchangeUnit {
      * @param exchangeAmount 両替金額。例えば「130円欲しいので500円を両替」の500円。
      * @return 成功判定。両替成功:true。
      */
-    protected boolean isJustExchangeable(final List<Money> srcBox,
+    protected final boolean isJustExchangeable(final List<Money> srcBox,
             final List<Money> dstBox, final int intentionAmount,
             int exchangeAmount) {
 
