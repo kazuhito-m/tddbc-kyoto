@@ -7,13 +7,13 @@ package tddbc;
  */
 public class Drink {
 
-    /** ジュースの種類 */
+    /** ジュースの種類。 */
     private DrinkKind kind;
 
-    /** 時価(購入時の価格) */
+    /** 時価(購入時の価格)。 */
     private int amountOfTime;
 
-    /** コンストラクタ */
+    /** コンストラクタ。 */
     public Drink(final DrinkKind kind) {
         this.kind = kind;
     }
@@ -49,5 +49,4 @@ public class Drink {
     protected void setKind(final DrinkKind kind) {
         this.kind = kind;
     }
-
 }
