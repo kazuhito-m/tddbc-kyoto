@@ -200,30 +200,59 @@ public class MoneyExchangeUnit {
         List<Money> swapBox = new ArrayList<Money>();
         realMoveMoney(dstBox, swapBox, intentionAmount);
 
+        int exchangeableAmount = -1; // 両替可能な金額
         // 「最小公倍数な両替金額」数列を回す
         for (int minExchange : createMinExchangeSeries(intentionAmount)) {
-            if (intentionAmount == minExchange) {
-                continue; // 同金額なら「そもそも両替が要らない」はず、次へ。
+            // 「崩したい金」が取れて、かつ「両替金額」で両替できるかチェック。
+            if (isJustExchangeable(srcBox, dstBox, intentionAmount, minExchange)) {
+                // できるなら、その金額を記録してループ脱出。
+                exchangeableAmount = minExchange;
+                break;
             }
-            // まずは、両替元側から取れるか否か
-            if (!isGettable(srcBox, minExchange)) {
-                continue; // 取れないなら両替不能。
-            }
-            // 次に、両替先から「残りの金」がジャストで取れるか
-            int remaining = minExchange - intentionAmount;
-            if (!isGettable(dstBox, remaining)) {
-                continue; // こちらも取れないなら両替不能。
-            }
-            // ここまでこれたなら、両替可能。実際に両替する。
+        }
+
+        // 両替可能額が分かったら
+        if (exchangeableAmount > 0) {
+            // 実際に両替する。
+            int remaining = exchangeableAmount - intentionAmount;
             realMoveMoney(dstBox, swapBox, remaining); // まず、両替先から両替分を移しきって
-            realMoveMoney(srcBox, dstBox, minExchange); // 両替元から削除して
+            realMoveMoney(srcBox, dstBox, exchangeableAmount); // 両替元から削除して
             srcBox.addAll(swapBox); // 両替元に移動。
             // 成功
             return true;
+        } else {
+            // ここに来たということは、両替出来なかったということ。失敗返す。
+            return false;
+        }
+    }
+
+    /**
+     * 指定された「貨幣の箱」同士で、何の加工をしなくても、<br/>
+     * そのまま指定金額を両替できるかを検査する。
+     * @param srcBox 両替元の箱。
+     * @param dstBox 両替先の箱。
+     * @param intentionAmount 崩したい目的の金額。例えば「130円欲しいので500円を両替」の130円。
+     * @param exchangeAmount 両替金額。例えば「130円欲しいので500円を両替」の500円。
+     * @return 成功判定。両替成功:true。
+     */
+    protected boolean isJustExchangeable(final List<Money> srcBox,
+            final List<Money> dstBox, final int intentionAmount,
+            int exchangeAmount) {
+
+        // 「崩したい金額」と「両替金額」が一緒って…「そもそも両替が要らない」はず
+        if (intentionAmount == exchangeAmount) {
+            return false; // 同金額なら「そもそも両替が要らない」はず、次へ。
+        }
+        // まずは、両替元側からジャストの金額が取れるか
+        if (!isGettable(srcBox, exchangeAmount)) {
+            return false; // 取れないなら両替不能。
+        }
+        // 次に、両替先から「残りの金」がジャストで取れるか
+        if (!isGettable(dstBox, exchangeAmount - intentionAmount)) {
+            return false; // こちらも取れないなら両替不能。
         }
 
-        // ここに来たということは、両替出来なかったということ。失敗返す。
-        return false;
+        return true;
     }
 
     /**
