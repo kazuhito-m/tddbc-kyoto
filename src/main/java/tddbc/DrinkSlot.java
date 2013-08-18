@@ -7,7 +7,7 @@ import java.util.List;
  * 「飲み物の内部スロット」クラス。
  * @author kazuhito_m
  */
-public class DrinkSlot {
+public final class DrinkSlot {
 
     /** 飲み物の種類。 */
     private DrinkKind kind;
@@ -18,7 +18,7 @@ public class DrinkSlot {
     /** 飲み物のため場所。 */
     private final List<Drink> drinks = new ArrayList<Drink>();
 
-    public DrinkKind getKind() {
+    public final DrinkKind getKind() {
         return kind;
     }
 
@@ -26,7 +26,7 @@ public class DrinkSlot {
      * 補充。
      * @param drink 飲み物。
      */
-    public void add(final Drink drink) {
+    public final void add(final Drink drink) {
         drink.setKind(kind);
         drinks.add(drink);
     }
@@ -35,7 +35,7 @@ public class DrinkSlot {
      * スロットの在庫個数。
      * @return 個数。
      */
-    public int getStockCount() {
+    public final int getStockCount() {
         return drinks.size();
     }
 
@@ -45,7 +45,7 @@ public class DrinkSlot {
      * スロットで扱う飲み物の種類。
      * @param kind 飲み物の種類。
      */
-    public void setKind(final DrinkKind kind) {
+    public final void setKind(final DrinkKind kind) {
         this.kind = kind;
     }
 
@@ -53,7 +53,7 @@ public class DrinkSlot {
      * スロットで扱う飲み物の価格を返す。
      * @return 飲み物の価格整数。
      */
-    public int getPrice() {
+    public final int getPrice() {
         return price;
     }
 
@@ -61,7 +61,7 @@ public class DrinkSlot {
      * スロットで扱う飲み物の価格を設定する。
      * @param price 設定を行いたい飲み物の価格。
      */
-    public void setPrice(final int price) {
+    public final void setPrice(final int price) {
         this.price = price;
     }
 
@@ -71,7 +71,7 @@ public class DrinkSlot {
      * 在庫管理法は「後入れ先出し」とする。
      * @return 飲み物一個。
      */
-    public Drink takeOut() {
+    public final Drink takeOut() {
         if (this.drinks.size() == 0) {
             return null;
         } else {

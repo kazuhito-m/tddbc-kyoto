@@ -20,6 +20,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class MoneyExchangeUnit {
 
+    /** 自身専用ロガー */
     private final Log log = LogFactory.getLog(this.getClass());
 
     /**
@@ -114,6 +115,7 @@ public class MoneyExchangeUnit {
     /**
      * 貨幣の箱から「曖昧に」指定金額に寄せるように削除する。
      * @param moneyBox 貨幣箱。
+     * @param amount 削除する金額。
      * @return 削除した分をいれた箱。
      */
     protected final List<Money> fuzzyRemove(final List<Money> moneyBox,
