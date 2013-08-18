@@ -14,22 +14,18 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-/**
- * 紙幣・硬貨両替機クラス。
- * @author kazuhito_m
- */
+/** 紙幣・硬貨両替機クラス。
+ * @author kazuhito_m */
 public class MoneyExchangeUnit {
 
     /** 自身専用ロガー */
     private final Log log = LogFactory.getLog(this.getClass());
 
-    /**
-     * 指定された金額が移動可能かを判定する。
+    /** 指定された金額が移動可能かを判定する。
      * @param srcBox 移動元の箱。
      * @param dstBox 移動先の箱。
      * @param amount 移動金額。
-     * @return 判定。移動可能:true。
-     */
+     * @return 判定。移動可能:true。 */
     public final boolean isMoveable(final List<Money> srcBox,
             final List<Money> dstBox, final int amount) {
         // 実際にシミュレーションする。引数の二つの箱をシャローコピーする。
@@ -39,13 +35,11 @@ public class MoneyExchangeUnit {
         return realMoveMoney(newSrc, newDst, amount);
     }
 
-    /**
-     * 貨幣の箱から箱へ指定された金額を移動する。<br/>
+    /** 貨幣の箱から箱へ指定された金額を移動する。<br/>
      * @param srcBox 移動元の箱。
      * @param dstBox 移動先の箱、。
      * @param amount 移動金額。
-     * @return 成功判定。移動成功:true。
-     */
+     * @return 成功判定。移動成功:true。 */
     public final boolean moveMoney(final List<Money> srcBox,
             final List<Money> dstBox, final int amount) {
         // 引数の二つの箱をシャローコピーする。
@@ -63,15 +57,13 @@ public class MoneyExchangeUnit {
         return result;
     }
 
-    /**
-     * 貨幣の箱から箱へ指定された金額を移動する。<br/>
+    /** 貨幣の箱から箱へ指定された金額を移動する。<br/>
      * realと銘打ってるのは「引数のListを破壊的に変更する」ため。<br/>
      * 破壊されて困る場合は、クローンするなりして退避したものを寄越すこと推奨。
      * @param srcBox 移動元の箱。
      * @param dstBox 移動先の箱、。
      * @param amount 移動金額。
-     * @return 貨幣が崩せず移動できなかった残りの金額。
-     */
+     * @return 貨幣が崩せず移動できなかった残りの金額。 */
     protected final boolean realMoveMoney(final List<Money> srcBox,
             final List<Money> dstBox, final int amount) {
 
@@ -112,12 +104,10 @@ public class MoneyExchangeUnit {
         return true;
     }
 
-    /**
-     * 貨幣の箱から「曖昧に」指定金額に寄せるように削除する。
+    /** 貨幣の箱から「曖昧に」指定金額に寄せるように削除する。
      * @param moneyBox 貨幣箱。
      * @param amount 削除する金額。
-     * @return 削除した分をいれた箱。
-     */
+     * @return 削除した分をいれた箱。 */
     protected final List<Money> fuzzyRemove(final List<Money> moneyBox,
             final int amount) {
         int restAmount = amount; // 残り金額。
@@ -138,11 +128,9 @@ public class MoneyExchangeUnit {
         return removeBox;
     }
 
-    /**
-     * 通貨の箱を合算。
+    /** 通貨の箱を合算。
      * @param moneyBox 対象となる通貨の箱。
-     * @return 合算金額。
-     */
+     * @return 合算金額。 */
     public final int sumAmount(final List<Money> moneyBox) {
         int totalAmount = 0;
         for (Money m : moneyBox) {
@@ -151,13 +139,11 @@ public class MoneyExchangeUnit {
         return totalAmount;
     }
 
-    /**
-     * 通貨箱二つから「指定の小銭を含む両替」ができるか否かを検査する。
+    /** 通貨箱二つから「指定の小銭を含む両替」ができるか否かを検査する。
      * @param srcBox 両替元の箱。
      * @param dstBox 両替先の箱、。
      * @param intentionAmount 「この細かさが出せるように」という目的の金額。
-     * @return 判定。両替可能:true。
-     */
+     * @return 判定。両替可能:true。 */
     public final boolean isExchangeable(final List<Money> srcBox,
             final List<Money> dstBox, final int intentionAmount) {
         // お試し用通貨箱。(状態が変わってもよいようにシャローコピー)
@@ -167,13 +153,11 @@ public class MoneyExchangeUnit {
         return realExchange(srcTest, dstTest, intentionAmount);
     }
 
-    /**
-     * 通貨箱二つから「指定の小銭を含む両替」を行う。
+    /** 通貨箱二つから「指定の小銭を含む両替」を行う。
      * @param srcBox 両替元の箱。
      * @param dstBox 両替先の箱、。
      * @param intentionAmount 「この細かさが出せるように」という目的の金額。
-     * @return 成功判定。両替成功:true。
-     */
+     * @return 成功判定。両替成功:true。 */
     public final boolean exchange(final List<Money> srcBox,
             final List<Money> dstBox, final int intentionAmount) {
         // まず、シミュレーションを行う。
@@ -184,14 +168,12 @@ public class MoneyExchangeUnit {
         return realExchange(srcBox, dstBox, intentionAmount);
     }
 
-    /**
-     * 通貨箱二つから「指定の小銭を含む両替」を行う。<br/>
+    /** 通貨箱二つから「指定の小銭を含む両替」を行う。<br/>
      * ※破壊的メソッド。引数のオブジェクトを破壊しつつ進むため、内部メソッドとする。
      * @param srcBox 両替元の箱。
      * @param dstBox 両替先の箱。
      * @param intentionAmount 「この細かさが出せるように」という目的の金額。
-     * @return 成功判定。両替成功:true。
-     */
+     * @return 成功判定。両替成功:true。 */
     protected final boolean realExchange(final List<Money> srcBox,
             final List<Money> dstBox, final int intentionAmount) {
 
@@ -232,15 +214,13 @@ public class MoneyExchangeUnit {
         }
     }
 
-    /**
-     * 指定された「貨幣の箱」同士で、何の加工をしなくても、<br/>
+    /** 指定された「貨幣の箱」同士で、何の加工をしなくても、<br/>
      * そのまま指定金額を両替できるかを検査する。
      * @param srcBox 両替元の箱。
      * @param dstBox 両替先の箱。
      * @param intentionAmount 崩したい目的の金額。例えば「130円欲しいので500円を両替」の130円。
      * @param exchangeAmount 両替金額。例えば「130円欲しいので500円を両替」の500円。
-     * @return 成功判定。両替成功:true。
-     */
+     * @return 成功判定。両替成功:true。 */
     protected final boolean isJustExchangeable(final List<Money> srcBox,
             final List<Money> dstBox, final int intentionAmount,
             int exchangeAmount) {
@@ -261,12 +241,10 @@ public class MoneyExchangeUnit {
         return true;
     }
 
-    /**
-     * 通貨の箱から「指定された金額」を余り無く取得できるか否かを検査する。
+    /** 通貨の箱から「指定された金額」を余り無く取得できるか否かを検査する。
      * @param moneyBox 通貨の箱。
      * @param intentionAmount 指定金額。
-     * @return 取得できるか否か。取得可能:true
-     */
+     * @return 取得できるか否か。取得可能:true */
     public final boolean isGettable(final List<Money> moneyBox,
             final int intentionAmount) {
         // お試し用通貨箱。
@@ -275,11 +253,9 @@ public class MoneyExchangeUnit {
         return sumAmount(fuzzyRemove(hitTest, intentionAmount)) == intentionAmount;
     }
 
-    /**
-     * 硬貨紙幣ごとの最小両替金額の数列を作成する。
+    /** 硬貨紙幣ごとの最小両替金額の数列を作成する。
      * @param amount 両替に含んでおきたい金額。
-     * @return 数列(List)。
-     */
+     * @return 数列(List)。 */
     public final int[] createMinExchangeSeries(final int amount) {
         int i = 0;
         int[] series = new int[Money.values().length];
@@ -298,11 +274,9 @@ public class MoneyExchangeUnit {
         return series; // 数列を返す。
     }
 
-    /**
-     * 金額を指定するとお釣りが無限に沸く両替ボックスを作成する。
+    /** 金額を指定するとお釣りが無限に沸く両替ボックスを作成する。
      * @param intentionAmount 両替に含んでおきたい金額。
-     * @return 作成された貨幣ボックス。
-     */
+     * @return 作成された貨幣ボックス。 */
     public final List<Money> createInfinityExchangeBox(final int intentionAmount) {
         List<Money> infinityExBox = new ArrayList<Money>(
                 Arrays.asList(new Money[] {_500, _100, _100, _100, _100, _50,
