@@ -1,10 +1,6 @@
 package tddbc;
 
-import static tddbc.Money._10;
-import static tddbc.Money._100;
-import static tddbc.Money._1000;
-import static tddbc.Money._50;
-import static tddbc.Money._500;
+import static tddbc.Money.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,7 +12,7 @@ import org.apache.commons.logging.LogFactory;
 
 /** 紙幣・硬貨両替機クラス。
  * @author kazuhito_m */
-public class MoneyExchangeUnit {
+public final class MoneyExchangeUnit {
 
     /** 自身専用ロガー */
     private final Log log = LogFactory.getLog(this.getClass());
@@ -26,7 +22,7 @@ public class MoneyExchangeUnit {
      * @param dstBox 移動先の箱。
      * @param amount 移動金額。
      * @return 判定。移動可能:true。 */
-    public final boolean isMoveable(final List<Money> srcBox,
+    public boolean isMoveable(final List<Money> srcBox,
             final List<Money> dstBox, final int amount) {
         // 実際にシミュレーションする。引数の二つの箱をシャローコピーする。
         List<Money> newSrc = new ArrayList<Money>(srcBox);
@@ -40,7 +36,7 @@ public class MoneyExchangeUnit {
      * @param dstBox 移動先の箱、。
      * @param amount 移動金額。
      * @return 成功判定。移動成功:true。 */
-    public final boolean moveMoney(final List<Money> srcBox,
+    public boolean moveMoney(final List<Money> srcBox,
             final List<Money> dstBox, final int amount) {
         // 引数の二つの箱をシャローコピーする。
         List<Money> newSrc = new ArrayList<Money>(srcBox);
@@ -131,7 +127,7 @@ public class MoneyExchangeUnit {
     /** 通貨の箱を合算。
      * @param moneyBox 対象となる通貨の箱。
      * @return 合算金額。 */
-    public final int sumAmount(final List<Money> moneyBox) {
+    public int sumAmount(final List<Money> moneyBox) {
         int totalAmount = 0;
         for (Money m : moneyBox) {
             totalAmount += m.getAmount();
@@ -144,7 +140,7 @@ public class MoneyExchangeUnit {
      * @param dstBox 両替先の箱、。
      * @param intentionAmount 「この細かさが出せるように」という目的の金額。
      * @return 判定。両替可能:true。 */
-    public final boolean isExchangeable(final List<Money> srcBox,
+    public boolean isExchangeable(final List<Money> srcBox,
             final List<Money> dstBox, final int intentionAmount) {
         // お試し用通貨箱。(状態が変わってもよいようにシャローコピー)
         List<Money> srcTest = new ArrayList<Money>(srcBox);
@@ -158,8 +154,8 @@ public class MoneyExchangeUnit {
      * @param dstBox 両替先の箱、。
      * @param intentionAmount 「この細かさが出せるように」という目的の金額。
      * @return 成功判定。両替成功:true。 */
-    public final boolean exchange(final List<Money> srcBox,
-            final List<Money> dstBox, final int intentionAmount) {
+    public boolean exchange(final List<Money> srcBox, final List<Money> dstBox,
+            final int intentionAmount) {
         // まず、シミュレーションを行う。
         if (!isExchangeable(srcBox, dstBox, intentionAmount)) {
             return false;
@@ -245,7 +241,7 @@ public class MoneyExchangeUnit {
      * @param moneyBox 通貨の箱。
      * @param intentionAmount 指定金額。
      * @return 取得できるか否か。取得可能:true */
-    public final boolean isGettable(final List<Money> moneyBox,
+    public boolean isGettable(final List<Money> moneyBox,
             final int intentionAmount) {
         // お試し用通貨箱。
         List<Money> hitTest = new ArrayList<Money>(moneyBox); // 状態が変わってもよいようにシャローコピー
@@ -256,7 +252,7 @@ public class MoneyExchangeUnit {
     /** 硬貨紙幣ごとの最小両替金額の数列を作成する。
      * @param amount 両替に含んでおきたい金額。
      * @return 数列(List)。 */
-    public final int[] createMinExchangeSeries(final int amount) {
+    public int[] createMinExchangeSeries(final int amount) {
         int i = 0;
         int[] series = new int[Money.values().length];
         // 紙幣・硬貨が小さなもの順に「最小公倍数な両替金額」を検討していく
@@ -277,7 +273,7 @@ public class MoneyExchangeUnit {
     /** 金額を指定するとお釣りが無限に沸く両替ボックスを作成する。
      * @param intentionAmount 両替に含んでおきたい金額。
      * @return 作成された貨幣ボックス。 */
-    public final List<Money> createInfinityExchangeBox(final int intentionAmount) {
+    public List<Money> createInfinityExchangeBox(final int intentionAmount) {
         List<Money> infinityExBox = new ArrayList<Money>(
                 Arrays.asList(new Money[] {_500, _100, _100, _100, _100, _50,
                         _10, _10, _10, _10, _10}));

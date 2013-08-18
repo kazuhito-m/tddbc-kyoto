@@ -16,6 +16,8 @@ public final class DrinkSlot {
     /** 飲み物のため場所。 */
     private final List<Drink> drinks = new ArrayList<Drink>();
 
+    /** 飲み物種を取得する。
+     * @return 飲み物種。 */
     public final DrinkKind getKind() {
         return kind;
     }
