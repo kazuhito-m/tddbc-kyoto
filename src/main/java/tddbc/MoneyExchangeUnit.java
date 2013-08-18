@@ -14,7 +14,7 @@ import org.apache.commons.logging.LogFactory;
  * @author kazuhito_m */
 public final class MoneyExchangeUnit {
 
-    /** 自身専用ロガー */
+    /** 自身専用ロガー。 */
     private final Log log = LogFactory.getLog(this.getClass());
 
     /** 指定された金額が移動可能かを判定する。
@@ -31,7 +31,7 @@ public final class MoneyExchangeUnit {
         return realMoveMoney(newSrc, newDst, amount);
     }
 
-    /** 貨幣の箱から箱へ指定された金額を移動する。<br/>
+    /** 貨幣の箱から箱へ指定された金額を移動する。
      * @param srcBox 移動元の箱。
      * @param dstBox 移動先の箱、。
      * @param amount 移動金額。
@@ -60,7 +60,7 @@ public final class MoneyExchangeUnit {
      * @param dstBox 移動先の箱、。
      * @param amount 移動金額。
      * @return 貨幣が崩せず移動できなかった残りの金額。 */
-    protected final boolean realMoveMoney(final List<Money> srcBox,
+    protected boolean realMoveMoney(final List<Money> srcBox,
             final List<Money> dstBox, final int amount) {
 
         // 処理前チェック。移動元に移動する分の金額があるか。
@@ -104,7 +104,7 @@ public final class MoneyExchangeUnit {
      * @param moneyBox 貨幣箱。
      * @param amount 削除する金額。
      * @return 削除した分をいれた箱。 */
-    protected final List<Money> fuzzyRemove(final List<Money> moneyBox,
+    protected List<Money> fuzzyRemove(final List<Money> moneyBox,
             final int amount) {
         int restAmount = amount; // 残り金額。
         // 移動元の貨幣箱を昇順ソート。
@@ -170,7 +170,7 @@ public final class MoneyExchangeUnit {
      * @param dstBox 両替先の箱。
      * @param intentionAmount 「この細かさが出せるように」という目的の金額。
      * @return 成功判定。両替成功:true。 */
-    protected final boolean realExchange(final List<Money> srcBox,
+    protected boolean realExchange(final List<Money> srcBox,
             final List<Money> dstBox, final int intentionAmount) {
 
         // まずは「両替を持ちかける側に、希望の細かさの小銭がある」か。
@@ -217,9 +217,9 @@ public final class MoneyExchangeUnit {
      * @param intentionAmount 崩したい目的の金額。例えば「130円欲しいので500円を両替」の130円。
      * @param exchangeAmount 両替金額。例えば「130円欲しいので500円を両替」の500円。
      * @return 成功判定。両替成功:true。 */
-    protected final boolean isJustExchangeable(final List<Money> srcBox,
+    protected boolean isJustExchangeable(final List<Money> srcBox,
             final List<Money> dstBox, final int intentionAmount,
-            int exchangeAmount) {
+            final int exchangeAmount) {
 
         // 「崩したい金額」と「両替金額」が一緒って…「そもそも両替が要らない」はず
         if (intentionAmount == exchangeAmount) {
